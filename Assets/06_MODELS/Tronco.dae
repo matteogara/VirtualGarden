@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9</authoring_tool>
     </contributor>
-    <created>2020-07-08T01:39:41</created>
-    <modified>2020-07-08T01:39:41</modified>
+    <created>2020-07-08T13:42:29</created>
+    <modified>2020-07-08T13:42:29</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -15,7 +15,7 @@
     <geometry id="Circle-mesh" name="Circle">
       <mesh>
         <source id="Circle-mesh-positions">
-          <float_array id="Circle-mesh-positions-array" count="30">0 1 0 -0.9510565 0.309017 0 -0.5877852 -0.8090171 0 0.5877854 -0.809017 0 0.9510565 0.3090171 0 0 1 34.55382 -0.9510565 0.309017 34.55382 -0.5877852 -0.8090171 34.55382 0.5877854 -0.809017 34.55382 0.9510565 0.3090171 34.55382</float_array>
+          <float_array id="Circle-mesh-positions-array" count="30">0 0.1642384 0 -0.1561995 0.05075246 0 -0.09653657 -0.1328716 0 0.09653663 -0.1328716 0 0.1561995 0.05075246 0 0 0.1642384 5.675055 -0.1561995 0.05075246 5.675055 -0.09653657 -0.1328716 5.675055 0.09653663 -0.1328716 5.675055 0.1561995 0.05075246 5.675055</float_array>
           <technique_common>
             <accessor source="#Circle-mesh-positions-array" count="10" stride="3">
               <param name="X" type="float"/>
@@ -25,7 +25,7 @@
           </technique_common>
         </source>
         <source id="Circle-mesh-normals">
-          <float_array id="Circle-mesh-normals-array" count="33">0 0 -1 1.79378e-6 0 1 -0.5877853 0.809017 0 0.9510565 -0.3090168 0 -0.9510565 -0.309017 0 0.5877852 0.8090171 0 0 -1 0 0 0 1 -5.80479e-6 0 1 0.9510566 -0.3090169 0 0 -1 0</float_array>
+          <float_array id="Circle-mesh-normals-array" count="33">0 0 -1 6.72494e-6 0 1 -0.5877865 0.8090161 0 0.9510568 -0.3090159 0 -0.9510568 -0.3090161 0 0.5877865 0.8090162 0 0 -1 0 -4.30886e-7 0 1 -4.15624e-6 0 1 -0.9510568 -0.3090162 0 0 -1 0</float_array>
           <technique_common>
             <accessor source="#Circle-mesh-normals-array" count="11" stride="3">
               <param name="X" type="float"/>
@@ -40,7 +40,7 @@
         <triangles count="16">
           <input semantic="VERTEX" source="#Circle-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Circle-mesh-normals" offset="1"/>
-          <p>4 0 3 0 2 0 7 1 9 1 5 1 1 2 5 2 0 2 4 3 8 3 3 3 2 4 6 4 1 4 0 5 9 5 4 5 3 6 7 6 2 6 2 0 1 0 0 0 0 0 4 0 2 0 5 7 6 7 7 7 7 8 8 8 9 8 1 2 6 2 5 2 4 9 9 9 8 9 2 4 7 4 6 4 0 5 5 5 9 5 3 10 8 10 7 10</p>
+          <p>0 0 4 0 3 0 7 1 8 1 9 1 1 2 5 2 0 2 4 3 8 3 3 3 2 4 6 4 1 4 0 5 9 5 4 5 3 6 7 6 2 6 2 0 1 0 3 0 1 0 0 0 3 0 5 7 6 7 9 7 6 8 7 8 9 8 1 2 6 2 5 2 4 3 9 3 8 3 2 9 7 9 6 9 0 5 5 5 9 5 3 10 8 10 7 10</p>
         </triangles>
       </mesh>
     </geometry>
@@ -49,7 +49,7 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Circle" name="Circle" type="NODE">
-        <matrix sid="transform">0.1642379 0 0 0 0 0.1642384 0 0 0 0 0.1642382 0 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#Circle-mesh" name="Circle"/>
       </node>
     </visual_scene>

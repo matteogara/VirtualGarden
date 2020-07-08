@@ -4,11 +4,31 @@ using UnityEngine;
 
 public class TreeGenerator : MonoBehaviour
 {
-    public GameObject _trunk, _brench, _foliage_up, _foliage_down;
-    public Material tr_mat, fol_mat;
+    [Header("Models")]
+    public GameObject trunk;
+    public GameObject brench;
+    public GameObject foliage_up;
+    public GameObject foliage_down;
 
-    public int brMinH, brMaxH;
-    public float brMinScale, brMaxScale;
+    [Header("Materials")]
+    public Material trMat;
+    public Material folMat;
+
+    [Header("Trunk settings")]
+    public float trMinScale;
+    public float trMaxScale;
+
+    [Header("Brenches settings")]
+    public int brMinH;
+    public int brMaxH;
+    public float brMinScale;
+    public float brMaxScale;
+    public bool largerBrenchesBelow;
+
+    [Header("Foliage settings")]
+    public float folMinScale;
+    public float folMaxScale;
+    public Vector3 folOffset;
 
     private float count = 0;
     private int brDeltaH;
@@ -32,35 +52,75 @@ public class TreeGenerator : MonoBehaviour
 
     void CreateTree() {
         // Create object
-        GameObject tree = new GameObject("Tree_" + count);
+        GameObject _tree = new GameObject("Tree_" + count);
         count++;
 
         // Set position
-        tree.transform.position = new Vector3(0, 0, 0);
+        _tree.transform.position = new Vector3(0, 0, 0);
 
         // Create trunk
-        var trunk = Instantiate(_trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
-        trunk.GetComponent<MeshRenderer>().material = tr_mat;
-        trunk.transform.parent = tree.transform;
+        var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+        _trunk.GetComponent<MeshRenderer>().material = trMat;
+        _trunk.transform.parent = _tree.transform;
+        float _trR = Random.Range(trMinScale, trMaxScale);
+        float _trH = Random.Range(trMinScale, trMaxScale);
+        trunk.transform.localScale = new Vector3(_trR, _trR, _trH);
+
+        // Create trunk foliage
+        var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        var _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
+        _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+        float _folR = Random.Range(folMinScale, folMaxScale);
+        float _folH = Random.Range(folMinScale, folMaxScale) / _trH;
+        _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);
+        _trFolUp.transform.localScale = new Vector3(_folR, _folR, _folR);
+        _trFolUp.transform.parent = _trFolDown.transform;
+        _trFolUp.transform.localPosition = new Vector3(0, 0, 1);
+        _trFolDown.transform.parent = _trunk.transform;
+        _trFolDown.transform.localPosition = new Vector3(0, 0, 5.6f);
+
 
         // Create brenches
-        float brenchNum = Random.Range(1, 5);
-        for (int i = 0; i < brenchNum; i++) {
-            var brench = Instantiate(_brench, Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 90));
-            brench.GetComponent<MeshRenderer>().material = tr_mat;
-            brench.transform.parent = trunk.transform;
-            float h = Random.Range(brMinH, brMaxH);
-            brench.transform.localPosition = new Vector3(0, 0, h);
-            float scale = (Random.Range(brMinScale, brMaxScale) + (30 - h) / brDeltaH) / 2;
-            brench.transform.localScale = new Vector3(scale, scale, scale);
+        float _brenchNum = Random.Range(1, 5);
+        for (int i = 0; i < _brenchNum; i++) {
+            var _brench = Instantiate(brench, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 90));
+            _brench.GetComponent<MeshRenderer>().material = trMat;
+            float _z = Random.Range(brMinH, brMaxH);
+            float s;
+            if (largerBrenchesBelow)
+            {
+                s = (Random.Range(brMinScale, brMaxScale) + (brMaxH - _z) / brDeltaH) / 2;
+            }
+            else
+            {
+                s = Random.Range(brMinScale, brMaxScale);
+            }
+            _brench.transform.localScale = new Vector3(s, s, s);
+            _brench.transform.parent = _trunk.transform;
+            _brench.transform.localPosition = new Vector3(0, 0, _z);
+
+            // Create brench foliage
+            _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+            _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+            _trFolDown.GetComponent<MeshRenderer>().material = folMat;
+            _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+            _folR = Random.Range(folMinScale, folMaxScale);
+            _folH = Random.Range(folMinScale, folMaxScale) / _trH;
+            _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);
+            _trFolUp.transform.localScale = new Vector3(_folR, _folR, _folR);
+            _trFolUp.transform.parent = _trFolDown.transform;
+            _trFolUp.transform.localPosition = new Vector3(0, 0, 1);
+            _trFolDown.transform.parent = _brench.transform;
+            _trFolDown.transform.localPosition = folOffset;
         }
     }
 
 
     void DeleteTree() {
-        GameObject tree = GameObject.Find("Tree_" + (count - 1));
-        if (tree != null) {
-            Destroy(tree);
+        GameObject _tree = GameObject.Find("Tree_" + (count - 1));
+        if (_tree != null) {
+            Destroy(_tree);
         }
     }
 }

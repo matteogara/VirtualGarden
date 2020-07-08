@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9</authoring_tool>
     </contributor>
-    <created>2020-07-08T01:42:36</created>
-    <modified>2020-07-08T01:42:36</modified>
+    <created>2020-07-08T16:38:45</created>
+    <modified>2020-07-08T16:38:45</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -15,7 +15,7 @@
     <geometry id="Cylinder-mesh" name="Cylinder">
       <mesh>
         <source id="Cylinder-mesh-positions">
-          <float_array id="Cylinder-mesh-positions-array" count="72">0 1 0 0 1 2 0.5 0.8660254 0 0.5 0.8660254 2 0.8660255 0.5 0 0.8660255 0.5 2 1 0 0 1 0 2 0.8660254 -0.5000001 0 0.8660254 -0.5000001 2 0.5000001 -0.8660254 0 0.5000001 -0.8660254 2 1.50996e-7 -1 0 1.50996e-7 -1 2 -0.4999998 -0.8660255 0 -0.4999998 -0.8660255 2 -0.8660252 -0.5000003 0 -0.8660252 -0.5000003 2 -1 -4.64912e-7 0 -1 -4.64912e-7 2 -0.8660257 0.4999995 0 -0.8660257 0.4999995 2 -0.5000006 0.8660251 0 -0.5000006 0.8660251 2</float_array>
+          <float_array id="Cylinder-mesh-positions-array" count="72">0 1 0 0 1 1 0.5 0.8660254 0 0.5 0.8660254 1 0.8660255 0.5 0 0.8660255 0.5 1 1 0 0 1 0 1 0.8660254 -0.5000001 0 0.8660254 -0.5000001 1 0.5000001 -0.8660254 0 0.5000001 -0.8660254 1 1.50996e-7 -1 0 1.50996e-7 -1 1 -0.4999998 -0.8660255 0 -0.4999998 -0.8660255 1 -0.8660252 -0.5000003 0 -0.8660252 -0.5000003 1 -1 -4.64912e-7 0 -1 -4.64912e-7 1 -0.8660257 0.4999995 0 -0.8660257 0.4999995 1 -0.5000006 0.8660251 0 -0.5000006 0.8660251 1</float_array>
           <technique_common>
             <accessor source="#Cylinder-mesh-positions-array" count="24" stride="3">
               <param name="X" type="float"/>
