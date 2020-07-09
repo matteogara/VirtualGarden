@@ -15,22 +15,22 @@ public class TreeGenerator : MonoBehaviour
     public Material folMat;
 
     [Header("Trunk settings")]
-    public float trMinScale;
-    public float trMaxScale;
+    public float trMinScale = .7f;
+    public float trMaxScale = 1.2f;
 
     [Header("Brenches settings")]
-    public int brMinH;
-    public int brMaxH;
-    public float brMinScale;
-    public float brMaxScale;
-    public bool largerBrenchesBelow;
+    public int brMinH = 2;
+    public int brMaxH = 6;
+    public float brMinScale = .8f;
+    public float brMaxScale = .3f;
+    public bool largerBrenchesBelow = true;
 
     [Header("Foliage settings")]
-    public float folMinScale;
-    public float folMaxScale;
-    public Vector3 folOffset;
+    public float folMinScale = .5f;
+    public float folMaxScale = 1f;
+    public Vector3 folOffset = new Vector3(-1.5f, 0, 1.45f);
 
-    private float count = 0;
+    private float count;
     private int brDeltaH;
 
 
@@ -45,18 +45,15 @@ public class TreeGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             DeleteTree();
-            CreateTree();
+            CreateTree(Vector3.zero);
         }
     }
 
 
-    void CreateTree() {
+    void CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         count++;
-
-        // Set position
-        _tree.transform.position = new Vector3(0, 0, 0);
 
         // Create trunk
         var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
@@ -114,6 +111,9 @@ public class TreeGenerator : MonoBehaviour
             _trFolDown.transform.parent = _brench.transform;
             _trFolDown.transform.localPosition = folOffset;
         }
+
+        // Set position
+        _tree.transform.position = _pos;
     }
 
 
