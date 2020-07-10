@@ -45,7 +45,7 @@ public class TreeGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             DeleteTree();
-            CreateTree(Vector3.zero);
+            CreateTree(transform.position);
         }
     }
 

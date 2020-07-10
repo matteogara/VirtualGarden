@@ -21,15 +21,24 @@ public class UI_MANAGER : MonoBehaviour
     public string[] smellAdjectives;
     public string[] objectNames;
 
+    [Header("Sounds")]
+    public AudioClip rowSound;
+    public AudioClip columnSound;
+    public AudioClip tabSound;
+
     int activeRow = 0;
     int[] selection = { 0, 0 };
     int[] rowLength = { 4, 2 };
+
+    AudioSource audioSource;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         RefreshUI();
     }
 
@@ -48,32 +57,49 @@ public class UI_MANAGER : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 activeRow--;
-                activeRow = Mathf.Max(activeRow, 0);
-                _refresh = true;
+                if (activeRow < 0) {
+                    activeRow = 0;
+                } else {
+                    _refresh = true;
+                    PlaySound(rowSound);
+                }
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 selection[activeRow]--;
-                selection[activeRow] = Mathf.Max(selection[activeRow], 0);
-                _refresh = true;
+                if (selection[activeRow] < 0) {
+                    selection[activeRow] = 0;
+                } else {
+                    _refresh = true;
+                    PlaySound(columnSound);
+                }
             }
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 activeRow++;
-                activeRow = Mathf.Min(activeRow, 1);
-                _refresh = true;
+                if (activeRow > 1) {
+                    activeRow = 1;
+                } else {
+                    _refresh = true;
+                    PlaySound(rowSound);
+                }
             }
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 selection[activeRow]++;
-                selection[activeRow] = Mathf.Min(selection[activeRow], rowLength[activeRow]);
-                _refresh = true;
+                if (selection[activeRow] > rowLength[activeRow]) {
+                    selection[activeRow] = rowLength[activeRow];
+                } else {
+                    _refresh = true;
+                    PlaySound(columnSound);
+                }
             }
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
         {
             panel.SetActive(false);
+            PlaySound(tabSound);
         }
 
         if (_refresh) {
@@ -89,6 +115,7 @@ public class UI_MANAGER : MonoBehaviour
         smells[selection[0]].interactable = true;
         vegs[selection[1]].interactable = true;
         UpdateText();
+        Vibrate();
     }
 
 
@@ -102,5 +129,16 @@ public class UI_MANAGER : MonoBehaviour
     void UpdateText() {
         string _newText = "A " + smellAdjectives[selection[0]] + " " + objectNames[selection[1]] + ".";
         description.text = _newText;
+    }
+
+
+    void Vibrate() {
+        Debug.Log("Tac");
+    }
+
+
+    void PlaySound(AudioClip _clip) {
+        audioSource.clip = _clip;
+        audioSource.Play();
     }
 }
