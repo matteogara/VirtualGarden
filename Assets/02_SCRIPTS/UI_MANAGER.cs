@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_MANAGER : MonoBehaviour
 {
     public GameObject panel;
+    public GameObject intro;
 
     [Header("Row selection")]
     public Button[] rows;
@@ -29,6 +30,7 @@ public class UI_MANAGER : MonoBehaviour
     int activeRow = 0;
     int[] selection = { 0, 0 };
     int[] rowLength = { 4, 2 };
+    bool inGame = false;
 
     AudioSource audioSource;
 
@@ -46,65 +48,95 @@ public class UI_MANAGER : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool _refresh = false;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+        // Standard input
+        if (inGame)
         {
-            panel.SetActive(true);
+            bool _refresh = false;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+            {
+                panel.SetActive(true);
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space))
+            {
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    activeRow--;
+                    if (activeRow < 0)
+                    {
+                        activeRow = 0;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(rowSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    selection[activeRow]--;
+                    if (selection[activeRow] < 0)
+                    {
+                        selection[activeRow] = 0;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(columnSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    activeRow++;
+                    if (activeRow > 1)
+                    {
+                        activeRow = 1;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(rowSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    selection[activeRow]++;
+                    if (selection[activeRow] > rowLength[activeRow])
+                    {
+                        selection[activeRow] = rowLength[activeRow];
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(columnSound);
+                    }
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
+            {
+                panel.SetActive(false);
+                PlaySound(tabSound);
+            }
+
+            if (_refresh)
+            {
+                RefreshUI();
+            }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space)) {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                activeRow--;
-                if (activeRow < 0) {
-                    activeRow = 0;
-                } else {
-                    _refresh = true;
-                    PlaySound(rowSound);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                selection[activeRow]--;
-                if (selection[activeRow] < 0) {
-                    selection[activeRow] = 0;
-                } else {
-                    _refresh = true;
-                    PlaySound(columnSound);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                activeRow++;
-                if (activeRow > 1) {
-                    activeRow = 1;
-                } else {
-                    _refresh = true;
-                    PlaySound(rowSound);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                selection[activeRow]++;
-                if (selection[activeRow] > rowLength[activeRow]) {
-                    selection[activeRow] = rowLength[activeRow];
-                } else {
-                    _refresh = true;
-                    PlaySound(columnSound);
-                }
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
-        {
+        // Show / hide controls window
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            intro.SetActive(inGame);
             panel.SetActive(false);
+
             PlaySound(tabSound);
+            inGame = !inGame;
         }
 
-        if (_refresh) {
-            RefreshUI();
-        }
+        Debug.Log(inGame);
     }
 
 
