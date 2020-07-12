@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public float maxDist;
+    public TreeGenerator generator;
 
     Vector3 mousePos;
     Plane plane = new Plane(Vector3.up, 0f);
@@ -36,6 +37,10 @@ public class Spawner : MonoBehaviour
         if (plane.Raycast(ray, out distanceToPlane)) {
             if (distanceToPlane < maxDist)
             mousePos = ray.GetPoint(distanceToPlane);
+
+            if (Input.GetKey(KeyCode.Mouse0)) {
+                generator.CreateTree(mousePos);
+            }
         }
 
         transform.position = mousePos;

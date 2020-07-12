@@ -50,7 +50,7 @@ public class TreeGenerator : MonoBehaviour
     }
 
 
-    void CreateTree(Vector3 _pos) {
+    public void CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         count++;
