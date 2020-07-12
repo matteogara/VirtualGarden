@@ -135,8 +135,6 @@ public class UI_MANAGER : MonoBehaviour
             PlaySound(tabSound);
             inGame = !inGame;
         }
-
-        Debug.Log(inGame);
     }
 
 
@@ -165,7 +163,7 @@ public class UI_MANAGER : MonoBehaviour
 
 
     void Vibrate() {
-        Debug.Log("Tac");
+
     }
 
 
