@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 658625310ed1e4b7fa80a299c9f47760
-=======
-guid: a7fa60b6c40954a7bb06ab18cbe3d94d
->>>>>>> d23a77f22718fcf4d825f3cb5a1951233f6c20e5
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fungo_sotto1Mat
+    second: {fileID: 2100000, guid: 7b0c61ffef8fc411fbbe4eff76f803ba, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -35,7 +36,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -43,15 +44,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
-<<<<<<< HEAD
     importCameras: 0
     importLights: 0
-=======
-    importCameras: 1
-    importLights: 1
->>>>>>> d23a77f22718fcf4d825f3cb5a1951233f6c20e5
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -67,11 +63,11 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
-    normalSmoothAngle: 70
-    normalImportMode: 0
-    tangentImportMode: 3
+    normalSmoothAngle: 100
+    normalImportMode: 1
+    tangentImportMode: 4
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
@@ -96,7 +92,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0
