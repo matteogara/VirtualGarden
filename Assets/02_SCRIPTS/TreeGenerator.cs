@@ -45,12 +45,12 @@ public class TreeGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             DeleteTree();
-            CreateTree(Vector3.zero);
+            CreateTree(transform.position);
         }
     }
 
 
-    void CreateTree(Vector3 _pos) {
+    public void CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         count++;

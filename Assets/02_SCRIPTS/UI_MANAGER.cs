@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_MANAGER : MonoBehaviour
 {
     public GameObject panel;
+    public GameObject intro;
 
     [Header("Row selection")]
     public Button[] rows;
@@ -21,15 +22,25 @@ public class UI_MANAGER : MonoBehaviour
     public string[] smellAdjectives;
     public string[] objectNames;
 
+    [Header("Sounds")]
+    public AudioClip rowSound;
+    public AudioClip columnSound;
+    public AudioClip tabSound;
+
     int activeRow = 0;
     int[] selection = { 0, 0 };
     int[] rowLength = { 4, 2 };
+    bool inGame = false;
+
+    AudioSource audioSource;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         RefreshUI();
     }
 
@@ -37,47 +48,92 @@ public class UI_MANAGER : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool _refresh = false;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+        // Standard input
+        if (inGame)
         {
-            panel.SetActive(true);
+            bool _refresh = false;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+            {
+                panel.SetActive(true);
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space))
+            {
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    activeRow--;
+                    if (activeRow < 0)
+                    {
+                        activeRow = 0;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(rowSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    selection[activeRow]--;
+                    if (selection[activeRow] < 0)
+                    {
+                        selection[activeRow] = 0;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(columnSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    activeRow++;
+                    if (activeRow > 1)
+                    {
+                        activeRow = 1;
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(rowSound);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    selection[activeRow]++;
+                    if (selection[activeRow] > rowLength[activeRow])
+                    {
+                        selection[activeRow] = rowLength[activeRow];
+                    }
+                    else
+                    {
+                        _refresh = true;
+                        PlaySound(columnSound);
+                    }
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
+            {
+                panel.SetActive(false);
+                PlaySound(tabSound);
+            }
+
+            if (_refresh)
+            {
+                RefreshUI();
+            }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space)) {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                activeRow--;
-                activeRow = Mathf.Max(activeRow, 0);
-                _refresh = true;
-            }
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                selection[activeRow]--;
-                selection[activeRow] = Mathf.Max(selection[activeRow], 0);
-                _refresh = true;
-            }
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                activeRow++;
-                activeRow = Mathf.Min(activeRow, 1);
-                _refresh = true;
-            }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                selection[activeRow]++;
-                selection[activeRow] = Mathf.Min(selection[activeRow], rowLength[activeRow]);
-                _refresh = true;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
-        {
+        // Show / hide controls window
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            intro.SetActive(inGame);
             panel.SetActive(false);
-        }
 
-        if (_refresh) {
-            RefreshUI();
+            PlaySound(tabSound);
+            inGame = !inGame;
         }
     }
 
@@ -89,6 +145,7 @@ public class UI_MANAGER : MonoBehaviour
         smells[selection[0]].interactable = true;
         vegs[selection[1]].interactable = true;
         UpdateText();
+        Vibrate();
     }
 
 
@@ -102,5 +159,16 @@ public class UI_MANAGER : MonoBehaviour
     void UpdateText() {
         string _newText = "A " + smellAdjectives[selection[0]] + " " + objectNames[selection[1]] + ".";
         description.text = _newText;
+    }
+
+
+    void Vibrate() {
+
+    }
+
+
+    void PlaySound(AudioClip _clip) {
+        audioSource.clip = _clip;
+        audioSource.Play();
     }
 }
