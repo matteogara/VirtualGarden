@@ -9,17 +9,17 @@ public class MushroomsGenerator : MonoBehaviour
     public List<GameObject> head = new List<GameObject>();
 
     [Header("Materials")]
-    public Material trMat;
-    public Material folMat;
+    public Material bodyMat;
+    public Material headMat;
 
     [Header("body settings")]
-    public float trMinScale = .7f;
-    public float trMaxScale = 1.2f;
+    public float bodyMinScale = .5f;
+    public float bodyMaxScale = 1f;
 
-    [Header("Foliage settings")]
-    public float folMinScale = .5f;
-    public float folMaxScale = 1f;
-    public Vector3 folOffset = new Vector3(-1.5f, 0, 1.45f);
+    [Header("head settings")]
+    public float headMinScale = .7f;
+    public float headMaxScale = 1.2f;
+    public Vector3 headOffset = new Vector3(-1.5f, 0, 1.45f);
 
     private float count;
 
@@ -34,45 +34,45 @@ public class MushroomsGenerator : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            DeleteTree();
-            CreateTree(transform.position);
+            DeleteMushrooms();
+            CreateMushrooms(transform.position);
         }
     }
 
 
-    public void CreateTree(Vector3 _pos) {
+    public void CreateMushrooms(Vector3 _pos) {
         // Create object
-        GameObject _tree = new GameObject("Tree_" + count);
+        GameObject _mushrooms = new GameObject("mushrooms_" + count);
         count++;
 
         // Create body
         int index = Random.Range(0, body.Count - 1);
-        var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 0));
-        _body.GetComponent<MeshRenderer>().material = trMat; //materiale
-        _body.transform.parent = _tree.transform;
-        float _trR = Random.Range(trMinScale, trMaxScale); //raggio
-        float _trH = Random.Range(trMinScale, trMaxScale); //altezza
+        var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+        _body.GetComponent<MeshRenderer>().material = bodyMat; //materiale
+        _body.transform.parent = _mushrooms.transform;
+        float _trR = Random.Range(bodyMinScale, bodyMaxScale); //raggio
+        float _trH = Random.Range(bodyMinScale, bodyMaxScale); //altezza
         _body.transform.localScale = new Vector3(_trR, _trR, _trH);
 
         // Create body foliage
         index = Random.Range(0, head.Count - 1);
-        var _trFolDown = Instantiate(head[index], Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 0));
-        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
-        float _folR = Random.Range(folMinScale, folMaxScale);
-        float _folH = Random.Range(folMinScale, folMaxScale) / _trH;
-        _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);
-        _trFolDown.transform.parent = _body.transform;
-        _trFolDown.transform.localPosition = new Vector3(0, 0, 5.6f);
+        var _head = Instantiate(head[index], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+        _head.GetComponent<MeshRenderer>().material = headMat;
+        float _folR = Random.Range(headMinScale, headMaxScale);
+        float _folH = Random.Range(headMinScale, headMaxScale) / _trH;
+        _head.transform.localScale = new Vector3(_folR, _folR, _folH);
+        _head.transform.parent = _body.transform;
+        _head.transform.localPosition = new Vector3(0, 0, 2f);
 
         // Set position
-        _tree.transform.position = _pos;
+        _mushrooms.transform.position = _pos;
     }
 
 
-    void DeleteTree() {
-        GameObject _tree = GameObject.Find("Tree_" + (count - 1));
-        if (_tree != null) {
-            Destroy(_tree);
+    void DeleteMushrooms() {
+        GameObject _mushrooms = GameObject.Find("mushrooms_" + (count - 1));
+        if (_mushrooms != null) {
+            Destroy(_mushrooms);
         }
     }
 }
