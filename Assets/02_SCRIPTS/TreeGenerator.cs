@@ -40,17 +40,8 @@ public class TreeGenerator : MonoBehaviour
         brDeltaH = Mathf.Abs(brMaxH - brMinH);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            DeleteTree();
-            CreateTree(transform.position);
-        }
-    }
 
-
-    public void CreateTree(Vector3 _pos) {
+    public GameObject CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         count++;
@@ -114,13 +105,7 @@ public class TreeGenerator : MonoBehaviour
 
         // Set position
         _tree.transform.position = _pos;
-    }
 
-
-    void DeleteTree() {
-        GameObject _tree = GameObject.Find("Tree_" + (count - 1));
-        if (_tree != null) {
-            Destroy(_tree);
-        }
+        return _tree;
     }
 }
