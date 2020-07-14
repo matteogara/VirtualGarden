@@ -61,7 +61,7 @@ public class TreeGenerator : MonoBehaviour
         _trunk.transform.parent = _tree.transform;
         float _trR = Random.Range(trMinScale, trMaxScale);
         float _trH = Random.Range(trMinScale, trMaxScale);
-        trunk.transform.localScale = new Vector3(_trR, _trR, _trH);
+        _trunk.transform.localScale = new Vector3(_trR, _trR, _trH);
 
         // Create trunk foliage
         var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
