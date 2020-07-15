@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 5.DAE.meta
 guid: 3ee2dd209485147f6a7c8cdf82bb8705
+=======
+guid: bb39c40435e7141669914c3cca7cd719
+>>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Fungo corpo/Fungo base alta.DAE.meta
+=======
+guid: 3ee2dd209485147f6a7c8cdf82bb8705
+>>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []

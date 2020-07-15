@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: aabc4ca5243c443c984b94fdcb87608d
+=======
+<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 7.DAE.meta
+guid: 52ed1ba6630f344f38d5f057cf5cbda7
+=======
+guid: aabc4ca5243c443c984b94fdcb87608d
+>>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Chioma/Chioma ovale.DAE.meta
+>>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
