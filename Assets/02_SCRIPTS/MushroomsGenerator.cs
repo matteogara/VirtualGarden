@@ -12,17 +12,10 @@ public class MushroomsGenerator : MonoBehaviour
     public Material bodyMat;
     public Material headMat;
 
-<<<<<<< HEAD
-    [Header("head settings")]
-=======
     [Header("body settings")]
     public float bodyMinScale = .5f;
     public float bodyMaxScale = 1f;
 
-    [Header("head settings")]
-    public float headMinScale = .7f;
-    public float headMaxScale = 1.2f;
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
     public Vector3 headOffset = new Vector3(-1.5f, 0, 1.45f);
 
     private float count;
@@ -54,23 +47,11 @@ public class MushroomsGenerator : MonoBehaviour
         var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
         _body.GetComponent<MeshRenderer>().material = bodyMat; //materiale
         _body.transform.parent = _mushrooms.transform;
-<<<<<<< HEAD
-=======
-        float _trR = Random.Range(bodyMinScale, bodyMaxScale); //raggio
-        float _trH = Random.Range(bodyMinScale, bodyMaxScale); //altezza
-        _body.transform.localScale = new Vector3(_trR, _trR, _trH);
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
 
         // Create body foliage
         index = Random.Range(0, head.Count - 1);
         var _head = Instantiate(head[index], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
         _head.GetComponent<MeshRenderer>().material = headMat;
-<<<<<<< HEAD
-=======
-        float _folR = Random.Range(headMinScale, headMaxScale);
-        float _folH = Random.Range(headMinScale, headMaxScale) / _trH;
-        _head.transform.localScale = new Vector3(_folR, _folR, _folH);
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
         _head.transform.parent = _body.transform;
         _head.transform.localPosition = new Vector3(0, 0, 2f);
 

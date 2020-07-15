@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 1.DAE.meta
-guid: a8442588b878c4b789a5e552a4b142e7
-=======
-guid: a007fc0f1f94a4b12bc68c8ffcaf11dd
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Chioma/Chioma cilindrica.DAE.meta
-=======
-guid: a8442588b878c4b789a5e552a4b142e7
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
+guid: e81c2fc8841214ea5972944ae47a0aba
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []

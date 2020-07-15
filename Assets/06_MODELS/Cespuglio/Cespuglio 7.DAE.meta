@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 7.DAE.meta
 guid: 52ed1ba6630f344f38d5f057cf5cbda7
-=======
-guid: aabc4ca5243c443c984b94fdcb87608d
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Chioma/Chioma ovale.DAE.meta
-=======
-guid: 52ed1ba6630f344f38d5f057cf5cbda7
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FBXASC0482FBXASC032-FBXASC032Default
+    second: {fileID: 2100000, guid: 0fb2cdb820f914b4e8312e173447b2fe, type: 2}
   materials:
     materialImportMode: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -51,7 +48,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
-    fileIdsGeneration: 2
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -62,12 +59,12 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     meshOptimizationFlags: -1
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 85
     normalImportMode: 1

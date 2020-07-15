@@ -47,8 +47,7 @@ public class TreeGenerator : MonoBehaviour
         count++;
 
         // Create trunk
-        int index = Random.Range(0, trunk.Count - 1);
-        var _trunk = Instantiate(trunk[index], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+        var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
         _trunk.GetComponent<MeshRenderer>().material = trMat;
         _trunk.transform.parent = _tree.transform;
         float _trR = Random.Range(trMinScale, trMaxScale);
@@ -56,10 +55,8 @@ public class TreeGenerator : MonoBehaviour
         _trunk.transform.localScale = new Vector3(_trR, _trR, _trH);
 
         // Create trunk foliage
-        int index = Random.Range(0, foliage_down.Count - 1);
-        int index = Random.Range(0, foliage_up.Count - 1);
-        var _trFolDown = Instantiate(foliage_down[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
-        var _trFolUp = Instantiate(foliage_up[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        var _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
         _trFolDown.GetComponent<MeshRenderer>().material = folMat;
         _trFolUp.GetComponent<MeshRenderer>().material = folMat;
         float _folR = Random.Range(folMinScale, folMaxScale);

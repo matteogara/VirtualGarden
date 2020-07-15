@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: a007fc0f1f94a4b12bc68c8ffcaf11dd
-=======
-<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 1.DAE.meta
-guid: a8442588b878c4b789a5e552a4b142e7
-=======
-guid: a007fc0f1f94a4b12bc68c8ffcaf11dd
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Chioma/Chioma cilindrica.DAE.meta
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 2ce59741a5f5049b286b0c04d3ecdc89, type: 2}
   materials:
     materialImportMode: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -51,7 +48,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
-    fileIdsGeneration: 2
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -71,7 +68,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 85
     normalImportMode: 1
-    tangentImportMode: 3
+    tangentImportMode: 4
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1

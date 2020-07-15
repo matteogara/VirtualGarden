@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD:Assets/06_MODELS/Cespuglio/Cespuglio 6.DAE.meta
-guid: 7da33ca0bac214ca98807897d53fc4c1
-=======
-guid: 3f98f04fbb5344627828f0af1ae4aa4b
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa:Assets/06_MODELS/Tronco/Tronco storto.DAE.meta
-=======
-guid: 7da33ca0bac214ca98807897d53fc4c1
->>>>>>> f1cd3d038425249d1018239bb552a255bf71b9aa
+guid: 58f67b06ed79b494fabd446b6a6e9c56
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
