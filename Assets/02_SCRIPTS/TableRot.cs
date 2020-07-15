@@ -6,7 +6,7 @@ public class TableRot : MonoBehaviour
 {
     public float vel;
 
-    float rot = 0;
+    float rot;
 
     // Update is called once per frame
     void Update()

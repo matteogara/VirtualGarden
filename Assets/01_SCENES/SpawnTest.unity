@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -161,9 +162,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &177544501
 MeshRenderer:
@@ -179,6 +180,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -250,8 +252,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661934189}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.5
   m_Range: 10
@@ -376,11 +379,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 874683211}
     m_Modifications:
-    - target: {fileID: 1069356076907287253, guid: 8251932d20ff0418bb85c84aeb37554c,
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
         type: 3}
-      propertyPath: m_Name
-      value: ExampleTree
-      objectReference: {fileID: 0}
+      propertyPath: foliage_down
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: d9cc6a39008db47c08a9079a897127be,
+        type: 3}
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: foliage_up
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: b1d681d6f12b44d89992ea8be4d0376b,
+        type: 3}
     - target: {fileID: 1069356076907287243, guid: 8251932d20ff0418bb85c84aeb37554c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -436,6 +446,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1069356076907287253, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: m_Name
+      value: ExampleTree
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8251932d20ff0418bb85c84aeb37554c, type: 3}
 --- !u!1 &1216118189
@@ -481,9 +496,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1216118192
 MeshRenderer:
@@ -499,6 +514,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -643,8 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1841e3083dc8044adaf6034d84ea35f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  sensitivity: 5
+  speed: 3
+  sensitivity: 3
   smoothing: 2
   cam: {fileID: 1223136307}
 --- !u!4 &2017813903
