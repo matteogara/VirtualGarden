@@ -6,6 +6,7 @@ public class WindDetector : MonoBehaviour
 {
     public Material windMaterial;
     public Transform debug;
+    public AudioClip windSound;
 
 
     Vector3 wind = Vector3.zero;
