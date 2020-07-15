@@ -9,7 +9,6 @@ public class WalkAround : MonoBehaviour
     public float smoothing = 2;
     public Transform cam;
 
-    float velocityY = 0;
     Vector2 mouseLook;
     Vector2 smoothV;
 
@@ -32,7 +31,8 @@ public class WalkAround : MonoBehaviour
         smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
         smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
         mouseLook += smoothV;
-        cam.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(-mouseLook.y, -90f, 90f), Vector3.right);
+        mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);
+        cam.transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         transform.localRotation = Quaternion.AngleAxis(mouseLook.x, transform.up);
     }
 }

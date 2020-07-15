@@ -17,7 +17,6 @@ public class Benchmark : MonoBehaviour
     float nTrees = 0;
     float fpsCounter;
 
-    int batchLength = 0;
     List<GameObject> batchBianco = new List<GameObject>();
     List<GameObject> batchAzzurro = new List<GameObject>();
 
