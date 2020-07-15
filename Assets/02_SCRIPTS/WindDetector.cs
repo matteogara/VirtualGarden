@@ -6,8 +6,6 @@ public class WindDetector : MonoBehaviour
 {
     public Material windMaterial;
     public Transform debug;
-    public AudioClip windSound;
-
 
     Vector3 wind = Vector3.zero;
     float windIntensity;
@@ -18,6 +16,8 @@ public class WindDetector : MonoBehaviour
     float treeSwayDisp;
     float treeSwayStutter;
     float treeSwayStutterInfluence;
+
+    AudioSource windSound;
 
 
     // Start is called before the first frame update
@@ -30,6 +30,8 @@ public class WindDetector : MonoBehaviour
         treeSwayDisp = windMaterial.GetFloat("_tree_sway_disp");
         treeSwayStutter = windMaterial.GetFloat("_tree_sway_stutter");
         treeSwayStutterInfluence = windMaterial.GetFloat("_tree_sway_stutter_influence");
+
+        windSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,12 @@ public class WindDetector : MonoBehaviour
 
         // Wind perceived intensity (to ARDUINO)
         windIntensity = - Mathf.Min(Vector3.Dot(wind, transform.forward), 0);
+
+        // Wind sound
+        windSound.volume = 0.15f + wind.magnitude * 0.5f;
+        float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
+        windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
+        Debug.Log(windAngle);
 
         // Debug
         debug.localScale = new Vector3(windIntensity, windIntensity, windIntensity);
