@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055253091}
   - component: {fileID: 2055253090}
+  - component: {fileID: 2055253092}
   m_Layer: 0
   m_Name: TreeGenerator
   m_TagString: Untagged
@@ -655,6 +656,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055253092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055253089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bc48bbf715d489a8ea86de5f89ffea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trunk: {fileID: 0}
+  brench: {fileID: 0}
+  foliage: {fileID: 0}
+  trMat: {fileID: 0}
+  folMat: {fileID: 0}
+  trMinScale: 0.7
+  trMaxScale: 1.2
+  brMinH: 2
+  brMaxH: 6
+  brMinScale: 0.8
+  brMaxScale: 0.3
+  largerBrenchesBelow: 1
+  folMinScale: 0.5
+  folMaxScale: 1
+  folOffset: {x: -1.5, y: 0, z: 1.45}
 --- !u!1001 &2992459718783022061
 PrefabInstance:
   m_ObjectHideFlags: 0

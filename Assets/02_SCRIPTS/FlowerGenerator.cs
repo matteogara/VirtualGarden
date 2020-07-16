@@ -52,7 +52,7 @@ public class FlowerGenerator : MonoBehaviour
         // MeshRenderer corollaMat =_corolla.GetComponent<MeshRenderer>();
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 5.7f, 0);
+        _corolla.transform.localPosition = new Vector3(0, 5.6f, 0);
 
         // Set position
         _flower.transform.position = _pos;
