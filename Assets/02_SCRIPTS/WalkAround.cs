@@ -22,8 +22,16 @@ public class WalkAround : MonoBehaviour
     void FixedUpdate()
     {
         // Translation
-        if (!sceneManager.UI_on || sceneManager == null)
+        if (sceneManager != null)
         {
+            if (!sceneManager.UI_on)
+            {
+                Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+                input = input.normalized;
+                Vector3 velocity = (transform.right * input.x + transform.forward * input.z) * speed;
+                transform.position += velocity * Time.deltaTime;
+            }
+        } else {
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             input = input.normalized;
             Vector3 velocity = (transform.right * input.x + transform.forward * input.z) * speed;
