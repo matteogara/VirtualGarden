@@ -193,6 +193,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExampleBush
       objectReference: {fileID: 0}
+    - target: {fileID: 8942801707899381293, guid: 4638391017301482889e93f9fc690441,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8942801707899381292, guid: 4638391017301482889e93f9fc690441, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4638391017301482889e93f9fc690441, type: 3}
@@ -400,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15786e1946bbd4d59bca0d036c8363a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrubs: {fileID: 919132149155446097, guid: 58f67b06ed79b494fabd446b6a6e9c56, type: 3}
+  shrubs: {fileID: 6305522857283843733, guid: 68207d33c8acd4aeb9937b25d27a8473, type: 3}
   shrubsMat: {fileID: 2100000, guid: 3cdab1b4ee9033a49b929ae30cdc1d57, type: 2}
   shrMaxL: 3
   minScale: 0.001
