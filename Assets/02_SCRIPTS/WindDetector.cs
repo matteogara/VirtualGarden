@@ -6,7 +6,8 @@ public class WindDetector : MonoBehaviour
 {
     public Material windMaterial;
     public Transform debug;
-    public AudioClip windSound;
+    
+
     public ArduinoEvent sendWind;
 
     Vector3 wind = Vector3.zero;
@@ -22,6 +23,8 @@ public class WindDetector : MonoBehaviour
     public static float Remap(float value, float from1, float to1, float from2, float to2){
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
+
+    public AudioSource windSound;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,7 @@ public class WindDetector : MonoBehaviour
         // Wind sound
         windSound.volume = 0.15f + wind.magnitude * 0.5f;
         float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
-        windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
+        windSound.panStereo = -Mathf.Sin(windAngle * Mathf.Deg2Rad);
         Debug.Log(windAngle);
 
         // Debug

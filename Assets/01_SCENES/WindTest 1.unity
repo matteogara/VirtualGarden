@@ -1023,7 +1023,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windMaterial: {fileID: 2100000, guid: f78a65fcc261847539082566d07b4cec, type: 2}
   debug: {fileID: 843571984}
-  windSound: {fileID: 0}
   sendWind:
     m_PersistentCalls:
       m_Calls:
@@ -1038,6 +1037,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  windSound: {fileID: 0}
 --- !u!1001 &1149082828
 PrefabInstance:
   m_ObjectHideFlags: 0
