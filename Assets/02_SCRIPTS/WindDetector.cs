@@ -33,6 +33,8 @@ public class WindDetector : MonoBehaviour
         treeSwayDisp = windMaterial.GetFloat("_tree_sway_disp");
         treeSwayStutter = windMaterial.GetFloat("_tree_sway_stutter");
         treeSwayStutterInfluence = windMaterial.GetFloat("_tree_sway_stutter_influence");
+
+        windSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +49,12 @@ public class WindDetector : MonoBehaviour
         //Debug.Log(windString);
         sendWind.Invoke(windString);
         //sendWind.Invoke(windIntensity);
+
+        // Wind sound
+        windSound.volume = 0.15f + wind.magnitude * 0.5f;
+        float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
+        windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
+        Debug.Log(windAngle);
 
         // Debug
         debug.localScale = new Vector3(windIntensity, windIntensity, windIntensity);
