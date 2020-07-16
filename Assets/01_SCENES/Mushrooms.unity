@@ -151,11 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body:
-  - {fileID: -927199367670048503, guid: bb39c40435e7141669914c3cca7cd719, type: 3}
+  - {fileID: 919132149155446097, guid: 254f2497729bb47368b74708bf95a177, type: 3}
   - {fileID: 919132149155446097, guid: 26045805e08eb4545a90020857ee7bc5, type: 3}
   - {fileID: 919132149155446097, guid: 2291a1c8e0a584757b0fec03e5bec672, type: 3}
-  - {fileID: 919132149155446097, guid: 9a4061994e78d417d87a00cdcdd02399, type: 3}
-  - {fileID: 919132149155446097, guid: a91be42f41eed41c0918cb1eb305f332, type: 3}
+  - {fileID: -927199367670048503, guid: bb39c40435e7141669914c3cca7cd719, type: 3}
   head:
   - {fileID: 919132149155446097, guid: a508b0255867a44f2a90b79be9dbcdeb, type: 3}
   - {fileID: 919132149155446097, guid: b6f59559fb78242cd938a63bfb22f7e2, type: 3}
@@ -165,6 +164,8 @@ MonoBehaviour:
   headMat: {fileID: 2100000, guid: 4ac29394baa2c425bb52c0378768a7c8, type: 2}
   bodyMinScale: 0.5
   bodyMaxScale: 1
+  headMinScale: 1
+  headMaxScale: 1.5
   headOffset: {x: -1.5, y: 0, z: 1.45}
 --- !u!4 &271082864
 Transform:
@@ -341,7 +342,7 @@ Camera:
   far clip plane: 1000
   field of view: 143
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -372,13 +373,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245833487}
-  m_LocalRotation: {x: -0.045390293, y: -0, z: -0, w: 0.9989693}
+  m_LocalRotation: {x: -0.026156744, y: -0.039246324, z: -0.0010277003, w: 0.99888664}
   m_LocalPosition: {x: 0, y: -12, z: -494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -5.203, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3, y: -4.5, z: 0}
 --- !u!1 &1252798399
 GameObject:
   m_ObjectHideFlags: 0

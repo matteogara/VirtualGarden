@@ -130,6 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 37623489}
+  - component: {fileID: 37623490}
   m_Layer: 0
   m_Name: BushGenerator
   m_TagString: Untagged
@@ -149,8 +150,29 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37623490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37623488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15786e1946bbd4d59bca0d036c8363a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrubs: {fileID: 919132149155446097, guid: d037ea0f3a8b04d84a30c74ac3a1754f, type: 3}
+  prefab: {fileID: 919132149155446097, guid: d037ea0f3a8b04d84a30c74ac3a1754f, type: 3}
+  shrubsMat: {fileID: 2100000, guid: e046980fa5aea4a1ea5bc93c843d54bb, type: 2}
+  shrMinL: 1
+  shrMaxL: 5
+  minScale: 0.8
+  maxScale: 1.3
+  shrOffset: {x: -1.5, y: 0, z: 2}
+  largerShrubsBelow: 1
 --- !u!1 &1095569305
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +287,7 @@ Transform:
   m_LocalScale: {x: 40, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1510580807
 GameObject:
@@ -357,7 +379,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1540673323
 GameObject:
@@ -440,5 +462,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -5.203, y: 0, z: 0}
