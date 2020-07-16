@@ -48,7 +48,6 @@ public class WindDetector : MonoBehaviour
         windSound.volume = 0.15f + wind.magnitude * 0.5f;
         float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
         windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
-        Debug.Log(windAngle);
 
         // Debug
         debug.localScale = new Vector3(windIntensity, windIntensity, windIntensity);
