@@ -47,7 +47,7 @@ public class MushroomsGenerator : MonoBehaviour
 
         // Create body
         int index = Random.Range(0, body.Count - 1);
-        var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(Random.Range(-80, -100), Random.Range(0, 360), 0));
+        var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _body.GetComponent<MeshRenderer>().material = bodyMat;
         float _bodyR = Random.Range(bodyMinScale, bodyMaxScale);
         float _bodyH = Random.Range(bodyMinScale, bodyMaxScale);
