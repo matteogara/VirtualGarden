@@ -22,7 +22,7 @@ public class WalkAround : MonoBehaviour
     void FixedUpdate()
     {
         // Translation
-        if (!sceneManager.UI_on)
+        if (!sceneManager.UI_on || sceneManager == null)
         {
             Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             input = input.normalized;
