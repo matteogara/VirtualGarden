@@ -42,15 +42,17 @@ public class FlowerGenerator : MonoBehaviour
         // Create stem
         int index = Random.Range(0, stem.Count - 1);
         var _stem = Instantiate(stem[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
+        // MeshRenderer stemMat =_stem.GetComponent<MeshRenderer>();
         _stem.GetComponent<MeshRenderer>().material = stemMat;
         _stem.transform.parent = _flower.transform;
 
         // Create corolla
         index = Random.Range(0, corolla.Count - 1);
         var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
+        // MeshRenderer corollaMat =_corolla.GetComponent<MeshRenderer>();
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 5.7f, 0);
+        _corolla.transform.localPosition = new Vector3(0, 5.6f, 0);
 
         // Set position
         _flower.transform.position = _pos;

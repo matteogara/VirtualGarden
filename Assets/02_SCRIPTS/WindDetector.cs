@@ -6,7 +6,7 @@ public class WindDetector : MonoBehaviour
 {
     public Material windMaterial;
     public Transform debug;
-    
+
 
     public ArduinoEvent sendWind;
 
@@ -56,8 +56,7 @@ public class WindDetector : MonoBehaviour
         // Wind sound
         windSound.volume = 0.15f + wind.magnitude * 0.5f;
         float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
-        windSound.panStereo = -Mathf.Sin(windAngle * Mathf.Deg2Rad);
-        Debug.Log(windAngle);
+        windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
 
         // Debug
         debug.localScale = new Vector3(windIntensity, windIntensity, windIntensity);
