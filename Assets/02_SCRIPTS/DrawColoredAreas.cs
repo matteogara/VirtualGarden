@@ -35,7 +35,7 @@ public class DrawColoredAreas : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            ChangeCol();
+            ChangeCol(5);
         }
     }
 
@@ -50,18 +50,24 @@ public class DrawColoredAreas : MonoBehaviour
     }
 
 
-    private void ChangeCol()
+    public void ChangeCol(int _index)
     {
         //Vector4 col = new Vector4(Random.value * 0.5f, Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f, 1);
         //Vector4 col = new Vector4(Random.value * 0.5f + 0.5f, Random.value * 0.5f, Random.value * 0.5f, 1);
         //Vector4 col = new Vector4(Random.value * 0.5f, Random.value * 0.5f, Random.value * 0.5f + 0.5f, 1);
 
-        currentCol++;
-        Vector4 col = colors[currentCol % colors.Length];
+        //Vector4 col = colors[currentCol % colors.Length];
+        Vector4 col = colors[_index];
 
         _drawMaterial.SetVector("_Color", col);
         //_drawMaterial.SetFloat("_Opacity", Random.Range(0.3f, 1.5f));
         //_drawMaterial.SetFloat("_Size", Random.Range(60f, 100f));
+    }
+
+
+    public void ShowAreas(bool _on) {
+        float _hide = (_on) ? 0 : 1;
+        _objMaterial.SetFloat("_HideAreas", _hide);
     }
 
 

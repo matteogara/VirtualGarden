@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UI_MANAGER : MonoBehaviour
 {
+    public SCENE_MANAGER sceneManager;
+
     public GameObject panel;
     public GameObject intro;
 
@@ -28,9 +30,9 @@ public class UI_MANAGER : MonoBehaviour
     public AudioClip tabSound;
 
     int activeRow = 0;
-    int[] selection = { 0, 0 };
+    int[] _selection = { 0, 0 };
     int[] rowLength = { 4, 2 };
-    bool inGame = false;
+    bool started = false;
 
     AudioSource audioSource;
 
@@ -50,16 +52,17 @@ public class UI_MANAGER : MonoBehaviour
     {
 
         // Standard input
-        if (inGame)
+        if (started && sceneManager.creativeMode)
         {
             bool _refresh = false;
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 panel.SetActive(true);
+                sceneManager.UI_on = true;
             }
 
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
@@ -76,10 +79,10 @@ public class UI_MANAGER : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    selection[activeRow]--;
-                    if (selection[activeRow] < 0)
+                    _selection[activeRow]--;
+                    if (_selection[activeRow] < 0)
                     {
-                        selection[activeRow] = 0;
+                        _selection[activeRow] = 0;
                     }
                     else
                     {
@@ -102,10 +105,10 @@ public class UI_MANAGER : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    selection[activeRow]++;
-                    if (selection[activeRow] > rowLength[activeRow])
+                    _selection[activeRow]++;
+                    if (_selection[activeRow] > rowLength[activeRow])
                     {
-                        selection[activeRow] = rowLength[activeRow];
+                        _selection[activeRow] = rowLength[activeRow];
                     }
                     else
                     {
@@ -115,10 +118,11 @@ public class UI_MANAGER : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 panel.SetActive(false);
                 PlaySound(tabSound);
+                sceneManager.UI_on = false;
             }
 
             if (_refresh)
@@ -128,12 +132,19 @@ public class UI_MANAGER : MonoBehaviour
         }
 
         // Show / hide controls window
-        if (Input.GetKeyDown(KeyCode.Return)) {
-            intro.SetActive(inGame);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            intro.SetActive(started);
             panel.SetActive(false);
 
             PlaySound(tabSound);
-            inGame = !inGame;
+            started = !started;
+        }
+
+        // Switch mode
+        if (Input.GetKeyDown(KeyCode.Space) && started) {
+            sceneManager.toggleMode();
+            panel.SetActive(false);
         }
     }
 
@@ -142,10 +153,12 @@ public class UI_MANAGER : MonoBehaviour
     {
         DisableAllButtons();
         rows[activeRow].interactable = true;
-        smells[selection[0]].interactable = true;
-        vegs[selection[1]].interactable = true;
+        smells[_selection[0]].interactable = true;
+        vegs[_selection[1]].interactable = true;
         UpdateText();
         Vibrate();
+
+        sceneManager.updateSelection(_selection);
     }
 
 
@@ -157,7 +170,7 @@ public class UI_MANAGER : MonoBehaviour
 
 
     void UpdateText() {
-        string _newText = "A " + smellAdjectives[selection[0]] + " " + objectNames[selection[1]] + ".";
+        string _newText = "A " + smellAdjectives[_selection[0]] + " " + objectNames[_selection[1]] + ".";
         description.text = _newText;
     }
 

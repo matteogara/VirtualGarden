@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WalkAround : MonoBehaviour
 {
+    public SCENE_MANAGER sceneManager;
+
     public float speed = 5;
     public float sensitivity = 5;
     public float smoothing = 2;
@@ -20,10 +22,13 @@ public class WalkAround : MonoBehaviour
     void FixedUpdate()
     {
         // Translation
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        input = input.normalized;
-        Vector3 velocity = (transform.right * input.x + transform.forward * input.z) * speed;
-        transform.position += velocity * Time.deltaTime;
+        if (!sceneManager.UI_on)
+        {
+            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            input = input.normalized;
+            Vector3 velocity = (transform.right * input.x + transform.forward * input.z) * speed;
+            transform.position += velocity * Time.deltaTime;
+        }
 
         // Rotation
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));

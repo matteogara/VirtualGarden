@@ -9,6 +9,7 @@
         _Col3 ("Smell 1", Color) = (1,1,1,1)
         _Col4 ("Smell 1", Color) = (1,1,1,1)
         _Col5 ("Smell 1", Color) = (1,1,1,1)
+        _HideAreas ("Show areas", Float) = 0.0
         //_DiscOn ("Show discontinuities", Float) = 0.0
     }
     SubShader
@@ -44,6 +45,7 @@
             half4 _Col3;
             half4 _Col4;
             half4 _Col5;
+            float _HideAreas;
             //float _DiscOn;
 
             v2f vert (appdata v)
@@ -55,7 +57,7 @@
             }
 
             half4 frag (v2f i) : SV_Target
-            {
+            {            
                 // sample the texture
                 half4 col = 1 - tex2D(_Paint, i.uv);
                 
@@ -95,11 +97,11 @@
                 half3 delta5 = abs(col.rgb - _Col5.rgb);      
                 
                 half4 o = (1,1,1,1);
-                o = (delta1.r + delta1.g + delta1.b) < 0.03 ? col : o;
-                o = (delta2.r + delta2.g + delta2.b) < 0.03 ? col : o;
-                o = (delta3.r + delta3.g + delta3.b) < 0.03 ? col : o;
-                o = (delta4.r + delta4.g + delta4.b) < 0.03 ? col : o;
-                o = (delta5.r + delta5.g + delta5.b) < 0.03 ? col : o;
+                o = (delta1.r + delta1.g + delta1.b) < 0.04 ? col : o;
+                o = (delta2.r + delta2.g + delta2.b) < 0.04 ? col : o;
+                o = (delta3.r + delta3.g + delta3.b) < 0.04 ? col : o;
+                o = (delta4.r + delta4.g + delta4.b) < 0.04 ? col : o;
+                o = (delta5.r + delta5.g + delta5.b) < 0.04 ? col : o;
                 
                 //if (o > 0) {
                 //    return col;
@@ -107,7 +109,7 @@
                 //    return 1;
                 //}
                 
-                o = o + (1 - o) / 3;
+                o = saturate(o * 0.5 + 0.5 + _HideAreas);
                 
                 return o;
                 
