@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TEST 5
+  m_Name: BUSH 4
   m_Shader: {fileID: 4800000, guid: 72d1ed19ce50c46ac8260b218cfa6a44, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -75,7 +75,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _b_influence: 0.102
-    - _branches_disp: 0.147
+    - _branches_disp: 0.0147
     - _leaves_wiggle_disp: 0.2
     - _leaves_wiggle_speed: 0.5
     - _r_influence: 0.433
@@ -86,9 +86,9 @@ Material:
     - _wind_size: 4
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-    - _Color: {r: 0.9811321, g: 0.43980202, b: 0.39337844, a: 1}
+    - _Color: {r: 0.98039216, g: 0.4392157, b: 0.39215687, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 1}
     - _Tint: {r: 0.22352941, g: 0.5647059, b: 0.8980392, a: 1}
-    - _wind_dir: {r: -0.8, g: 0.05, b: 0, a: 0}
+    - _wind_dir: {r: -0.6, g: 0.03, b: 0, a: 0}
