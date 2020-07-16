@@ -6,46 +6,45 @@ public class BushGenerator : MonoBehaviour
 {
     [Header("Models")]
     public GameObject shrubs;
-    public GameObject prefab;
 
     [Header("Materials")]
     public Material shrubsMat;
 
     [Header("Shrubs settings")]
-    public int shrMinL = 1;
     public int shrMaxL = 5;
     public float minScale = 0.8f;
     public float maxScale = 1.3f;
     public Vector3 shrOffset = new Vector3(-1.5f, 0, 1.45f);
 
-    public bool largerShrubsBelow = true;
+    public bool largerShrubsAtCenter = true;
 
 
     private float count;
-    private int brDeltaH;
+    //private int brDeltaH;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        brDeltaH = Mathf.Abs(shrMaxL - shrMinL);
+        //brDeltaH = Mathf.Abs(shrMaxL - shrMinL);
     }
 
     void Update()
     {
     if (Input.GetKeyDown(KeyCode.Space))
        {
-         GameObject clone = InstantiateRandomScale(prefab, 1, 5);
-         // set up clone further.
+            // set up clone further.
+
+            CreateBush(transform.position);
        }
     }
 
-    GameObject InstantiateRandomScale(GameObject source, float minScale, float maxScale)
-    {
-    GameObject clone = Instantiate(source) as GameObject;
-    clone.transform.localScale = Vector3.one * Random.Range(minScale, maxScale);
-    return clone;
-    }
+    //GameObject InstantiateRandomScale(GameObject source, float minScale, float maxScale)
+    //{
+    //GameObject clone = Instantiate(source) as GameObject;
+    //clone.transform.localScale = Vector3.one * Random.Range(minScale, maxScale);
+    //return clone;
+    //}
 
     public GameObject CreateBush(Vector3 _pos) {
         // Create object
@@ -54,21 +53,20 @@ public class BushGenerator : MonoBehaviour
 
         float _shrubsNum = Random.Range(1, 5);
         for (int i = 0; i < _shrubsNum; i++) {
-            var _shrubs = Instantiate(shrubs, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 90));
+            Vector3 offset = new Vector3(Random.Range(-shrMaxL, shrMaxL), 0, Random.Range(-shrMaxL, shrMaxL));
+
+            var _shrubs = Instantiate(shrubs, offset, Quaternion.Euler(-90, Random.Range(0, 360), 90));
+
             _shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
-            float _x = Random.Range(shrMinL, shrMaxL);
-            float s;
-            if (largerShrubsBelow)
+
+            Vector3 s = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale) * 2);
+            if (largerShrubsAtCenter)
             {
-                s = (Random.Range(minScale, maxScale) + (shrMaxL - _x) / brDeltaH) / 2;
+                s /= (offset.magnitude + 1);
             }
-            else
-            {
-                s = Random.Range(minScale, maxScale);
-            }
-            _shrubs.transform.localScale = new Vector3(s, s, s);
-            _shrubs.transform.parent = _shrubs.transform;
-            _shrubs.transform.localPosition = new Vector3(_x, 0, 0);
+
+            _shrubs.transform.localScale = s;
+            _shrubs.transform.parent = _bush.transform;
 
         }
 
