@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WindDetector : MonoBehaviour
 {
     public Material windMaterial;
-    public Transform debug;
+    [Range(0, 45)]
+    public int fanAngle;
 
+    public RawImage windDebug;
+    public RawImage bar_L;
+    public RawImage bar_R;
+    public Text fanSpeed_L;
+    public Text fanSpeed_R;
 
-    public ArduinoEvent sendWind;
+    //public ArduinoEvent sendWind;
 
     Vector3 wind = Vector3.zero;
-    float windIntensity;
+
+    float windIntensity_L;
+    float windIntensity_R;
+    Vector3 fanDir_L;
+    Vector3 fanDir_R;
 
     float windSize;
     Vector4 windDir;
@@ -47,10 +58,14 @@ public class WindDetector : MonoBehaviour
         wind.z = (Mathf.Cos(Time.time * 2 * treeSwaySpeed + (transform.position.z / windSize) + (Mathf.Sin(Time.time * 2 * treeSwayStutter * treeSwaySpeed + (transform.position.z / windSize)) * treeSwayStutterInfluence)) + 1) / 2 * treeSwayDisp * windDir.z;
 
         // Wind perceived intensity (to ARDUINO)
-        windIntensity = - Mathf.Min(Vector3.Dot(wind, transform.forward), 0);
-        string windString = Mathf.Round(Remap(windIntensity, 0, 1, 0, 8)).ToString();
+        fanDir_L = Quaternion.AngleAxis(-fanAngle, Vector3.up) * transform.forward;
+        fanDir_R = Quaternion.AngleAxis(fanAngle, Vector3.up) * transform.forward;
+        windIntensity_L = - Mathf.Min(Vector3.Dot(wind, fanDir_L), 0);
+        windIntensity_R = - Mathf.Min(Vector3.Dot(wind, fanDir_R), 0);
+
+        string windString = Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8)).ToString();
         //Debug.Log(windString);
-        sendWind.Invoke(windString);
+        //sendWind.Invoke(windString);
         //sendWind.Invoke(windIntensity);
 
         // Wind sound
@@ -59,6 +74,11 @@ public class WindDetector : MonoBehaviour
         windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
 
         // Debug
-        debug.localScale = new Vector3(windIntensity, windIntensity, windIntensity);
+        fanSpeed_L.text = (windIntensity_L * 100).ToString("F0") + "%";
+        fanSpeed_R.text = (windIntensity_R * 100).ToString("F0") + "%";
+        windDebug.transform.eulerAngles = new Vector3(45, 0, windAngle + 180);
+        windDebug.transform.localScale = new Vector3(wind.magnitude + 0.5f, wind.magnitude + 0.5f, wind.magnitude + 0.5f) * 0.7f;
+        bar_L.transform.localScale = new Vector3(1, windIntensity_L, 1) * 0.7f;
+        bar_R.transform.localScale = new Vector3(1, windIntensity_R, 1) * 0.7f;
     }
 }

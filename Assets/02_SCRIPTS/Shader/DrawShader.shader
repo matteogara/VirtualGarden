@@ -6,7 +6,7 @@
         _Coordinate("Coordinate", Vector) = (0,0,0,0)
         _Color("Draw Color", Color) = (1,0,0,0)
         _Opacity("Opacity", Float) = 1
-        _Size("Size", Float) = 50
+        _Size("Size", Float) = 1000
     }
     SubShader
     {
@@ -52,7 +52,9 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 
-                float draw = pow( saturate(1 - distance(i.uv, _Coordinate.xy)), _Size);
+                float draw = pow( saturate(1 - distance(i.uv, _Coordinate.xy)), _Size) * 10;
+                draw = (draw > 1) ? 1 : draw;
+                
                 fixed4 drawCol = (1 - _Color) * (draw * _Opacity);
                 return saturate(col * (1 - draw) + drawCol);
             }
