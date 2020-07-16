@@ -11,9 +11,9 @@ public class BushGenerator : MonoBehaviour
     public Material shrubsMat;
 
     [Header("Shrubs settings")]
-    public int shrMaxL = 5;
-    public float minScale = 0.8f;
-    public float maxScale = 1.3f;
+    public int shrMaxL = 3;
+    public float minScale = 0.4f;
+    public float maxScale = 0.6f;
     public Vector3 shrOffset = new Vector3(-1.5f, 0, 1.45f);
 
     public bool largerShrubsAtCenter = true;
@@ -51,7 +51,7 @@ public class BushGenerator : MonoBehaviour
         GameObject _bush = new GameObject("Bush_" + count);
         count++;
 
-        float _shrubsNum = Random.Range(1, 5);
+        float _shrubsNum = Random.Range(1, 3);
         for (int i = 0; i < _shrubsNum; i++) {
             Vector3 offset = new Vector3(Random.Range(-shrMaxL, shrMaxL), 0, Random.Range(-shrMaxL, shrMaxL));
 
