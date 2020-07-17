@@ -13,7 +13,7 @@ public class FlowerGenerator : MonoBehaviour
     public Material corollaMat;
 
     [Header("corolla settings")]
-    public Vector3 corollaOffset = new Vector3(0.3f, 0, 0);
+    public Vector3 corollaOffset = new Vector3(-1.5f, 0, 1.45f);
 
     private float count;
 
@@ -41,18 +41,18 @@ public class FlowerGenerator : MonoBehaviour
 
         // Create stem
         int index = Random.Range(0, stem.Count - 1);
-        var _stem = Instantiate(stem[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
+        var _stem = Instantiate(stem[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
         // MeshRenderer stemMat =_stem.GetComponent<MeshRenderer>();
         _stem.GetComponent<MeshRenderer>().material = stemMat;
         _stem.transform.parent = _flower.transform;
 
         // Create corolla
         index = Random.Range(0, corolla.Count - 1);
-        var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
+        var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
         // MeshRenderer corollaMat =_corolla.GetComponent<MeshRenderer>();
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 5.6f, 0);
+        _corolla.transform.localPosition = new Vector3(0, 0, 8f);
 
         // Set position
         _flower.transform.position = _pos;
