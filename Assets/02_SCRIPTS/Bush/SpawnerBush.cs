@@ -39,7 +39,7 @@ public class SpawnerBush : MonoBehaviour
             mousePos = ray.GetPoint(distanceToPlane);
 
             if (Input.GetKey(KeyCode.Mouse0)) {
-                generator.CreateBush(mousePos);
+                //generator.CreateBush(mousePos);
             }
         }
 

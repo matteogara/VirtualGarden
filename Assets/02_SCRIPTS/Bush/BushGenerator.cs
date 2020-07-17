@@ -31,12 +31,12 @@ public class BushGenerator : MonoBehaviour
 
     void Update()
     {
-    if (Input.GetKeyDown(KeyCode.Space))
-       {
-            // set up clone further.
+       // if (Input.GetKeyDown(KeyCode.Space))
+       //{
+       //     // set up clone further.
 
-            CreateBush(transform.position);
-       }
+       //     CreateBush(transform.position);
+       //}
     }
 
     //GameObject InstantiateRandomScale(GameObject source, float minScale, float maxScale)
@@ -46,7 +46,7 @@ public class BushGenerator : MonoBehaviour
     //return clone;
     //}
 
-    public GameObject CreateBush(Vector3 _pos) {
+    public GameObject CreateBush(Vector3 _pos, Material _mat) {
         // Create object
         GameObject _bush = new GameObject("Bush_" + count);
         count++;
@@ -57,7 +57,8 @@ public class BushGenerator : MonoBehaviour
 
             var _shrubs = Instantiate(shrubs, offset, Quaternion.Euler(-90, Random.Range(0, 360), 90));
 
-            _shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
+            //_shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
+            _shrubs.GetComponent<MeshRenderer>().material = _mat;
 
             Vector3 s = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale) * 2);
             if (largerShrubsAtCenter)

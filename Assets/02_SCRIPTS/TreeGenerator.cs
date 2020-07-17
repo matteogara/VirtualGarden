@@ -47,13 +47,10 @@ public class TreeGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            CreateTree(transform.position);
-        }
     }
 
 
-    public GameObject CreateTree(Vector3 _pos) {
+    public GameObject CreateTree(Vector3 _pos, Material _mat) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         _tree.tag = "Spawn_Tree";
@@ -76,8 +73,12 @@ public class TreeGenerator : MonoBehaviour
         // Create trunk foliage
         var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
         var _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
-        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
-        _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+
+        //_trFolDown.GetComponent<MeshRenderer>().material = folMat;
+        //_trFolUp.GetComponent<MeshRenderer>().material = folMat;
+        _trFolDown.GetComponent<MeshRenderer>().material = _mat;
+        _trFolUp.GetComponent<MeshRenderer>().material = _mat;
+
         float _folR = Random.Range(folMinScale, folMaxScale);
         float _folH = Random.Range(folMinScale, folMaxScale) / _trH;
         _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);
@@ -110,8 +111,12 @@ public class TreeGenerator : MonoBehaviour
             // Create brench foliage
             _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
             _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
-            _trFolDown.GetComponent<MeshRenderer>().material = folMat;
-            _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+
+            //_trFolDown.GetComponent<MeshRenderer>().material = folMat;
+            //_trFolUp.GetComponent<MeshRenderer>().material = folMat;
+            _trFolDown.GetComponent<MeshRenderer>().material = _mat;
+            _trFolUp.GetComponent<MeshRenderer>().material = _mat;
+
             _folR = Random.Range(folMinScale, folMaxScale);
             _folH = Random.Range(folMinScale, folMaxScale) / _trH;
             _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);

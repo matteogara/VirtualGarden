@@ -7,15 +7,19 @@ public class Spawner : MonoBehaviour
     public SCENE_MANAGER sceneManager;
 
     public float maxDist;
-    public TreeGenerator generator;
+    public TreeGenerator treeGenerator;
+    public BushGenerator bushGenerator;
     public DrawColoredAreas painter;
     public LayerMask layerMask;
+
+    public Material[] treeMats;
 
     Vector3 mousePos;
     Transform cam;
     RaycastHit _hit;
 
     List<GameObject> nearTrees = new List<GameObject>();
+    List<GameObject> nearBushes = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -44,9 +48,45 @@ public class Spawner : MonoBehaviour
             mousePos = _hit.point;
 
             if (Input.GetKey(KeyCode.Mouse0)) {
-                if (nearTrees.Count < 1)
+
+                if (sceneManager.selection[1] == 0)
                 {
-                    generator.CreateTree(mousePos);
+                    if (sceneManager.selection[0] != 5)
+                    {
+                        if (nearTrees.Count < 1)
+                        {
+                            treeGenerator.CreateTree(mousePos, treeMats[sceneManager.selection[0]]);
+                        }
+                    }
+                    else
+                    {
+                        // DA CAMBIARE
+                        foreach (GameObject tree in nearTrees)
+                        {
+                            Destroy(tree);
+                            nearTrees = new List<GameObject>();
+                        }
+                    }
+                }
+
+                if (sceneManager.selection[1] == 1)
+                {
+                    if (sceneManager.selection[0] != 5)
+                    {
+                        if (nearBushes.Count < 1)
+                        {
+                            bushGenerator.CreateBush(mousePos, treeMats[sceneManager.selection[0]]);
+                        }
+                    }
+                    else
+                    {
+                        // DA CAMBIARE
+                        foreach (GameObject tree in nearTrees)
+                        {
+                            Destroy(tree);
+                            nearTrees = new List<GameObject>();
+                        }
+                    }
                 }
 
                 painter.Draw(_hit.textureCoord);
@@ -54,15 +94,6 @@ public class Spawner : MonoBehaviour
         }
 
         transform.position = mousePos;
-
-
-        // DA CAMBIARE
-        if (sceneManager.selection[0] != 0) {
-            foreach (GameObject tree in nearTrees) {
-                Destroy(tree);
-                nearTrees = new List<GameObject>();
-            }
-        }
     }
 
 
