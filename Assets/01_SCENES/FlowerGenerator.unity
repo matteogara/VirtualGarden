@@ -233,11 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e07ba19f35794449b59e32b4b969042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stem:
-  - {fileID: 919132149155446097, guid: d36805898aee34177a9de4abbf73ff22, type: 3}
-  - {fileID: 919132149155446097, guid: f069c07df3c9a4fef9b1c27806ffa415, type: 3}
-  - {fileID: 919132149155446097, guid: 2b68bb8c3da2a444ebf009f27c09da7b, type: 3}
-  - {fileID: 919132149155446097, guid: 2b68bb8c3da2a444ebf009f27c09da7b, type: 3}
+  stem1: {fileID: 919132149155446097, guid: d36805898aee34177a9de4abbf73ff22, type: 3}
+  stem2: {fileID: 919132149155446097, guid: f069c07df3c9a4fef9b1c27806ffa415, type: 3}
+  stem3: {fileID: 919132149155446097, guid: 2b68bb8c3da2a444ebf009f27c09da7b, type: 3}
   corolla:
   - {fileID: 919132149155446097, guid: 1493113e5725a495fbb7e890d307a3d4, type: 3}
   - {fileID: 919132149155446097, guid: 913a6c2beb0e7483d9a7afa56f776b62, type: 3}
