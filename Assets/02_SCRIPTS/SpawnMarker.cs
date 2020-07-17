@@ -6,13 +6,13 @@ public class SpawnMarker : MonoBehaviour
 {
     public Texture[] markers;
 
-    MeshRenderer renderer;
+    public MeshRenderer rend;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<MeshRenderer>();
+
     }
 
 
@@ -25,6 +25,6 @@ public class SpawnMarker : MonoBehaviour
 
     public void ChangeMarker(int _index)
     {
-        renderer.material.mainTexture = markers[_index];
+        rend.material.mainTexture = markers[_index];
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flower
   - Smell
+  - Spawn_Tree
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,10 @@ public class Spawner : MonoBehaviour
     public LayerMask layerMask;
 
     Vector3 mousePos;
-    //Plane plane = new Plane(Vector3.up, 0f);
     Transform cam;
     RaycastHit _hit;
+
+    List<GameObject> nearTrees = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Spawner : MonoBehaviour
     {
         cam = Camera.main.transform;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -35,27 +37,36 @@ public class Spawner : MonoBehaviour
         // If using oculus quest
         // Raycast dall'asse forward del controller
 
-        //float distanceToPlane;
-
-        //if (plane.Raycast(ray, out distanceToPlane)) {
-        //    if (distanceToPlane < maxDist)
-        //    mousePos = ray.GetPoint(distanceToPlane);
-
-        //    if (Input.GetKey(KeyCode.Mouse0)) {
-        //        //generator.CreateTree(mousePos);
-        //        painter.Draw(painter.transform.InverseTransformPoint(mousePos));
-        //    }
-        //}
 
         if (Physics.Raycast(ray, out _hit, maxDist, layerMask)) {
             mousePos = _hit.point;
 
             if (Input.GetKey(KeyCode.Mouse0)) {
-                //generator.CreateTree(mousePos);
+                if (nearTrees.Count < 1)
+                {
+                    generator.CreateTree(mousePos);
+                }
+
                 painter.Draw(_hit.textureCoord);
             }
         }
 
         transform.position = mousePos;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Spawn_Tree") {
+            nearTrees.Add(other.gameObject);
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Spawn_Tree") {
+            nearTrees.Remove(other.gameObject);
+        }
     }
 }

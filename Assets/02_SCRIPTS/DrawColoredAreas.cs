@@ -17,7 +17,7 @@ public class DrawColoredAreas : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _drawMaterial = new Material(_drawShader);
         //_drawMaterial.SetVector("_Color", Color.red);

@@ -37,7 +37,7 @@ public class DrawWithMouse : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0)) Draw();
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            ChangeCol();
+            ChangeColor();
         }
 
         _objMaterial.SetFloat("_DiscOn", 1.0f * showDiscontinuities);
@@ -56,7 +56,7 @@ public class DrawWithMouse : MonoBehaviour
     }
 
 
-    private void ChangeCol() {
+    private void ChangeColor() {
         //Vector4 col = new Vector4(Random.value * 0.5f, Random.value * 0.5f + 0.5f, Random.value * 0.5f + 0.5f, 1);
         //Vector4 col = new Vector4(Random.value * 0.5f + 0.5f, Random.value * 0.5f, Random.value * 0.5f, 1);
         //Vector4 col = new Vector4(Random.value * 0.5f, Random.value * 0.5f, Random.value * 0.5f + 0.5f, 1);

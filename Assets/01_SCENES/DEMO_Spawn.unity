@@ -357,6 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874683211}
   - component: {fileID: 874683210}
+  - component: {fileID: 874683212}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -398,6 +399,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &874683212
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874683209}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1177260202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,6 +434,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919132149155446097, guid: b1d681d6f12b44d89992ea8be4d0376b,
         type: 3}
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: folMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 04b59ead494424026a409d39d96926ba, type: 2}
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: trMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e025a814bef84e2ea1effa0966e21c8, type: 2}
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: minCollScale
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069356076907287242, guid: 8251932d20ff0418bb85c84aeb37554c,
+        type: 3}
+      propertyPath: maxCollScale
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1069356076907287243, guid: 8251932d20ff0418bb85c84aeb37554c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -593,6 +630,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f07841fc465884a8c9ea1affc1ddff9f, type: 3}
   - {fileID: 2800000, guid: 0f46a3629e37b4b969793fc15fee2ca2, type: 3}
   - {fileID: 2800000, guid: 68178d1f61ef44919a9355a65028bed3, type: 3}
+  rend: {fileID: 1216118192}
 --- !u!1 &1223136304
 GameObject:
   m_ObjectHideFlags: 0

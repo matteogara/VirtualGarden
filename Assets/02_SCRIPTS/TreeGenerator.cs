@@ -30,6 +30,10 @@ public class TreeGenerator : MonoBehaviour
     public float folMaxScale = 1f;
     public Vector3 folOffset = new Vector3(-1.5f, 0, 1.45f);
 
+    [Header("Collider settings")]
+    public float minCollScale = 1f;
+    public float maxCollScale = 2.5f;
+
     private float count;
     private int brDeltaH;
 
@@ -41,10 +45,24 @@ public class TreeGenerator : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            CreateTree(transform.position);
+        }
+    }
+
+
     public GameObject CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
+        _tree.tag = "Spawn_Tree";
         count++;
+
+        // Collider
+        SphereCollider treeCollider = _tree.AddComponent<SphereCollider>();
+        treeCollider.radius = Random.Range(minCollScale, maxCollScale);
+        treeCollider.isTrigger = true;
 
         // Create trunk
         var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
