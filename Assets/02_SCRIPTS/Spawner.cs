@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public SCENE_MANAGER sceneManager;
+
     public float maxDist;
     public TreeGenerator generator;
     public DrawColoredAreas painter;
@@ -52,6 +54,15 @@ public class Spawner : MonoBehaviour
         }
 
         transform.position = mousePos;
+
+
+        // DA CAMBIARE
+        if (sceneManager.selection[0] != 0) {
+            foreach (GameObject tree in nearTrees) {
+                Destroy(tree);
+                nearTrees = new List<GameObject>();
+            }
+        }
     }
 
 
@@ -59,6 +70,7 @@ public class Spawner : MonoBehaviour
     {
         if (other.tag == "Spawn_Tree") {
             nearTrees.Add(other.gameObject);
+            other.GetComponent<CheckForAreaColor>().enabled = true;
         }
     }
 
@@ -67,6 +79,7 @@ public class Spawner : MonoBehaviour
     {
         if (other.tag == "Spawn_Tree") {
             nearTrees.Remove(other.gameObject);
+            other.GetComponent<CheckForAreaColor>().enabled = false;
         }
     }
 }

@@ -57,6 +57,7 @@ public class TreeGenerator : MonoBehaviour
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         _tree.tag = "Spawn_Tree";
+        CheckForAreaColor script =_tree.AddComponent<CheckForAreaColor>();
         count++;
 
         // Collider
