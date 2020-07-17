@@ -50,11 +50,10 @@ public class TreeGenerator : MonoBehaviour
     }
 
 
-    public GameObject CreateTree(Vector3 _pos, Material _mat) {
+    public GameObject CreateTree(Vector3 _pos) {
         // Create object
         GameObject _tree = new GameObject("Tree_" + count);
         _tree.tag = "Spawn_Tree";
-        CheckForAreaColor script =_tree.AddComponent<CheckForAreaColor>();
         count++;
 
         // Collider
@@ -74,10 +73,8 @@ public class TreeGenerator : MonoBehaviour
         var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
         var _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-        //_trFolDown.GetComponent<MeshRenderer>().material = folMat;
-        //_trFolUp.GetComponent<MeshRenderer>().material = folMat;
-        _trFolDown.GetComponent<MeshRenderer>().material = _mat;
-        _trFolUp.GetComponent<MeshRenderer>().material = _mat;
+        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
+        _trFolUp.GetComponent<MeshRenderer>().material = folMat;
 
         float _folR = Random.Range(folMinScale, folMaxScale);
         float _folH = Random.Range(folMinScale, folMaxScale) / _trH;
@@ -112,10 +109,8 @@ public class TreeGenerator : MonoBehaviour
             _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
             _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-            //_trFolDown.GetComponent<MeshRenderer>().material = folMat;
-            //_trFolUp.GetComponent<MeshRenderer>().material = folMat;
-            _trFolDown.GetComponent<MeshRenderer>().material = _mat;
-            _trFolUp.GetComponent<MeshRenderer>().material = _mat;
+            _trFolDown.GetComponent<MeshRenderer>().material = folMat;
+            _trFolUp.GetComponent<MeshRenderer>().material = folMat;
 
             _folR = Random.Range(folMinScale, folMaxScale);
             _folH = Random.Range(folMinScale, folMaxScale) / _trH;

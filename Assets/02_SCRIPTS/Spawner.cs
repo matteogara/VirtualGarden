@@ -7,12 +7,14 @@ public class Spawner : MonoBehaviour
     public SCENE_MANAGER sceneManager;
 
     public float maxDist;
-    public TreeGenerator treeGenerator;
-    public BushGenerator bushGenerator;
     public DrawColoredAreas painter;
     public LayerMask layerMask;
 
-    public Material[] treeMats;
+    [Header("Array di scriptable objects, uno per ogni tipo di pianta")]
+    public Generator generator;
+    public TreeScriptableObject[] treeData;
+    public TreeScriptableObject[] bushData;
+    public TreeScriptableObject[] grassData;
 
     Vector3 mousePos;
     Transform cam;
@@ -49,33 +51,14 @@ public class Spawner : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Mouse0)) {
 
+                // If selected, spawn a tree
                 if (sceneManager.selection[1] == 0)
                 {
                     if (sceneManager.selection[0] != 5)
                     {
                         if (nearTrees.Count < 1)
                         {
-                            treeGenerator.CreateTree(mousePos, treeMats[sceneManager.selection[0]]);
-                        }
-                    }
-                    else
-                    {
-                        // DA CAMBIARE
-                        foreach (GameObject tree in nearTrees)
-                        {
-                            Destroy(tree);
-                            nearTrees = new List<GameObject>();
-                        }
-                    }
-                }
-
-                if (sceneManager.selection[1] == 1)
-                {
-                    if (sceneManager.selection[0] != 5)
-                    {
-                        if (nearBushes.Count < 1)
-                        {
-                            bushGenerator.CreateBush(mousePos, treeMats[sceneManager.selection[0]]);
+                            generator.CreateTree(mousePos, treeData[sceneManager.selection[0]]);
                         }
                     }
                     else
@@ -101,7 +84,6 @@ public class Spawner : MonoBehaviour
     {
         if (other.tag == "Spawn_Tree") {
             nearTrees.Add(other.gameObject);
-            other.GetComponent<CheckForAreaColor>().enabled = true;
         }
     }
 
@@ -110,7 +92,6 @@ public class Spawner : MonoBehaviour
     {
         if (other.tag == "Spawn_Tree") {
             nearTrees.Remove(other.gameObject);
-            other.GetComponent<CheckForAreaColor>().enabled = false;
         }
     }
 }

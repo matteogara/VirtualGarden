@@ -11,7 +11,6 @@ public class Benchmark : MonoBehaviour
     public float targetFPS = 60;
     public float minTrees = 1000;
     public float batchSize = 20;
-    public Material mat;
 
     float avg = 0;
     bool isFluid = true;
@@ -43,7 +42,7 @@ public class Benchmark : MonoBehaviour
                 fpsCounter++;
 
                 if (fpsCounter > 4) {
-                    var newPlant = generator.CreateTree(new Vector3(0, 0, 0), mat);
+                    var newPlant = generator.CreateTree(new Vector3(0, 0, 0));
                     //newPlant.transform.parent = world.transform;
 
                     //MeshRenderer[] meshes = newPlant.GetComponentsInChildren<MeshRenderer>();
