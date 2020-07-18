@@ -53,17 +53,17 @@ void Start()
     //Invia messaggio ad Arduino
     public void SendColor(string color){
         sp.Write(color);
-      Debug.Log("enter: " + color);
+      //Debug.Log("enter: " + color);
    }
 
     public void SendExit(string exit) {
         sp.Write(exit);
-        Debug.Log("Exit:" + exit);
+       // Debug.Log("Exit:" + exit);
     }
 
    public void SendWind(string windIntensity){
         sp.Write(windIntensity);
-      Debug.Log("Wind:" + windIntensity);
+     // Debug.Log("Wind:" + windIntensity);
     }
 }
 
