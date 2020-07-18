@@ -9,6 +9,7 @@ public class FlowerGenerator : MonoBehaviour
     public GameObject stem1;
     public GameObject stem2;
     public GameObject stem3;
+    public GameObject stem4;
     public List<GameObject> corolla = new List<GameObject>();
 
     [Header("Materials")]
@@ -57,19 +58,26 @@ public class FlowerGenerator : MonoBehaviour
         _stem3.GetComponent<MeshRenderer>().material = stemMat;
         _stem3.transform.parent = _flower.transform;
 
+        var _stem4 = Instantiate(stem4, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem4.GetComponent<MeshRenderer>().material = stemMat;
+        _stem4.transform.parent = _flower.transform;
+
         // Create corolla
         int index = Random.Range(0, corolla.Count - 1);
         var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
 
         _corolla.transform.parent = _stem1.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, 10f);
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
 
         _corolla.transform.parent = _stem2.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, 10f);
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
 
         _corolla.transform.parent = _stem3.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, 10f);
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
+
+        _corolla.transform.parent = _stem4.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
 
         // Set position
         _flower.transform.position = _pos;
