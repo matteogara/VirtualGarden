@@ -155,13 +155,15 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 26045805e08eb4545a90020857ee7bc5, type: 3}
   - {fileID: 919132149155446097, guid: 2291a1c8e0a584757b0fec03e5bec672, type: 3}
   - {fileID: -927199367670048503, guid: bb39c40435e7141669914c3cca7cd719, type: 3}
+  - {fileID: -927199367670048503, guid: bb39c40435e7141669914c3cca7cd719, type: 3}
   head:
   - {fileID: 919132149155446097, guid: a508b0255867a44f2a90b79be9dbcdeb, type: 3}
   - {fileID: 919132149155446097, guid: b6f59559fb78242cd938a63bfb22f7e2, type: 3}
   - {fileID: 919132149155446097, guid: 191231d7014ac4e68834180e4d05b511, type: 3}
   - {fileID: 919132149155446097, guid: eda491cab5bdf4b0ca052542846d652f, type: 3}
-  bodyMat: {fileID: 2100000, guid: e390b23c2ac58484d9ca813810148852, type: 2}
-  headMat: {fileID: 2100000, guid: 4ac29394baa2c425bb52c0378768a7c8, type: 2}
+  - {fileID: 919132149155446097, guid: eda491cab5bdf4b0ca052542846d652f, type: 3}
+  bodyMat: {fileID: 2100000, guid: 9e025a814bef84e2ea1effa0966e21c8, type: 2}
+  headMat: {fileID: 2100000, guid: 2bb6f4e54e2074d339e26196695022f0, type: 2}
   bodyMinScale: 0.5
   bodyMaxScale: 1
   headMinScale: 1

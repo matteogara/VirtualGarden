@@ -5,7 +5,11 @@ using UnityEngine;
 public class FlowerGenerator : MonoBehaviour
 {
     [Header("Models")]
-    public List<GameObject> stem = new List<GameObject>();
+    // public List<GameObject> stem = new List<GameObject>();
+    public GameObject stem1;
+    public GameObject stem2;
+    public GameObject stem3;
+    public GameObject stem4;
     public List<GameObject> corolla = new List<GameObject>();
 
     [Header("Materials")]
@@ -13,7 +17,7 @@ public class FlowerGenerator : MonoBehaviour
     public Material corollaMat;
 
     [Header("corolla settings")]
-    public Vector3 corollaOffset = new Vector3(0.3f, 0, 0);
+    public Vector3 corollaOffset = new Vector3(-1.5f, 0, 1.45f);
 
     private float count;
 
@@ -31,6 +35,7 @@ public class FlowerGenerator : MonoBehaviour
             DeleteFlower();
             CreateFlower(transform.position);
         }
+
     }
 
 
@@ -40,19 +45,39 @@ public class FlowerGenerator : MonoBehaviour
         count++;
 
         // Create stem
-        int index = Random.Range(0, stem.Count - 1);
-        var _stem = Instantiate(stem[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
-        // MeshRenderer stemMat =_stem.GetComponent<MeshRenderer>();
-        _stem.GetComponent<MeshRenderer>().material = stemMat;
-        _stem.transform.parent = _flower.transform;
+        //int index = Random.Range(0, stem.Count - 1);
+        var _stem1 = Instantiate(stem1, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem1.GetComponent<MeshRenderer>().material = stemMat;
+        _stem1.transform.parent = _flower.transform;
+
+        var _stem2 = Instantiate(stem2, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem2.GetComponent<MeshRenderer>().material = stemMat;
+        _stem2.transform.parent = _flower.transform;
+
+        var _stem3 = Instantiate(stem3, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem3.GetComponent<MeshRenderer>().material = stemMat;
+        _stem3.transform.parent = _flower.transform;
+
+        var _stem4 = Instantiate(stem4, Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem4.GetComponent<MeshRenderer>().material = stemMat;
+        _stem4.transform.parent = _flower.transform;
 
         // Create corolla
-        index = Random.Range(0, corolla.Count - 1);
-        var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(0, 0, 0));
-        // MeshRenderer corollaMat =_corolla.GetComponent<MeshRenderer>();
+        int index = Random.Range(0, corolla.Count - 1);
+        var _corolla = Instantiate(corolla[index], Vector3.zero, Quaternion.Euler(-90, 0, 0));
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
-        _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 5.6f, 0);
+
+        _corolla.transform.parent = _stem1.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
+
+        _corolla.transform.parent = _stem2.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
+
+        _corolla.transform.parent = _stem3.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
+
+        _corolla.transform.parent = _stem4.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, 50f);
 
         // Set position
         _flower.transform.position = _pos;
