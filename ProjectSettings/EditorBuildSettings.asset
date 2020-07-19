@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01_SCENES/DEMO_Garden.unity
+    path: Assets/01_SCENES/TEST VECCHI/DEMO_Garden.unity
     guid: 81ac464c84868494285b67a480549f78
   m_configObjects: {}
