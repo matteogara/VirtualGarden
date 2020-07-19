@@ -13,8 +13,8 @@ public class GeneratorFeeder : MonoBehaviour
     [Header("Put here scriptable objects (only the one corresponding to the choosen type will be used")]
     public TreeScriptableObject treeData;
     public BushScriptableObject bushData;
-    //public FlowerScriptableObject flowerData;
-    //public MushroomScriptableObject mushroomData;
+    public FlowerScriptableObject flowerData;
+    public MushroomScriptableObject mushroomData;
     //public GrassScriptableObject grassData;
 
     private GameObject generated;
@@ -35,8 +35,8 @@ public class GeneratorFeeder : MonoBehaviour
 
             if (typeOfVegetation == TypeOfVegetation.Tree) generated = generator.CreateTree(transform.position, treeData);
             if (typeOfVegetation == TypeOfVegetation.Bush) generated = generator.CreateBush(transform.position, bushData);
-            //if (typeOfVegetation == TypeOfVegetation.Flower) generated = generator.CreateFlower(transform.position, flowerData);
-            //if (typeOfVegetation == TypeOfVegetation.Mushroom) generated = generator.CreateMushroom(transform.position, mushroomData);
+            if (typeOfVegetation == TypeOfVegetation.Flower) generated = generator.CreateFlower(transform.position, flowerData);
+            if (typeOfVegetation == TypeOfVegetation.Mushroom) generated = generator.CreateMushroom(transform.position, mushroomData);
             //if (typeOfVegetation == TypeOfVegetation.Grass) generated = generator.CreateGrass(transform.position, grassData);
         }
     }

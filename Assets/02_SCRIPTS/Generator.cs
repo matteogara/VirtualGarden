@@ -118,7 +118,7 @@ public class Generator : MonoBehaviour
     }
 
 
-    public void CreateFlower(Vector3 _pos, FlowerScriptableObject _data)
+    public GameObject CreateFlower(Vector3 _pos, FlowerScriptableObject _data)
     {
         // Create object
         GameObject _flower = new GameObject("flower_" + flowerCount);
@@ -143,10 +143,12 @@ public class Generator : MonoBehaviour
 
         // Set master scale
         _flower.transform.localScale *= _data.masterScale;
+
+        return _flower;
     }
 
 
-    public void CreateMushroom(Vector3 _pos, MushroomScriptableObject _data)
+    public GameObject CreateMushroom(Vector3 _pos, MushroomScriptableObject _data)
     {
         // Create object
         GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
@@ -176,6 +178,8 @@ public class Generator : MonoBehaviour
 
         // Set master scale
         _mushroom.transform.localScale *= _data.masterScale;
+
+        return _mushroom;
     }
 
 
