@@ -5,19 +5,21 @@ using UnityEngine.Events;
 
 public class TreeScentTrigger : MonoBehaviour {
 
-    private bool flowerInHand;
-    private bool banana = false;
+    [SerializeField]
+    private PickUp pickUpValues;
+
+    
+    //private bool banana = false;
 
     void Update(){
-       flowerInHand = gameObject.GetComponent<PickUp>().toPlaceBack;
+       
     }
 
     void OnTriggerEnter(Collider other){
-        if (banana == true && other.gameObject.name.StartsWith("ArduinoTestTree") || other.gameObject.name.StartsWith("ArduinoTestBush")){
+        if (pickUpValues.toPlaceBack == false && (other.gameObject.name.StartsWith("ArduinoTree") || other.gameObject.name.StartsWith("ArduinoBush"))){
             string arduinoColor = other.gameObject.GetComponent<ColorGrabber>().arduinoColor;
             Debug.Log("Colore collisione albero: " + arduinoColor);
         }
-       
     }
 
 

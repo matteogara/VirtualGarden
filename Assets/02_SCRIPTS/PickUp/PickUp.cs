@@ -10,7 +10,7 @@ using UnityEngine.Events;
 public class PickUp : MonoBehaviour {
 
     public bool pickedUp = false;
-    public bool inPickArea = false;
+    public bool inPickArea;
     public bool toPlaceBack = false;
 
     private GameObject destinationObj;
@@ -33,15 +33,16 @@ public class PickUp : MonoBehaviour {
 
         //Aggiorna la posizione di destinazione del pick
         pickDestination = destinationObj.transform.position;
-        
+
+        Debug.Log("Picked up: " + pickedUp + "\tIn pick area: " + inPickArea + "\t from: " + gameObject.name);
 
         //Cambia lo status di pickedUp a seconda dei tasti
-        if (inPickArea == true && pickedUp == false && Input.GetKey("e")){
+        if (this.inPickArea == true && pickedUp == false && Input.GetKey("e")){
             pickedUp = true;
-            //Debug.Log("Picked up status: " + pickedUp);
+            Debug.Log("Picked up status: " + pickedUp);
         } else if (pickedUp == true && Input.GetKey("q")){
             pickedUp = false;
-            //Debug.Log("Picked up status: " + pickedUp);
+            Debug.Log("Picked up status: " + pickedUp);
         }
 
         //Cambia la posizione di flowerObj a seconda di pickedUp
@@ -74,7 +75,7 @@ public class PickUp : MonoBehaviour {
 
         
         if (toPlaceBack == false){
-            Debug.Log(toPlaceBack);
+            
             if (other.gameObject.name.StartsWith("ArduinoTestFiore")){
 
                 //Assegna other alla variabile, ricorda la sua posizione, attiva inPickArea
@@ -83,7 +84,8 @@ public class PickUp : MonoBehaviour {
                 //flowerObj.AddComponent<ColorGrabber>();
 
                 initialFlowerPosition = flowerObj.transform.position;
-                inPickArea = true;
+                this.inPickArea = true;
+                Debug.Log("Inpickarea da trigger: " + inPickArea);
 
                 //Prendi il colore di flowerObj
                 //string arduinoColor = flowerObj.GetComponent<ColorGrabber>().arduinoColor;
@@ -91,7 +93,7 @@ public class PickUp : MonoBehaviour {
 
                 //Debug.Log("Dentro area pickUp");
 
-                Debug.Log("CAZZOCollisione con: " + flowerObj.name + "\n Posizione: " + initialFlowerPosition);
+                Debug.Log("Collisione con: " + flowerObj.name + "\n Posizione: " + initialFlowerPosition);
             }
         }
 
@@ -101,79 +103,10 @@ public class PickUp : MonoBehaviour {
 
         //Controlla se l'oggetto other è flowerObj
         if (other.gameObject == flowerObj){
-            inPickArea = false;
-            //Debug.Log("Fuori area pickUp");
+            this.inPickArea = false;
+            Debug.Log("Fuori area pickUp");
         }
 
     }
-        
 
-
-
-    /* public ArduinoEvent send;
-     public ArduinoEvent InOnExit;
-
-     [SerializeField]
-     private PickUpInstr pickupValues;
-
-     private bool pickedUp = false;
-     private bool inPickArea = false;
-     private bool toPlaceBack = false;
-
-     private GameObject destinationObj;
-     private GameObject flowerObj;
-
-
-     //private Vector3 currentFlowerPosition;
-     private Vector3 pickDestination;
-     public Vector3 initialFlowerPosition;
-
-     void Start(){
-         destinationObj = GameObject.Find("DestinationPickUp");
-     }
-
-     void Update(){
-         pickDestination = destinationObj.transform.position;
-         //Debug.Log("Destination: " + pickDestination);
-
-         if (pickedUp == true){
-             flowerObj.transform.position = pickDestination;
-             Debug.Log("Posizione su pick");
-             // string arduinoColor = flowerObj.GetComponent<ColorGrabber>().arduinoColor;
-             // send.Invoke(arduinoColor);
-
-             toPlaceBack = true;
-
-         } else if (pickedUp == false){
-             flowerObj.transform.position = initialFlowerPosition;
-             if (toPlaceBack == true){
-               //  string arduinoColor = flowerObj.GetComponent<ColorGrabber>().arduinoColor;
-               //  string exit = arduinoColor.ToUpper();
-               //  InOnExit.Invoke(exit);
-                 toPlaceBack = false;
-             }
-         } else if (pickedUp == false && inPickArea == true && Input.GetKey("e")){
-             pickedUp = true;
-             Debug.Log("Picked: " + pickedUp);
-         } else if (pickedUp == true && Input.GetKey("q")){
-             pickedUp = false;
-             Debug.Log("Picked: " + pickedUp);
-         }
-     }
-
-     void OnTriggerEnter(Collider other){
-
-         if (other.gameObject.name.StartsWith("ArduinoTestFiore")){
-             flowerObj = other.gameObject;
-             initialFlowerPosition = flowerObj.transform.position;
-             Debug.Log("Posizione fiore: " + initialFlowerPosition);
-             inPickArea = true;
-             Debug.Log("Dentro area");
-         }
-     }
-
-     void OnTriggerExit(Collider other){
-         inPickArea = false;
-         Debug.Log("Fuori area");
-     }*/
 }
