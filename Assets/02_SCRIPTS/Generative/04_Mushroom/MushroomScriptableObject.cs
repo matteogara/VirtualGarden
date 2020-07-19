@@ -23,4 +23,8 @@ public class MushroomScriptableObject : ScriptableObject
     [Header("head settings")]
     public float headMinScale = 1f;
     public float headMaxScale = 1.5f;
+
+    [Header("Collider settings")]
+    public float minCollScale = 1f;
+    public float maxCollScale = 2.5f;
 }

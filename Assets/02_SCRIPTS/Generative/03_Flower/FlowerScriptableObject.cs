@@ -16,4 +16,8 @@ public class FlowerScriptableObject : ScriptableObject
     [Header("Materials")]
     public Material stemMat;
     public Material corollaMat;
+
+    [Header("Collider settings")]
+    public float minCollScale = 1f;
+    public float maxCollScale = 2.5f;
 }

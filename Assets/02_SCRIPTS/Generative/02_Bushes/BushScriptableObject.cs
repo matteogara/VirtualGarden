@@ -21,4 +21,8 @@ public class BushScriptableObject : ScriptableObject
     public float minScale = 0.4f;
     public float maxScale = 0.6f;
     public bool largerShrubsAtCenter = true;
+
+    [Header("Collider settings")]
+    public float minCollScale = 1f;
+    public float maxCollScale = 2.5f;
 }
