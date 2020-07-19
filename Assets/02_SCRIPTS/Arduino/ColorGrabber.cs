@@ -44,11 +44,6 @@ public class ColorGrabber : MonoBehaviour {
            
         }
     }
-    
-    void Update() {
-     
-    }
-
-  
+      
 }
 
