@@ -13,8 +13,11 @@ public class Spawner : MonoBehaviour
     [Header("Array di scriptable objects, uno per ogni tipo di pianta")]
     public Generator generator;
     public TreeScriptableObject[] treeData;
-    public TreeScriptableObject[] bushData;
-    public TreeScriptableObject[] grassData;
+    public BushScriptableObject[] bushData;
+    public FlowerScriptableObject[] flowerData;
+    public MushroomScriptableObject[] mushroomData;
+    //public GrassScriptableObject[] grassData;
+
 
     Vector3 mousePos;
     Transform cam;

@@ -4,22 +4,8 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
-    private float treeCount;
-    private float bushCount;
-    private float grassCount;
+    private float treeCount, bushCount, flowerCount, mushroomCount, grassCount;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public GameObject CreateTree(Vector3 _pos, TreeScriptableObject _data)
@@ -95,4 +81,103 @@ public class Generator : MonoBehaviour
 
         return _tree;
     }
+
+
+    public GameObject CreateBush(Vector3 _pos, BushScriptableObject _data)
+    {
+        // Create object
+        GameObject _bush = new GameObject("Bush_" + bushCount);
+        bushCount++;
+
+        float _shrubsNum = Random.Range(1, 3);
+        for (int i = 0; i < _shrubsNum; i++)
+        {
+            Vector3 offset = new Vector3(Random.Range(-_data.shrMaxDist, _data.shrMaxDist), 0, Random.Range(-_data.shrMaxDist, _data.shrMaxDist));
+
+            var _shrubs = Instantiate(_data.shrubs, offset, Quaternion.Euler(-90, Random.Range(0, 360), 90));
+
+            _shrubs.GetComponent<MeshRenderer>().material = _data.shrubsMat;
+
+            Vector3 s = new Vector3(Random.Range(_data.minScale, _data.maxScale), Random.Range(_data.minScale, _data.maxScale), Random.Range(_data.minScale, _data.maxScale));
+            if (_data.largerShrubsAtCenter)
+            {
+                s /= (offset.magnitude + 1);
+            }
+
+            _shrubs.transform.localScale = s;
+            _shrubs.transform.parent = _bush.transform;
+        }
+
+        // Set position
+        _bush.transform.position = _pos;
+
+        // Set master scale
+        _bush.transform.localScale *= _data.masterScale;
+
+        return _bush;
+    }
+
+
+    public void CreateFlower(Vector3 _pos, FlowerScriptableObject _data)
+    {
+        // Create object
+        GameObject _flower = new GameObject("flower_" + flowerCount);
+        flowerCount++;
+
+        // Create stem
+        int stemIndex = Random.Range(0, _data.stems.Count);
+        var _stem = Instantiate(_data.stems[stemIndex], Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _stem.GetComponent<MeshRenderer>().material = _data.stemMat;
+        _stem.transform.parent = _flower.transform;
+
+        // Create corolla
+        int corollaIndex = Random.Range(0, _data.corollas.Count);
+        var _corolla = Instantiate(_data.corollas[corollaIndex], Vector3.zero, Quaternion.Euler(-90, 0, 0));
+        _corolla.GetComponent<MeshRenderer>().material = _data.corollaMat;
+
+        _corolla.transform.parent = _stem.transform;
+        _corolla.transform.localPosition = new Vector3(0, 0, _data.stemsHeights[stemIndex]);
+
+        // Set position
+        _flower.transform.position = _pos;
+
+        // Set master scale
+        _flower.transform.localScale *= _data.masterScale;
+    }
+
+
+    public void CreateMushroom(Vector3 _pos, MushroomScriptableObject _data)
+    {
+        // Create object
+        GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
+        mushroomCount++;
+
+        // Create body
+        int index = Random.Range(0, _data.body.Count - 1);
+        var _body = Instantiate(_data.body[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        _body.GetComponent<MeshRenderer>().material = _data.bodyMat;
+        float _bodyR = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
+        float _bodyH = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
+        _body.transform.localScale = new Vector3(_bodyR, _bodyR, _bodyH);
+        _body.transform.parent = _mushroom.transform;
+
+        // Create head
+        index = Random.Range(0, _data.head.Count - 1);
+        var _head = Instantiate(_data.head[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        _head.GetComponent<MeshRenderer>().material = _data.headMat;
+        float _headR = Random.Range(_data.headMinScale, _data.headMaxScale);
+        float _headH = Random.Range(_data.headMinScale, _data.headMaxScale);
+        _head.transform.localScale = new Vector3(_headR, _headR, _headH);
+        _head.transform.parent = _body.transform;
+        _head.transform.localPosition = new Vector3(0, 0, 1.75f);
+
+        // Set position
+        _mushroom.transform.position = _pos;
+
+        // Set master scale
+        _mushroom.transform.localScale *= _data.masterScale;
+    }
+
+
+    // CreateGrass
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MushroomsGenerator : MonoBehaviour
 {
+    [Header("Master scale")]
+    public float masterScale = 1;
+
     [Header("Models")]
     public List<GameObject> body = new List<GameObject>();
     public List<GameObject> head = new List<GameObject>();
@@ -19,7 +22,6 @@ public class MushroomsGenerator : MonoBehaviour
     [Header("head settings")]
     public float headMinScale = 1f;
     public float headMaxScale = 1.5f;
-    public Vector3 headOffset = new Vector3(-1.5f, 0, 1.45f);
 
     private float count;
 
@@ -42,7 +44,7 @@ public class MushroomsGenerator : MonoBehaviour
 
     public void CreateMushrooms(Vector3 _pos) {
         // Create object
-        GameObject _mushrooms = new GameObject("mushrooms_" + count);
+        GameObject _mushroom = new GameObject("mushrooms_" + count);
         count++;
 
         // Create body
@@ -52,7 +54,7 @@ public class MushroomsGenerator : MonoBehaviour
         float _bodyR = Random.Range(bodyMinScale, bodyMaxScale);
         float _bodyH = Random.Range(bodyMinScale, bodyMaxScale);
         _body.transform.localScale = new Vector3(_bodyR, _bodyR, _bodyH);
-        _body.transform.parent = _mushrooms.transform;
+        _body.transform.parent = _mushroom.transform;
 
         // Create head
         index = Random.Range(0, head.Count - 1);
@@ -65,7 +67,10 @@ public class MushroomsGenerator : MonoBehaviour
         _head.transform.localPosition = new Vector3(0, 0, 1.75f);
 
         // Set position
-        _mushrooms.transform.position = _pos;
+        _mushroom.transform.position = _pos;
+
+        // Set master scale
+        _mushroom.transform.localScale *= masterScale;
     }
 
 

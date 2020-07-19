@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3493c4d95de4e348b6e49e8846da28, type: 3}
+  m_Name: Bush_5
+  m_EditorClassIdentifier: 
+  masterScale: 1
+  shrubs: {fileID: 0}
+  shrubsMat: {fileID: 0}
+  shrubsMinNum: 1
+  shribsMaxNum: 5
+  shrMaxDist: 3
+  minScale: 0.4
+  maxScale: 0.6
+  largerShrubsAtCenter: 1

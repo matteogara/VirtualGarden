@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BushGenerator : MonoBehaviour
 {
+    [Header("Master scale")]
+    public float masterScale = 1;
+
     [Header("Models")]
     public GameObject shrubs;
 
@@ -11,11 +14,11 @@ public class BushGenerator : MonoBehaviour
     public Material shrubsMat;
 
     [Header("Shrubs settings")]
-    public int shrMaxL = 3;
+    public int shrubsMinNum = 1;
+    public int shribsMaxNum = 5;
+    public int shrMaxDist = 3;
     public float minScale = 0.4f;
     public float maxScale = 0.6f;
-    public Vector3 shrOffset = new Vector3(-1.5f, 0, 1.45f);
-
     public bool largerShrubsAtCenter = true;
 
 
@@ -53,14 +56,13 @@ public class BushGenerator : MonoBehaviour
 
         float _shrubsNum = Random.Range(1, 3);
         for (int i = 0; i < _shrubsNum; i++) {
-            Vector3 offset = new Vector3(Random.Range(-shrMaxL, shrMaxL), 0, Random.Range(-shrMaxL, shrMaxL));
+            Vector3 offset = new Vector3(Random.Range(-shrMaxDist, shrMaxDist), 0, Random.Range(-shrMaxDist, shrMaxDist));
 
             var _shrubs = Instantiate(shrubs, offset, Quaternion.Euler(-90, Random.Range(0, 360), 90));
 
-            //_shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
-            _shrubs.GetComponent<MeshRenderer>().material = _mat;
+            _shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
 
-            Vector3 s = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale) * 2);
+            Vector3 s = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale));
             if (largerShrubsAtCenter)
             {
                 s /= (offset.magnitude + 1);
@@ -68,11 +70,13 @@ public class BushGenerator : MonoBehaviour
 
             _shrubs.transform.localScale = s;
             _shrubs.transform.parent = _bush.transform;
-
         }
 
         // Set position
         _bush.transform.position = _pos;
+
+        // Set master scale
+        _bush.transform.localScale *= masterScale;
 
         return _bush;
     }
