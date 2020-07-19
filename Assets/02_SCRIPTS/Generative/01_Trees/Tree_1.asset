@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Tree_1
   m_EditorClassIdentifier: 
   masterScale: 1
-  trunk: {fileID: 919132149155446097, guid: 563d33cf5ae17468e9811daf783d5868, type: 3}
-  brench: {fileID: 5609983343664620721, guid: 08cf8449e53c945a5a36ed0a87476c65, type: 3}
-  foliage: {fileID: -927199367670048503, guid: 0dcdaa81313fb49f1831d9c288f60917, type: 3}
+  trunk: {fileID: 919132149155446097, guid: 88a5512ebf94648a8b96f151d79ccb75, type: 3}
+  brench: {fileID: 919132149155446097, guid: ec1df2dd2314c4428ae6a8a82e48051f, type: 3}
+  foliage: {fileID: 919132149155446097, guid: c77350a19a80543bfb748ed4021caaad, type: 3}
   trMat: {fileID: 2100000, guid: 9e025a814bef84e2ea1effa0966e21c8, type: 2}
   folMat: {fileID: 2100000, guid: 04b59ead494424026a409d39d96926ba, type: 2}
   trMinR: 0.06
