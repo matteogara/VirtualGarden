@@ -4,28 +4,13 @@ using UnityEngine;
 
 public class Eraser : MonoBehaviour
 {
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public MovePointer movePointer;
 
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Eraser");
-        if (Input.GetKey(KeyCode.P)) {
+        if (movePointer.validPointer && Input.GetKey(KeyCode.Mouse0)) {
             Destroy(other.transform.parent.gameObject);
         }
     }
