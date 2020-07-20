@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class TreeScentTrigger : MonoBehaviour {
 
-    [SerializeField]
+    /*[SerializeField]
     private PickUp pickUpValues;
 
     
@@ -20,7 +20,7 @@ public class TreeScentTrigger : MonoBehaviour {
             string arduinoColor = other.gameObject.GetComponent<ColorGrabber>().arduinoColor;
             Debug.Log("Colore collisione albero: " + arduinoColor);
         }
-    }
+    } */
 
 
 

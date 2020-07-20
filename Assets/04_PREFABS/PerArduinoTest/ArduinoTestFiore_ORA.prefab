@@ -181,6 +181,7 @@ Transform:
   m_LocalPosition: {x: 9.52, y: 0, z: -4.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1373252586910605780}
   - {fileID: 2410747399260909624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -226,10 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b20bbf16b0481347b2b50700d39c7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickedUp: 0
-  inPickArea: 0
-  toPlaceBack: 0
-  initialFlowerPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5219875114213244598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +894,7 @@ Transform:
   m_Children:
   - {fileID: 550163676526993393}
   m_Father: {fileID: 8750448432822937314}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4371521223969002936
 GameObject:
@@ -1089,6 +1086,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &8198081579401492864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373252586910605780}
+  m_Layer: 0
+  m_Name: Smell collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373252586910605780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198081579401492864}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79999995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8750448432822937314}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8495452431860265845
 GameObject:
   m_ObjectHideFlags: 0

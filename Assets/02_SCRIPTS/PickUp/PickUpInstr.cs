@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public class PickUpInstr : MonoBehaviour{
-    [SerializeField]
+   /* [SerializeField]
     private PickUp pickUpValues;
 
     private Text pickUpText;
@@ -53,6 +53,6 @@ public class PickUpInstr : MonoBehaviour{
             pickUpText.text = "";
         } 
 
-    }
+    }*/
 
 }
