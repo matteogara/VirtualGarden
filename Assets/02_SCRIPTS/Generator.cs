@@ -7,10 +7,10 @@ public class Generator : MonoBehaviour
     [Header("Smell collider size")]
     public float smellCollSize;
 
-    [Header("Delete collider size")]
-    public float deleteCollSize;
+    [Header("Erase collider size")]
+    public float eraseCollSize;
 
-    private float treeCount, bushCount, flowerCount, mushroomCount, grassCount;
+    private float treeCount, bushCount, flowerCount, mushroomCount, herbCount;
 
 
 
@@ -20,9 +20,6 @@ public class Generator : MonoBehaviour
         GameObject _tree = new GameObject("Tree_" + treeCount);
         _tree.tag = "Spawn_Tree";
         treeCount++;
-
-        // Create collider
-        AddCollider(_tree, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create trunk
         var _trunk = Instantiate(_data.trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
@@ -83,6 +80,9 @@ public class Generator : MonoBehaviour
         // Set master scale
         _tree.transform.localScale *= _data.masterScale;
 
+        // Create collider
+        AddColliders(_tree, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
         return _tree;
     }
 
@@ -91,10 +91,8 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _bush = new GameObject("Bush_" + bushCount);
+        _bush.tag = "Spawn_Bush";
         bushCount++;
-
-        // Create collider
-        AddCollider(_bush, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         float _shrubsNum = Random.Range(1, 3);
         for (int i = 0; i < _shrubsNum; i++)
@@ -121,6 +119,9 @@ public class Generator : MonoBehaviour
         // Set master scale
         _bush.transform.localScale *= _data.masterScale;
 
+        // Create collider
+        AddColliders(_bush, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
         return _bush;
     }
 
@@ -129,10 +130,8 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _flower = new GameObject("flower_" + flowerCount);
+        _flower.tag = "Spawn_Grass";
         flowerCount++;
-
-        // Create collider
-        AddCollider(_flower, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create stem
         int stemIndex = Random.Range(0, _data.stems.Count);
@@ -154,6 +153,9 @@ public class Generator : MonoBehaviour
         // Set master scale
         _flower.transform.localScale *= _data.masterScale;
 
+        // Create collider
+        AddColliders(_flower, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
         return _flower;
     }
 
@@ -162,10 +164,8 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
+        _mushroom.tag = "Spawn_Grass";
         mushroomCount++;
-
-        // Create collider
-        AddCollider(_mushroom, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create body
         int bodyIndex = Random.Range(0, _data.body.Count - 1);
@@ -192,6 +192,9 @@ public class Generator : MonoBehaviour
         // Set master scale
         _mushroom.transform.localScale *= _data.masterScale;
 
+        // Create collider
+        AddColliders(_mushroom, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
         return _mushroom;
     }
 
@@ -200,7 +203,7 @@ public class Generator : MonoBehaviour
 
 
 
-    private void AddCollider(GameObject _obj, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
+    private void AddColliders(GameObject _obj, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
     {
         // Add spawn collider
         GameObject _spawn = new GameObject("Spawn collider");
@@ -212,10 +215,10 @@ public class Generator : MonoBehaviour
         _spawnColl.isTrigger = true;
 
         // Add delete collider
-        GameObject _delete = new GameObject("Delete collider");
+        GameObject _delete = new GameObject("Erase collider");
         _delete.transform.parent = _obj.transform;
         _delete.transform.localPosition = Vector3.zero;
-        _delete.layer = LayerMask.NameToLayer("Delete");
+        _delete.layer = LayerMask.NameToLayer("Erase");
         SphereCollider _deleteColl = _delete.AddComponent<SphereCollider>();
         _deleteColl.radius = _deleteCollSize;
         _deleteColl.isTrigger = true;

@@ -11,9 +11,18 @@ public class SCENE_MANAGER : MonoBehaviour
     [HideInInspector]
     public bool UI_on = false;
 
+    public GameObject pointer;
     public GameObject spawner;
-    public SpawnMarker marker;
+    public GameObject eraser;
     public DrawColoredAreas canvas;
+
+    SpawnMarker marker;
+
+
+    private void Awake()
+    {
+        marker = pointer.GetComponent<SpawnMarker>();
+    }
 
 
     // Start is called before the first frame update
@@ -21,8 +30,10 @@ public class SCENE_MANAGER : MonoBehaviour
     {
         selection[0] = 0;
         selection[1] = 0;
+
         creativeMode = false;
-        spawner.SetActive(false);
+
+        pointer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,12 +51,15 @@ public class SCENE_MANAGER : MonoBehaviour
 
         canvas.ChangeCol(_sel[0]);
         marker.ChangeMarker(_sel[0]);
+
+        spawner.SetActive(!(_sel[0] == 5));
+        eraser.SetActive(_sel[0] == 5);
     }
 
     public void toggleMode() {
         creativeMode = !creativeMode;
 
-        spawner.SetActive(creativeMode);
+        pointer.SetActive(creativeMode);
         canvas.ShowAreas(creativeMode);
     }
 }
