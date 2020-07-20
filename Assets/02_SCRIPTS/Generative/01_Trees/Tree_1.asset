@@ -19,7 +19,7 @@ MonoBehaviour:
   - 40
   brench: {fileID: 919132149155446097, guid: 982226846e6d3472e9067e4a3cf9d974, type: 3}
   foliage: {fileID: 919132149155446097, guid: 590f0f1e0e87646aa99e4dd6e3fd0384, type: 3}
-  trMat: {fileID: 2100000, guid: 3b6e6fb0340234dedb5191ff5149df5a, type: 2}
+  trMat: {fileID: 2100000, guid: dbc75b4651bf44fb29661fa0db3dd71b, type: 2}
   folMat: {fileID: 2100000, guid: 04b59ead494424026a409d39d96926ba, type: 2}
   trMinR: 0.5
   trMaxR: 0.8
@@ -34,6 +34,7 @@ MonoBehaviour:
   largerBrenchesBelow: 0
   folMinScale: 0.5
   folMaxScale: 0.8
+  brFolPropScale: 0.6
   folOffset: {x: 15, y: 1, z: 30}
   minCollScale: 1
   maxCollScale: 2.5
