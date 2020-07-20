@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smellCollSize: 0
-  deleteCollSize: 0
+  eraseCollSize: 0
 --- !u!114 &807243661
 MonoBehaviour:
   m_ObjectHideFlags: 0
