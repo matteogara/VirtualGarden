@@ -8,9 +8,15 @@ using UnityEngine.Events;
 
 public class PickUp : MonoBehaviour {
 
+    public ArduinoEvent send;
+    public ArduinoEvent InOnExit;
+
     public bool pickedUp = false;
     public bool inPickArea;
     public bool toPlaceBack = false;
+
+    public string flowerScent;
+    public string noFlowerScent;
 
     private GameObject destinationObj;
     private GameObject flowerObj;
@@ -33,9 +39,11 @@ public class PickUp : MonoBehaviour {
         //Cambia lo status di pickedUp a seconda dei tasti
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
             this.pickedUp = true;
+            send.Invoke(flowerScent);
             Debug.Log("Picked up status: " + pickedUp);
         } else if (this.pickedUp == true && Input.GetKey("q")){
             this.pickedUp = false;
+            InOnExit.Invoke(noFlowerScent);
             Debug.Log("Picked up status: " + pickedUp);
         }
 
@@ -60,7 +68,8 @@ public class PickUp : MonoBehaviour {
             initialFlowerPosition = flowerObj.transform.position;
             Debug.Log("Fiore toccato: " + flowerObj.name);
 
-            string arduinoColor = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+            flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+            noFlowerScent = flowerScent.ToUpper();
 
             this.inPickArea = true;
             Debug.Log("Dentro area pickUp");
