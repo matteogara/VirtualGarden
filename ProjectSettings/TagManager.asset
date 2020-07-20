@@ -8,6 +8,8 @@ TagManager:
   - Smell
   - Spawn_Tree
   - Ground
+  - Spawn_Bush
+  - Spawn_Grass
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Ground
   - Smell
   - Spawn
-  - Delete
+  - Erase
   - 
   - 
   - 

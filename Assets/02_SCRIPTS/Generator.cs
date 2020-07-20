@@ -10,7 +10,7 @@ public class Generator : MonoBehaviour
     [Header("Delete collider size")]
     public float deleteCollSize;
 
-    private float treeCount, bushCount, flowerCount, mushroomCount, grassCount;
+    private float treeCount, bushCount, flowerCount, mushroomCount, herbCount;
 
 
 
@@ -91,6 +91,7 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _bush = new GameObject("Bush_" + bushCount);
+        _bush.tag = "Spawn_Bush";
         bushCount++;
 
         // Create collider
@@ -129,6 +130,7 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _flower = new GameObject("flower_" + flowerCount);
+        _flower.tag = "Spawn_Grass";
         flowerCount++;
 
         // Create collider
@@ -162,6 +164,7 @@ public class Generator : MonoBehaviour
     {
         // Create object
         GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
+        _mushroom.tag = "Spawn_Grass";
         mushroomCount++;
 
         // Create collider
@@ -212,10 +215,10 @@ public class Generator : MonoBehaviour
         _spawnColl.isTrigger = true;
 
         // Add delete collider
-        GameObject _delete = new GameObject("Delete collider");
+        GameObject _delete = new GameObject("Erase collider");
         _delete.transform.parent = _obj.transform;
         _delete.transform.localPosition = Vector3.zero;
-        _delete.layer = LayerMask.NameToLayer("Delete");
+        _delete.layer = LayerMask.NameToLayer("Erase");
         SphereCollider _deleteColl = _delete.AddComponent<SphereCollider>();
         _deleteColl.radius = _deleteCollSize;
         _deleteColl.isTrigger = true;

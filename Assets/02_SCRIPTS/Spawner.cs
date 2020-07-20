@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
 
     List<GameObject> nearTrees = new List<GameObject>();
     List<GameObject> nearBushes = new List<GameObject>();
+    List<GameObject> nearGrass = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -57,14 +58,36 @@ public class Spawner : MonoBehaviour
             // If player is spawning
             if (Input.GetKey(KeyCode.Mouse0)) {
 
-                // If selected, spawn a tree
-                if (sceneManager.selection[1] == 0)
-                {
-                    if (sceneManager.selection[0] != 5)
+                if (sceneManager.selection[0] != 5) {
+
+                    // If selected, spawn a tree
+                    if (sceneManager.selection[1] == 0 && nearTrees.Count < 1)
                     {
-                        if (nearTrees.Count < 1)
+                        generator.CreateTree(mousePos, treeData[sceneManager.selection[0]]);
+                    }
+
+                    // If selected, spawn a bush
+                    if (sceneManager.selection[1] == 1 && nearBushes.Count < 1) 
+                    {
+                        generator.CreateBush(mousePos, bushData[sceneManager.selection[0]]);
+                    }
+
+                    // If selected, spawn a flower, mushroom or herb
+                    if (sceneManager.selection[1] == 2 && nearGrass.Count < 1)
+                    {
+                        int index = Random.Range(0, 3);
+
+                        switch(index)
                         {
-                            generator.CreateTree(mousePos, treeData[sceneManager.selection[0]]);
+                            case 0:
+                                generator.CreateFlower(mousePos, flowerData[sceneManager.selection[0]]);
+                                break;
+                            case 1:
+                                generator.CreateMushroom(mousePos, mushroomData[sceneManager.selection[0]]);
+                                break;
+                            case 2:
+                                //generator.CreateGrass(mousePos, grassData[sceneManager.selection[0]]);
+                                break;
                         }
                     }
                 }
@@ -74,21 +97,46 @@ public class Spawner : MonoBehaviour
         }
 
         transform.position = mousePos;
+
+        Debug.Log(nearTrees.Count);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Spawn_Tree") {
-            nearTrees.Add(other.gameObject);
+        Debug.Log("Collision");
+        GameObject collided = other.transform.parent.gameObject;
+
+        switch (collided.tag)
+        {
+            case "Spawn_Tree":
+                nearTrees.Add(collided);
+                break;
+            case "Spawn_Bush":
+                nearBushes.Add(collided);
+                break;
+            case "Spawn_Grass":
+                nearGrass.Add(collided);
+                break;
         }
     }
 
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Spawn_Tree") {
-            nearTrees.Remove(other.gameObject);
+        GameObject collided = other.transform.parent.gameObject;
+
+        switch (collided.tag)
+        {
+            case "Spawn_Tree":
+                nearTrees.Remove(collided);
+                break;
+            case "Spawn_Bushes":
+                nearBushes.Remove(collided);
+                break;
+            case "Spawn_Grass":
+                nearGrass.Remove(collided);
+                break;
         }
     }
 }
