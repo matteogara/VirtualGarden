@@ -49,9 +49,12 @@ public class Spawner : MonoBehaviour
         // Raycast dall'asse forward del controller
 
 
+
+        // If spawn is possible
         if (Physics.Raycast(ray, out _hit, maxDist, layerMask)) {
             mousePos = _hit.point;
 
+            // If player is spawning
             if (Input.GetKey(KeyCode.Mouse0)) {
 
                 // If selected, spawn a tree
@@ -62,15 +65,6 @@ public class Spawner : MonoBehaviour
                         if (nearTrees.Count < 1)
                         {
                             generator.CreateTree(mousePos, treeData[sceneManager.selection[0]]);
-                        }
-                    }
-                    else
-                    {
-                        // DA CAMBIARE
-                        foreach (GameObject tree in nearTrees)
-                        {
-                            Destroy(tree);
-                            nearTrees = new List<GameObject>();
                         }
                     }
                 }

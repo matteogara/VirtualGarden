@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
+    [Header("Smell collider size")]
+    public float smellCollSize;
+
+    [Header("Delete collider size")]
+    public float deleteCollSize;
+
     private float treeCount, bushCount, flowerCount, mushroomCount, grassCount;
 
 
@@ -15,10 +21,8 @@ public class Generator : MonoBehaviour
         _tree.tag = "Spawn_Tree";
         treeCount++;
 
-        // Collider
-        SphereCollider treeCollider = _tree.AddComponent<SphereCollider>();
-        treeCollider.radius = Random.Range(_data.minCollScale, _data.maxCollScale);
-        treeCollider.isTrigger = true;
+        // Create collider
+        AddCollider(_tree, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create trunk
         var _trunk = Instantiate(_data.trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
@@ -184,4 +188,37 @@ public class Generator : MonoBehaviour
 
 
     // CreateGrass da aggiungere
+
+
+
+    private void AddCollider(GameObject _obj, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
+    {
+        // Add spawn collider
+        GameObject _spawn = new GameObject("Spawn collider");
+        _spawn.transform.parent = _obj.transform;
+        _spawn.transform.localPosition = Vector3.zero;
+        _spawn.layer = LayerMask.NameToLayer("Spawn");
+        SphereCollider _spawnColl = _spawn.AddComponent<SphereCollider>();
+        _spawnColl.radius = Random.Range(_spawnCollMinSize, _spawnCollMaxSize);
+        _spawnColl.isTrigger = true;
+
+        // Add delete collider
+        GameObject _delete = new GameObject("Delete collider");
+        _delete.transform.parent = _obj.transform;
+        _delete.transform.localPosition = Vector3.zero;
+        _delete.layer = LayerMask.NameToLayer("Delete");
+        SphereCollider _deleteColl = _delete.AddComponent<SphereCollider>();
+        _deleteColl.radius = _deleteCollSize;
+        _deleteColl.isTrigger = true;
+
+        // Add smell collider
+        GameObject _smell = new GameObject("Smell collider");
+        _smell.transform.parent = _obj.transform;
+        _smell.transform.localPosition = Vector3.zero;
+        _smell.layer = LayerMask.NameToLayer("Smell");
+        CapsuleCollider _smellColl = _smell.AddComponent<CapsuleCollider>();
+        _smellColl.radius = _smellCollSize;
+        _smellColl.height = 10;
+        _smellColl.isTrigger = true;
+    }
 }
