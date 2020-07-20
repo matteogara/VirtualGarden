@@ -27,23 +27,18 @@ public class ColorGrabber : MonoBehaviour {
 
                 if (Mathf.Approximately(greenComponent, blueGreenComponent)){
                     arduinoColor = "b";
-                    Debug.Log("QUI!!!! Ho trovato un oggetto blu");
                     break;
                  } else if (Mathf.Approximately(greenComponent, greenGreenComponent)){
                     arduinoColor = "g";
-                    Debug.Log("QUI!!!! Ho trovato un oggetto verde");
                     break;
                 } else if (Mathf.Approximately(greenComponent, yellowGreenComponent)){
                     arduinoColor = "y";
-                    Debug.Log("QUI!!!! Ho trovato un oggetto giallo");
                     break;
                 } else if (Mathf.Approximately(greenComponent, orangeGreenComponent)){
                     arduinoColor = "w";
-                    Debug.Log("QUI!!!! Ho trovato un oggetto arancio");
                     break;
                 } else if (Mathf.Approximately(greenComponent, redGreenComponent)){
                     arduinoColor = "r";
-                    Debug.Log("QUI!!!! Ho trovato un oggetto rosso");
                     break;
                 }
             }

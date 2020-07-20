@@ -15,27 +15,34 @@ public class PickUp : MonoBehaviour {
     public bool inPickArea;
     public bool toPlaceBack = false;
 
+    private bool mushy = false;
+
     public string flowerScent;
     public string noFlowerScent;
 
     private GameObject destinationObj;
     private GameObject flowerObj;
 
-    private Vector3 pickDestination;
+    private Vector3 pickDestinationFlower;
+    private Vector3 pickDestinationMush;
     public Vector3 initialFlowerPosition;
     
 
     void Start(){
         // Assegna DestinationPickUp alla variabile
        destinationObj = GameObject.Find("DestinationPickUp");
-       Debug.Log(destinationObj.name);
+       //Debug.Log(destinationObj.name);
     }
 
     void Update(){
 
-        Debug.Log("thistoplaceback pickup: " + this.toPlaceBack);
+        //Debug.Log("thistoplaceback pickup: " + this.toPlaceBack);
         //Aggiorna la posizione di destinazione del pick
-        pickDestination = destinationObj.transform.position;
+        pickDestinationFlower = destinationObj.transform.position;
+        pickDestinationMush = destinationObj.transform.position - new Vector3(1, 0, 1);
+        Debug.Log("pickdestinationflower: " + pickDestinationFlower);
+        Debug.Log("pickdestinationmush: " + pickDestinationMush);
+
 
         //Cambia lo status di pickedUp a seconda dei tasti
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
@@ -50,7 +57,12 @@ public class PickUp : MonoBehaviour {
 
         //Cambia la posizione di flowerObj a seconda di pickedUp
         if(this.pickedUp == true){
-            flowerObj.transform.parent.position = pickDestination;
+            if (this.mushy == false){
+                flowerObj.transform.parent.position = pickDestinationFlower;
+            } else if (this.mushy == true){
+                flowerObj.transform.parent.position = pickDestinationMush;
+            }
+            
             this.toPlaceBack = true;
             Debug.Log("Il fiore si sposta");
         } else if (this.pickedUp == false && this.toPlaceBack == true){
@@ -63,8 +75,14 @@ public class PickUp : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
         
-        if (this.toPlaceBack == false && other.gameObject.name.StartsWith("FlowerSmellCollider")){
-            
+        if (this.toPlaceBack == false && (other.gameObject.name.StartsWith("FlowerSmellCollider") || other.gameObject.name.StartsWith("MushSmellCollider"))){
+
+            if (other.gameObject.name.StartsWith("FlowerSmellCollider")){
+                this.mushy = false;
+            } else if (other.gameObject.name.StartsWith("MushSmellCollider")){
+                this.mushy = true;
+            }
+
             flowerObj = other.gameObject;
             initialFlowerPosition = flowerObj.transform.position;
             Debug.Log("Fiore toccato: " + flowerObj.name);
