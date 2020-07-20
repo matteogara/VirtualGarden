@@ -33,6 +33,7 @@ public class PickUp : MonoBehaviour {
 
     void Update(){
 
+        Debug.Log("thistoplaceback pickup: " + this.toPlaceBack);
         //Aggiorna la posizione di destinazione del pick
         pickDestination = destinationObj.transform.position;
 
