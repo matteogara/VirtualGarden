@@ -93,6 +93,9 @@ public class Generator : MonoBehaviour
         GameObject _bush = new GameObject("Bush_" + bushCount);
         bushCount++;
 
+        // Create collider
+        AddCollider(_bush, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
+
         float _shrubsNum = Random.Range(1, 3);
         for (int i = 0; i < _shrubsNum; i++)
         {
@@ -128,6 +131,9 @@ public class Generator : MonoBehaviour
         GameObject _flower = new GameObject("flower_" + flowerCount);
         flowerCount++;
 
+        // Create collider
+        AddCollider(_flower, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
+
         // Create stem
         int stemIndex = Random.Range(0, _data.stems.Count);
         var _stem = Instantiate(_data.stems[stemIndex], Vector3.zero, Quaternion.Euler(-90, 0, 0));
@@ -157,6 +163,9 @@ public class Generator : MonoBehaviour
         // Create object
         GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
         mushroomCount++;
+
+        // Create collider
+        AddCollider(_mushroom, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create body
         int bodyIndex = Random.Range(0, _data.body.Count - 1);
