@@ -35,7 +35,7 @@ public class Generator : MonoBehaviour
 
         _trFoliage.GetComponent<MeshRenderer>().material = _data.folMat;
 
-        float _folR = Random.Range(_data.folMinScale, _data.folMaxScale);
+        float _folR = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
         float _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
         _trFoliage.transform.localScale = new Vector3(_folR, _folR, _folH);
         _trFoliage.transform.parent = _trunk.transform;
@@ -68,8 +68,8 @@ public class Generator : MonoBehaviour
 
             _trFoliage.GetComponent<MeshRenderer>().material = _data.folMat;
 
-            _folR = Random.Range(_data.folMinScale, _data.folMaxScale);
-            _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
+            _folR = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH * _data.brFolPropScale;
+            _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH * _data.brFolPropScale;
             _trFoliage.transform.localScale = new Vector3(_folR, _folR, _folH);
             _trFoliage.transform.parent = _brench.transform;
             _trFoliage.transform.localPosition = _data.folOffset;

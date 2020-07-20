@@ -37,6 +37,7 @@ public class TreeScriptableObject : ScriptableObject
     [Header("Foliage settings")]
     public float folMinScale = .5f;
     public float folMaxScale = 1f;
+    public float brFolPropScale = 1f;
     public Vector3 folOffset = new Vector3(0, 0, 0);
 
     [Header("Collider settings")]
