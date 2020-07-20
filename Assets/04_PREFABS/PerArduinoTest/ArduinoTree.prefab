@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1380646099086984920}
   - component: {fileID: 5763011018828784004}
   - component: {fileID: 4527159994881673219}
+  - component: {fileID: 5863136975914139773}
   m_Layer: 0
   m_Name: ChiomaSotto(Clone)
   m_TagString: Untagged
@@ -159,6 +160,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5863136975914139773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861742760236261599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999e1b80091cba243862f7e9bd1b3433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arduinoColor: 
+  color: 0
 --- !u!1 &969702642290892503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1271,7 @@ GameObject:
   - component: {fileID: 2578996550367354207}
   - component: {fileID: 2895813152423698537}
   m_Layer: 0
-  m_Name: TreeExample
+  m_Name: ArduinoTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1291,4 +1306,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arduinoColor: 
-  materialNameStart: ArduinoTest
+  color: 0
