@@ -6,7 +6,7 @@
         _Coordinate("Coordinate", Vector) = (0,0,0,0)
         _Color("Draw Color", Color) = (1,0,0,0)
         _Opacity("Opacity", Float) = 1
-        _Size("Size", Float) = 1000
+        _Size("Size", Float) = 400
     }
     SubShader
     {
