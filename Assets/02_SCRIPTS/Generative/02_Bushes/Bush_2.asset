@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Bush_2
   m_EditorClassIdentifier: 
   masterScale: 1
-  shrubs: {fileID: 0}
-  shrubsMat: {fileID: 0}
+  shrubs: {fileID: 919132149155446097, guid: 80050622655404262b55e8a5e07b9af6, type: 3}
+  shrubsMat: {fileID: 2100000, guid: 6ed0585172699423bb1763c276e2db10, type: 2}
   shrubsMinNum: 1
   shribsMaxNum: 5
   shrMaxDist: 3
   minScale: 0.4
   maxScale: 0.6
   largerShrubsAtCenter: 1
+  minCollScale: 1
+  maxCollScale: 2.5
