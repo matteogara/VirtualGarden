@@ -9,6 +9,7 @@ public class MushroomsGenerator : MonoBehaviour
 
     [Header("Models")]
     public List<GameObject> body = new List<GameObject>();
+    public List<float> bodyHeights = new List<float>();
     public List<GameObject> head = new List<GameObject>();
 
     [Header("Materials")]
@@ -48,8 +49,8 @@ public class MushroomsGenerator : MonoBehaviour
         count++;
 
         // Create body
-        int index = Random.Range(0, body.Count - 1);
-        var _body = Instantiate(body[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int bodyIndex = Random.Range(0, body.Count);
+        var _body = Instantiate(body[bodyIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _body.GetComponent<MeshRenderer>().material = bodyMat;
         float _bodyR = Random.Range(bodyMinScale, bodyMaxScale);
         float _bodyH = Random.Range(bodyMinScale, bodyMaxScale);
@@ -57,14 +58,15 @@ public class MushroomsGenerator : MonoBehaviour
         _body.transform.parent = _mushroom.transform;
 
         // Create head
-        index = Random.Range(0, head.Count - 1);
-        var _head = Instantiate(head[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int headIndex = Random.Range(0, head.Count);
+        var _head = Instantiate(head[headIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _head.GetComponent<MeshRenderer>().material = headMat;
         float _headR = Random.Range(headMinScale, headMaxScale);
         float _headH = Random.Range(headMinScale, headMaxScale);
         _head.transform.localScale = new Vector3(_headR, _headR, _headH);
         _head.transform.parent = _body.transform;
-        _head.transform.localPosition = new Vector3(0, 0, 1.75f);
+        _head.transform.localPosition = new Vector3(0, 0, bodyHeights[bodyIndex]);
+
 
         // Set position
         _mushroom.transform.position = _pos;

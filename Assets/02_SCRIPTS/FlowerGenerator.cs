@@ -10,6 +10,7 @@ public class FlowerGenerator : MonoBehaviour
     [Header("Models")]
     public List<GameObject> stems = new List<GameObject>();
     public List<float> stemsHeights = new List<float>();
+    public List<float> stemsWidth = new List<float>();
     public List<GameObject> corollas = new List<GameObject>();
 
     [Header("Materials")]
@@ -53,7 +54,7 @@ public class FlowerGenerator : MonoBehaviour
         _corolla.GetComponent<MeshRenderer>().material = corollaMat;
 
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, stemsHeights[stemIndex]);
+        _corolla.transform.localPosition = new Vector3(stemsWidth[stemIndex], 0, stemsHeights[stemIndex]);
 
         // Set position
         _flower.transform.position = _pos;

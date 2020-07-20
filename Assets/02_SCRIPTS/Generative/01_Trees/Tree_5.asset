@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Tree_5
   m_EditorClassIdentifier: 
   masterScale: 1
-  trunk: {fileID: 0}
-  brench: {fileID: 0}
-  foliage: {fileID: 0}
-  trMat: {fileID: 0}
-  folMat: {fileID: 0}
+  trunk: {fileID: 919132149155446097, guid: e92b958d2febb4c998e4a0769d14fd76, type: 3}
+  brench: {fileID: 919132149155446097, guid: 280f695d875a8491680fb843ad9bd009, type: 3}
+  foliage: {fileID: 919132149155446097, guid: aef29360804e14722ac4f502cce49471, type: 3}
+  trMat: {fileID: 2100000, guid: dbc75b4651bf44fb29661fa0db3dd71b, type: 2}
+  folMat: {fileID: 2100000, guid: 3b6e6fb0340234dedb5191ff5149df5a, type: 2}
   trMinR: 0.7
   trMaxR: 1.2
   trMinH: 0.7

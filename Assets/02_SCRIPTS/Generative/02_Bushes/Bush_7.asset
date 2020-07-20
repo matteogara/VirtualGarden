@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd3493c4d95de4e348b6e49e8846da28, type: 3}
-  m_Name: Bush_1
+  m_Name: Bush_7
   m_EditorClassIdentifier: 
   masterScale: 1
-  shrubs: {fileID: 919132149155446097, guid: cc5c6eef193b94345a9cf1847b2516f3, type: 3}
-  shrubsMat: {fileID: 2100000, guid: db6727e9f08404e05b27809f89131e95, type: 2}
+  shrubs: {fileID: 919132149155446097, guid: f2a51d8e635b4451380a9c02dcdd6465, type: 3}
+  shrubsMat: {fileID: 2100000, guid: 6ed0585172699423bb1763c276e2db10, type: 2}
   shrubsMinNum: 1
   shribsMaxNum: 5
   shrMaxDist: 3

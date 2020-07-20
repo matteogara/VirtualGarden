@@ -270,7 +270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 807243660}
+  typeOfVegetation: 2
   treeData: {fileID: 11400000, guid: f25193d517d7b420eb8597b279088b88, type: 2}
+  bushData: {fileID: 11400000, guid: d344eec6cb6214ff58354c64461ce73e, type: 2}
+  flowerData: {fileID: 11400000, guid: ab9c23c7386634f338aac202e0d1efb0, type: 2}
+  mushroomData: {fileID: 11400000, guid: 691fed44244a24b0aa8c267515781e34, type: 2}
 --- !u!1 &1032260734
 GameObject:
   m_ObjectHideFlags: 0
