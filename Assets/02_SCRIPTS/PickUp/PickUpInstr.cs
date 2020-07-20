@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 
 public class PickUpInstr : MonoBehaviour{
-   /* [SerializeField]
+
+    [SerializeField]
     private PickUp pickUpValues;
 
     private Text pickUpText;
@@ -13,7 +14,6 @@ public class PickUpInstr : MonoBehaviour{
 
     private bool inPickArea;
     private bool pickedUp;
-    private bool toPlaceBack;
 
     private Vector3 textPosition;
 
@@ -23,15 +23,11 @@ public class PickUpInstr : MonoBehaviour{
 
         pickUpText.text = "";
         placeBackText.text = "";
-   
     }
 
     void Update(){
         this.inPickArea = pickUpValues.inPickArea;
-        pickedUp = pickUpValues.pickedUp;
-        toPlaceBack = pickUpValues.toPlaceBack;
-
-        //Debug.Log(toPlaceBack + " trovato");
+        this.pickedUp = pickUpValues.pickedUp;
 
         pickUpText.transform.position = textPosition;
         placeBackText.transform.position = textPosition;
@@ -46,13 +42,12 @@ public class PickUpInstr : MonoBehaviour{
         } else if (this.inPickArea == false && pickedUp == false){
             pickUpText.text = "";
             placeBackText.text = "";
-        } 
-        
-        if (pickedUp == true) {
+        }
+
+        if (pickedUp == true){
             placeBackText.text = "Press Q \nto place it back";
             pickUpText.text = "";
-        } 
-
-    }*/
+        }
+    }
 
 }
