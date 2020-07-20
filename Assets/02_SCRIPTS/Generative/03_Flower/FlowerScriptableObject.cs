@@ -11,6 +11,7 @@ public class FlowerScriptableObject : ScriptableObject
     [Header("Models")]
     public List<GameObject> stems = new List<GameObject>();
     public List<float> stemsHeights = new List<float>();
+    public List<float> stemsWidth = new List<float>();
     public List<GameObject> corollas = new List<GameObject>();
 
     [Header("Materials")]

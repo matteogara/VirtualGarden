@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
+    [Header("Smell collider size")]
+    public float smellCollSize;
+
+    [Header("Delete collider size")]
+    public float deleteCollSize;
+
     private float treeCount, bushCount, flowerCount, mushroomCount, grassCount;
 
 
@@ -15,10 +21,8 @@ public class Generator : MonoBehaviour
         _tree.tag = "Spawn_Tree";
         treeCount++;
 
-        // Collider
-        SphereCollider treeCollider = _tree.AddComponent<SphereCollider>();
-        treeCollider.radius = Random.Range(_data.minCollScale, _data.maxCollScale);
-        treeCollider.isTrigger = true;
+        // Create collider
+        AddCollider(_tree, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create trunk
         var _trunk = Instantiate(_data.trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
@@ -89,6 +93,9 @@ public class Generator : MonoBehaviour
         GameObject _bush = new GameObject("Bush_" + bushCount);
         bushCount++;
 
+        // Create collider
+        AddCollider(_bush, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
+
         float _shrubsNum = Random.Range(1, 3);
         for (int i = 0; i < _shrubsNum; i++)
         {
@@ -124,6 +131,9 @@ public class Generator : MonoBehaviour
         GameObject _flower = new GameObject("flower_" + flowerCount);
         flowerCount++;
 
+        // Create collider
+        AddCollider(_flower, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
+
         // Create stem
         int stemIndex = Random.Range(0, _data.stems.Count);
         var _stem = Instantiate(_data.stems[stemIndex], Vector3.zero, Quaternion.Euler(-90, 0, 0));
@@ -136,7 +146,7 @@ public class Generator : MonoBehaviour
         _corolla.GetComponent<MeshRenderer>().material = _data.corollaMat;
 
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, _data.stemsHeights[stemIndex]);
+        _corolla.transform.localPosition = new Vector3(_data.stemsWidth[stemIndex], 0, _data.stemsHeights[stemIndex]);
 
         // Set position
         _flower.transform.position = _pos;
@@ -154,9 +164,12 @@ public class Generator : MonoBehaviour
         GameObject _mushroom = new GameObject("mushrooms_" + mushroomCount);
         mushroomCount++;
 
+        // Create collider
+        AddCollider(_mushroom, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
+
         // Create body
-        int index = Random.Range(0, _data.body.Count - 1);
-        var _body = Instantiate(_data.body[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int bodyIndex = Random.Range(0, _data.body.Count - 1);
+        var _body = Instantiate(_data.body[bodyIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _body.GetComponent<MeshRenderer>().material = _data.bodyMat;
         float _bodyR = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
         float _bodyH = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
@@ -164,14 +177,14 @@ public class Generator : MonoBehaviour
         _body.transform.parent = _mushroom.transform;
 
         // Create head
-        index = Random.Range(0, _data.head.Count - 1);
-        var _head = Instantiate(_data.head[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int headIndex = Random.Range(0, _data.head.Count - 1);
+        var _head = Instantiate(_data.head[headIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _head.GetComponent<MeshRenderer>().material = _data.headMat;
         float _headR = Random.Range(_data.headMinScale, _data.headMaxScale);
         float _headH = Random.Range(_data.headMinScale, _data.headMaxScale);
         _head.transform.localScale = new Vector3(_headR, _headR, _headH);
         _head.transform.parent = _body.transform;
-        _head.transform.localPosition = new Vector3(0, 0, 1.75f);
+        _head.transform.localPosition = new Vector3(0, 0, _data.bodyHeights[bodyIndex]);
 
         // Set position
         _mushroom.transform.position = _pos;
@@ -184,4 +197,37 @@ public class Generator : MonoBehaviour
 
 
     // CreateGrass da aggiungere
+
+
+
+    private void AddCollider(GameObject _obj, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
+    {
+        // Add spawn collider
+        GameObject _spawn = new GameObject("Spawn collider");
+        _spawn.transform.parent = _obj.transform;
+        _spawn.transform.localPosition = Vector3.zero;
+        _spawn.layer = LayerMask.NameToLayer("Spawn");
+        SphereCollider _spawnColl = _spawn.AddComponent<SphereCollider>();
+        _spawnColl.radius = Random.Range(_spawnCollMinSize, _spawnCollMaxSize);
+        _spawnColl.isTrigger = true;
+
+        // Add delete collider
+        GameObject _delete = new GameObject("Delete collider");
+        _delete.transform.parent = _obj.transform;
+        _delete.transform.localPosition = Vector3.zero;
+        _delete.layer = LayerMask.NameToLayer("Delete");
+        SphereCollider _deleteColl = _delete.AddComponent<SphereCollider>();
+        _deleteColl.radius = _deleteCollSize;
+        _deleteColl.isTrigger = true;
+
+        // Add smell collider
+        GameObject _smell = new GameObject("Smell collider");
+        _smell.transform.parent = _obj.transform;
+        _smell.transform.localPosition = Vector3.zero;
+        _smell.layer = LayerMask.NameToLayer("Smell");
+        CapsuleCollider _smellColl = _smell.AddComponent<CapsuleCollider>();
+        _smellColl.radius = _smellCollSize;
+        _smellColl.height = 10;
+        _smellColl.isTrigger = true;
+    }
 }

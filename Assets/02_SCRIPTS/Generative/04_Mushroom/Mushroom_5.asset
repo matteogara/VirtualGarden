@@ -12,12 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1fe637081e243939762b8663764c18, type: 3}
   m_Name: Mushroom_5
   m_EditorClassIdentifier: 
-  masterScale: 1
-  body: []
-  head: []
-  bodyMat: {fileID: 0}
-  headMat: {fileID: 0}
-  bodyMinScale: 0.5
-  bodyMaxScale: 1
+  masterScale: 0.2
+  body:
+  - {fileID: 919132149155446097, guid: 65f5986c8599b48bbbba5d263f05d570, type: 3}
+  bodyHeights:
+  - 1
+  head:
+  - {fileID: 919132149155446097, guid: 0b1cd5ae8f3e94c438f90fc4e377402c, type: 3}
+  - {fileID: 919132149155446097, guid: 88e17f6c57ead44c787b86dec3c7effa, type: 3}
+  - {fileID: 919132149155446097, guid: 321b35771553a485593dbe3c7c3341a7, type: 3}
+  - {fileID: 919132149155446097, guid: 4812f878169904ba4b108a27d8990f8d, type: 3}
+  - {fileID: 919132149155446097, guid: c7c7dc85e37a3476b9e124f518c6eeec, type: 3}
+  bodyMat: {fileID: 2100000, guid: bb6a4e1779f644f3fab71e914c171b78, type: 2}
+  headMat: {fileID: 2100000, guid: 91f9619f03cdb47c5a2b048251831e28, type: 2}
+  bodyMinScale: 1
+  bodyMaxScale: 1.5
   headMinScale: 1
   headMaxScale: 1.5
+  minCollScale: 1
+  maxCollScale: 2.5

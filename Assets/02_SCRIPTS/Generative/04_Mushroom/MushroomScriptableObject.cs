@@ -10,6 +10,7 @@ public class MushroomScriptableObject : ScriptableObject
 
     [Header("Models")]
     public List<GameObject> body = new List<GameObject>();
+    public List<float> bodyHeights = new List<float>();
     public List<GameObject> head = new List<GameObject>();
 
     [Header("Materials")]
