@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3493c4d95de4e348b6e49e8846da28, type: 3}
   m_Name: Bush_6
   m_EditorClassIdentifier: 
-  masterScale: 1
+  masterScale: 0.07
   shrubs: {fileID: 919132149155446097, guid: 557ad77de31044c3d88292c58d204692, type: 3}
   shrubsMat: {fileID: 2100000, guid: db6727e9f08404e05b27809f89131e95, type: 2}
   shrubsMinNum: 1
   shribsMaxNum: 5
-  shrMaxDist: 3
+  shrMaxDist: 20
   minScale: 0.4
-  maxScale: 0.6
+  maxScale: 0.4
   largerShrubsAtCenter: 1
-  minCollScale: 1
-  maxCollScale: 2.5
+  minCollScale: 0.5
+  maxCollScale: 1.5
