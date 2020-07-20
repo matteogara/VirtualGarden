@@ -33,7 +33,7 @@ public class TreeScentTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
 
-        if (other.gameObject.name.StartsWith("TreeSmellCollider") || other.gameObject.name.StartsWith("BushSmellCollider")){
+        if (other.gameObject.transform.parent.tag == "Spawn_Tree" || other.gameObject.transform.parent.tag == "Spawn_Bush"){
 
             treeObj = other.gameObject;
 
@@ -44,28 +44,25 @@ public class TreeScentTrigger : MonoBehaviour {
             if (this.toPlaceBack == false){
                 TriggerScent();
             }
-            
-
-            //treeScent = treeObj.GetComponentInParent<ColorGrabber>().arduinoColor;
-            //send.Invoke(treeScent);
-            //Debug.Log("colore albero: " + treeScent);
         }
     }
 
     private void OnTriggerExit(Collider other){
         enteredWhilePickedUp = false;
 
-        if (other.gameObject.name.StartsWith("TreeSmellCollider") || other.gameObject.name.StartsWith("BushSmellCollider")){
-            Debug.Log("Fuori area treeScent");
-
+        if (other.gameObject.transform.parent.tag == "Spawn_Tree" || other.gameObject.transform.parent.tag == "Spawn_Bush"){
             noTreeScent = treeScent.ToUpper();
             InOnExit.Invoke(noTreeScent);
+            Debug.Log("ALBERO/BUSH: fuori area e profumo disttivato");
         }
     }
 
     private void TriggerScent(){
         treeScent = treeObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+        Debug.Log("ALBERO/BUSH: colore rilevato = " + treeScent);
+
         send.Invoke(treeScent);
+        Debug.Log("ALBERO/BUSH: in area e profumo attivato");
     }
 }
 

@@ -61,7 +61,6 @@ public class WindDetector : MonoBehaviour{
         windIntensity_R = - Mathf.Min(Vector3.Dot(wind, fanDir_R), 0);
 
         string windString = Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8)).ToString();
-        Debug.Log(windString);
         sendWind.Invoke(windString);
       
         // Wind sound
