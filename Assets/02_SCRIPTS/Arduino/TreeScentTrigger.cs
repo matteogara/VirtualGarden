@@ -31,6 +31,7 @@ public class TreeScentTrigger : MonoBehaviour {
 
             treeScent = treeObj.GetComponentInParent<ColorGrabber>().arduinoColor;
             send.Invoke(treeScent);
+            Debug.Log("colore albero: " + treeScent);
         }
     }
 

@@ -4,84 +4,48 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ColorGrabber : MonoBehaviour {
-  public string arduinoColor;
-    public string materialNameStart;
+    public string arduinoColor;
+    private float greenComponent;
 
-    /*void Start(){
+    void Start(){
+        
+        float blueGreenComponent = 0.5647059f;
+        float greenGreenComponent = 0.7764706f;
+        float yellowGreenComponent = 0.6821074f;
+        float orangeGreenComponent = 0.439802f;
+        float redGreenComponent = 0.39102f;
 
-        Color blueColor = new Color(57f, 144f, 229f);
-        Color greenColor = new Color(105f, 198f, 229f);
-        Color yellowColor = new Color(255f, 174f, 100f);
-        Color orangeColor = new Color(250f, 112f, 100f);
-        Color redColor = new Color(243f, 100f, 134f);
 
-
-        List<Renderer> rendererList = new List<Renderer>();
-        GetComponentsInChildren<Renderer>(false, rendererList);
+        List<MeshRenderer> rendererList = new List<MeshRenderer>();
+        GetComponentsInChildren<MeshRenderer>(false, rendererList);
 
         if (rendererList != null){
                         
-            foreach (Renderer r in rendererList){
-                Color objColor = r.material.GetColor("_Tint");
-            
+            foreach (MeshRenderer rendererPart in rendererList){
+                greenComponent = rendererPart.material.GetColor("_Color").g;
+                //Debug.Log("elenco lista " + rendererPart.ToString() + "colore verde: " + greenComponent);
 
-                if (objColor == blueColor){
+               if (greenComponent == blueGreenComponent){
                     arduinoColor = "b";
-                } else if (objBluComp == 206){
+                    Debug.Log("Ho trovato un oggetto blu");
+                    break;
+                 } else if (greenComponent == greenGreenComponent){
                     arduinoColor = "g";
-                } else if (objBluComp == 124){
+                    break;
+                } else if (greenComponent == yellowGreenComponent){
                     arduinoColor = "y";
-                } else if (objBluComp == 120){
+                    break;
+                } else if (greenComponent == orangeGreenComponent){
                     arduinoColor = "w";
-                } else if (objBluComp == 134){
+                    break;
+                } else if (greenComponent == redGreenComponent){
                     arduinoColor = "r";
+                    break;
                 }
-                return;
-                
+                 
             }
 
-        }
-    }*/
-
-
-
-    void Start() {
-        string colorName;
-
-        List<Renderer> rendererList = new List<Renderer>();
-        GetComponentsInChildren<Renderer>(false, rendererList);
-        //Debug.Log("rendererList: " + rendererList);
-        if (rendererList != null){
-            
-            //Accedi a tutti i materiali del prefab
-            foreach(Renderer r in rendererList) {
-                Material m = r.material;
-                
-                //Quando trovi un materiale che inizia per stringa predefinita, allora prendi quello che segue
-                if(m.name.StartsWith(materialNameStart)){
-                    colorName = m.name.Substring(materialNameStart.Length);
-                //Debug.Log("colorName: " + colorName);
-                    if (colorName.StartsWith("Green")){
-                        arduinoColor = "g";
-                    }
-                    else if (colorName.StartsWith("Blue")){
-                        arduinoColor = "b";
-                    }
-                    else if (colorName.StartsWith("Red")){
-                        arduinoColor = "r";
-                    }
-                    else if (colorName.StartsWith("Yellow")){
-                        arduinoColor = "y";
-                    }
-                    else if (colorName.StartsWith("Orange")){
-                        arduinoColor = "w";
-                    }
-                    return;
-                }
-            }
-           
         }
     }
-
 }
 
