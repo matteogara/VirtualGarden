@@ -25,7 +25,8 @@ public class Generator : MonoBehaviour
         AddCollider(_tree, _data.minCollScale, _data.maxCollScale, deleteCollSize, smellCollSize);
 
         // Create trunk
-        var _trunk = Instantiate(_data.trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+        int trunkIndex = Random.Range(0, _data.trunk.Count);
+        var _trunk = Instantiate(_data.trunk[trunkIndex], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
         _trunk.GetComponent<MeshRenderer>().material = _data.trMat;
         _trunk.transform.parent = _tree.transform;
         float _trR = Random.Range(_data.trMinR, _data.trMaxR);
@@ -41,14 +42,14 @@ public class Generator : MonoBehaviour
         float _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
         _trFoliage.transform.localScale = new Vector3(_folR, _folR, _folH);
         _trFoliage.transform.parent = _trunk.transform;
-        _trFoliage.transform.localPosition = new Vector3(0, 0, 5.6f);
+        _trFoliage.transform.localPosition = new Vector3(0, 0, _data.trunkHeights[trunkIndex]);
 
 
         // Create brenches
-        float _brenchNum = Random.Range(1, 5);
+        float _brenchNum = Random.Range(0, 3);
         for (int i = 0; i < _brenchNum; i++)
         {
-            var _brench = Instantiate(_data.brench, Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 0));
+            var _brench = Instantiate(_data.brench, Vector3.zero, Quaternion.Euler(-45, Random.Range(0, 360), -90));
             _brench.GetComponent<MeshRenderer>().material = _data.trMat;
             float _z = Random.Range(_data.brMinH, _data.brMaxH);
             float s;

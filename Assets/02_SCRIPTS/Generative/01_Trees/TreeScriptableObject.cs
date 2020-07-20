@@ -10,7 +10,8 @@ public class TreeScriptableObject : ScriptableObject
     public float masterScale = 1;
 
     [Header("Models")]
-    public GameObject trunk;
+    public List<GameObject> trunk = new List<GameObject>();
+    public List<float> trunkHeights = new List<float>();
     public GameObject brench;
     public GameObject foliage;
 
@@ -25,18 +26,18 @@ public class TreeScriptableObject : ScriptableObject
     public float trMaxH = 1.2f;
 
     [Header("Brenches settings")]
-    public int brMinNum = 1;
-    public int brMaxNum = 4;
+    public int brMinNum = 0;
+    public int brMaxNum = 2;
     public int brMinH = 2;
     public int brMaxH = 6;
-    public float brMinScale = .8f;
+    public float brMinScale = 0.8f;
     public float brMaxScale = 1.3f;
     public bool largerBrenchesBelow = true;
 
     [Header("Foliage settings")]
     public float folMinScale = .5f;
     public float folMaxScale = 1f;
-    public Vector3 folOffset = new Vector3(-1.5f, 0, 1.45f);
+    public Vector3 folOffset = new Vector3(0, 0, 0);
 
     [Header("Collider settings")]
     public float minCollScale = 1f;

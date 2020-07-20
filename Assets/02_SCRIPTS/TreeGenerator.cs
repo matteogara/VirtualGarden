@@ -81,9 +81,7 @@ public class TreeGenerator : MonoBehaviour
         _trFolDown.transform.localScale = new Vector3(_folR, _folR, _folH);
         _trFolUp.transform.localScale = new Vector3(_folR, _folR, _folR);
         _trFolUp.transform.parent = _trFolDown.transform;
-        _trFolUp.transform.localPosition = new Vector3(0, 0, 1);
         _trFolDown.transform.parent = _trunk.transform;
-        _trFolDown.transform.localPosition = new Vector3(0, 0, 5.6f);
 
 
         // Create brenches
