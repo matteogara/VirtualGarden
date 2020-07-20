@@ -17,6 +17,7 @@ public class SCENE_MANAGER : MonoBehaviour
     public DrawColoredAreas canvas;
 
     SpawnMarker marker;
+    int colBU;
 
 
     private void Awake()
@@ -39,8 +40,16 @@ public class SCENE_MANAGER : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X)) {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            colBU = selection[0];
             int[] newSel = { 5, selection[1] };
+            updateSelection(newSel);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            int[] newSel = { colBU, selection[1] };
             updateSelection(newSel);
         }
     }
@@ -48,8 +57,11 @@ public class SCENE_MANAGER : MonoBehaviour
 
     public void updateSelection(int[] _sel) {
         selection = _sel;
+        float _size = (_sel[0] != 5) ? 400 : 800;
 
+        canvas.ChangeSize(_size);
         canvas.ChangeCol(_sel[0]);
+
         marker.ChangeMarker(_sel[0]);
 
         spawner.SetActive(!(_sel[0] == 5));

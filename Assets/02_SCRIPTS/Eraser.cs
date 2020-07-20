@@ -9,8 +9,7 @@ public class Eraser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Eraser");
-        if (movePointer.validPointer && Input.GetKey(KeyCode.Mouse0)) {
+        if (movePointer.validPointer) {
             Destroy(other.transform.parent.gameObject);
         }
     }

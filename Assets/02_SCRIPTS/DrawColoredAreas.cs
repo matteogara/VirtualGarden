@@ -65,6 +65,11 @@ public class DrawColoredAreas : MonoBehaviour
     }
 
 
+    public void ChangeSize(float _size) {
+        _drawMaterial.SetFloat("_Size", _size);
+    }
+
+
     public void ShowAreas(bool _on) {
         float _hide = (_on) ? 0 : 1;
         _objMaterial.SetFloat("_HideAreas", _hide);
