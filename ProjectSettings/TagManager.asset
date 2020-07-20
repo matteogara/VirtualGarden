@@ -10,6 +10,11 @@ TagManager:
   - Ground
   - Spawn_Bush
   - Spawn_Grass
+  - Smell_0
+  - Smell_1
+  - Smell_2
+  - Smell_3
+  - Smell_4
   layers:
   - Default
   - TransparentFX
