@@ -17,6 +17,8 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 88e111b14523f429a8a8d38c3ef460e5, type: 3}
   stemsHeights:
   - 80
+  stemsWidth:
+  - 0.8
   corollas:
   - {fileID: 919132149155446097, guid: ca23fda676d794ca4aa58052d0e1ddef, type: 3}
   - {fileID: 919132149155446097, guid: b8188d140d3bf429db78e11efa6bda67, type: 3}

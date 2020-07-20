@@ -136,7 +136,7 @@ public class Generator : MonoBehaviour
         _corolla.GetComponent<MeshRenderer>().material = _data.corollaMat;
 
         _corolla.transform.parent = _stem.transform;
-        _corolla.transform.localPosition = new Vector3(0, 0, _data.stemsHeights[stemIndex]);
+        _corolla.transform.localPosition = new Vector3(_data.stemsWidth[stemIndex], 0, _data.stemsHeights[stemIndex]);
 
         // Set position
         _flower.transform.position = _pos;
@@ -155,8 +155,8 @@ public class Generator : MonoBehaviour
         mushroomCount++;
 
         // Create body
-        int index = Random.Range(0, _data.body.Count - 1);
-        var _body = Instantiate(_data.body[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int bodyIndex = Random.Range(0, _data.body.Count - 1);
+        var _body = Instantiate(_data.body[bodyIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _body.GetComponent<MeshRenderer>().material = _data.bodyMat;
         float _bodyR = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
         float _bodyH = Random.Range(_data.bodyMinScale, _data.bodyMaxScale);
@@ -164,14 +164,14 @@ public class Generator : MonoBehaviour
         _body.transform.parent = _mushroom.transform;
 
         // Create head
-        index = Random.Range(0, _data.head.Count - 1);
-        var _head = Instantiate(_data.head[index], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
+        int headIndex = Random.Range(0, _data.head.Count - 1);
+        var _head = Instantiate(_data.head[headIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
         _head.GetComponent<MeshRenderer>().material = _data.headMat;
         float _headR = Random.Range(_data.headMinScale, _data.headMaxScale);
         float _headH = Random.Range(_data.headMinScale, _data.headMaxScale);
         _head.transform.localScale = new Vector3(_headR, _headR, _headH);
         _head.transform.parent = _body.transform;
-        _head.transform.localPosition = new Vector3(0, 0, 1.75f);
+        _head.transform.localPosition = new Vector3(0, 0, _data.bodyHeights[bodyIndex]);
 
         // Set position
         _mushroom.transform.position = _pos;
