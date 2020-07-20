@@ -5,27 +5,44 @@ using UnityEngine.Events;
 
 public class TreeScentTrigger : MonoBehaviour {
 
-    /*[SerializeField]
+    [SerializeField]
     private PickUp pickUpValues;
 
-    
-    //private bool banana = false;
+    public ArduinoEvent send;
+    public ArduinoEvent InOnExit;
+
+    public string treeScent;
+    public string noTreeScent;
+
+    private bool toPlaceBack;
+
+    private GameObject treeObj;
 
     void Update(){
-       
+        this.toPlaceBack = pickUpValues.toPlaceBack;
+        Debug.Log("toplaceback tree: " + this.toPlaceBack);
     }
 
-    void OnTriggerEnter(Collider other){
-        if (pickUpValues.toPlaceBack == false && (other.gameObject.name.StartsWith("ArduinoTree") || other.gameObject.name.StartsWith("ArduinoBush"))){
-            string arduinoColor = other.gameObject.GetComponent<ColorGrabber>().arduinoColor;
-            Debug.Log("Colore collisione albero: " + arduinoColor);
+    private void OnTriggerEnter(Collider other){
+
+        if (this.toPlaceBack == false && (other.gameObject.name.StartsWith("TreeSmellCollider") || other.gameObject.name.StartsWith("BushSmellCollider"))){
+            treeObj = other.gameObject;
+            Debug.Log("Dentro area treeScent");
+
+            treeScent = treeObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+            send.Invoke(treeScent);
+            Debug.Log("colore albero: " + treeScent);
         }
-    } */
+    }
 
+    private void OnTriggerExit(Collider other){
+        if (other.gameObject.name.StartsWith("TreeSmellCollider") || other.gameObject.name.StartsWith("BushSmellCollider")){
+            Debug.Log("Fuori area treeScent");
 
-
-
-
+            noTreeScent = treeScent.ToUpper();
+            InOnExit.Invoke(noTreeScent);
+        }
+    }
 
     /* [SerializeField]
      private PickUp pickUpValues;

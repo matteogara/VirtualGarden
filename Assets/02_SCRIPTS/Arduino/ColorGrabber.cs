@@ -4,46 +4,51 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ColorGrabber : MonoBehaviour {
-  public string arduinoColor;
-  public string materialNameStart;
+    public string arduinoColor;
+    private float greenComponent;
 
-    void Start() {
-        string colorName;
+    void Start(){
 
-        List<Renderer> rendererList = new List<Renderer>();
-        GetComponentsInChildren<Renderer>(false, rendererList);
-        //Debug.Log("rendererList: " + rendererList);
+        float blueGreenComponent = 0.5647059f;
+        float greenGreenComponent = 0.7764706f;
+        float yellowGreenComponent = 0.6821074f; 
+        float orangeGreenComponent = 0.439802f;
+        float redGreenComponent = 0.39102f;
+
+        List<MeshRenderer> rendererList = new List<MeshRenderer>();
+        GetComponentsInChildren<MeshRenderer>(false, rendererList);
+
         if (rendererList != null){
-            
-            //Accedi a tutti i materiali del prefab
-            foreach(Renderer r in rendererList) {
-                Material m = r.material;
+                        
+            foreach (MeshRenderer rendererPart in rendererList){
                 
-                //Quando trovi un materiale che inizia per stringa predefinita, allora prendi quello che segue
-                if(m.name.StartsWith(materialNameStart)){
-                    colorName = m.name.Substring(materialNameStart.Length);
-                  //  Debug.Log("colorName: " + colorName);
-                    if (colorName.StartsWith("Green")){
-                        arduinoColor = "g";
-                    }
-                    else if (colorName.StartsWith("Blue")){
-                        arduinoColor = "b";
-                    }
-                    else if (colorName.StartsWith("Red")){
-                        arduinoColor = "r";
-                    }
-                    else if (colorName.StartsWith("Yellow")){
-                        arduinoColor = "y";
-                    }
-                    else if (colorName.StartsWith("Orange")){
-                        arduinoColor = "w";
-                    }
-                    return;
+                greenComponent = rendererPart.material.GetColor("_Color").g;
+                //Debug.Log("elenco lista: " + rendererPart.ToString() + " colore: " + greenComponent);
+
+                if (Mathf.Approximately(greenComponent, blueGreenComponent)){
+                    arduinoColor = "b";
+                    Debug.Log("QUI!!!! Ho trovato un oggetto blu");
+                    break;
+                 } else if (Mathf.Approximately(greenComponent, greenGreenComponent)){
+                    arduinoColor = "g";
+                    Debug.Log("QUI!!!! Ho trovato un oggetto verde");
+                    break;
+                } else if (Mathf.Approximately(greenComponent, yellowGreenComponent)){
+                    arduinoColor = "y";
+                    Debug.Log("QUI!!!! Ho trovato un oggetto giallo");
+                    break;
+                } else if (Mathf.Approximately(greenComponent, orangeGreenComponent)){
+                    arduinoColor = "w";
+                    Debug.Log("QUI!!!! Ho trovato un oggetto arancio");
+                    break;
+                } else if (Mathf.Approximately(greenComponent, redGreenComponent)){
+                    arduinoColor = "r";
+                    Debug.Log("QUI!!!! Ho trovato un oggetto rosso");
+                    break;
                 }
             }
-           
+
         }
     }
-      
 }
 
