@@ -23,8 +23,7 @@ public class PickUp : MonoBehaviour {
     private GameObject destinationObj;
     private GameObject flowerObj;
 
-    private Vector3 pickDestinationFlower;
-    private Vector3 pickDestinationMush;
+    private Vector3 pickDestination;
     public Vector3 initialFlowerPosition;
     
 
@@ -38,11 +37,8 @@ public class PickUp : MonoBehaviour {
 
         //Debug.Log("thistoplaceback pickup: " + this.toPlaceBack);
         //Aggiorna la posizione di destinazione del pick
-        pickDestinationFlower = destinationObj.transform.position;
-        pickDestinationMush = destinationObj.transform.position - new Vector3(1, 0, 1);
-        Debug.Log("pickdestinationflower: " + pickDestinationFlower);
-        Debug.Log("pickdestinationmush: " + pickDestinationMush);
-
+        pickDestination = destinationObj.transform.position;
+        Debug.Log("pickdestinationflower: " + pickDestination);
 
         //Cambia lo status di pickedUp a seconda dei tasti
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
@@ -57,12 +53,7 @@ public class PickUp : MonoBehaviour {
 
         //Cambia la posizione di flowerObj a seconda di pickedUp
         if(this.pickedUp == true){
-            if (this.mushy == false){
-                flowerObj.transform.parent.position = pickDestinationFlower;
-            } else if (this.mushy == true){
-                flowerObj.transform.parent.position = pickDestinationMush;
-            }
-            
+            flowerObj.transform.parent.position = pickDestination;         
             this.toPlaceBack = true;
             Debug.Log("Il fiore si sposta");
         } else if (this.pickedUp == false && this.toPlaceBack == true){
@@ -70,21 +61,13 @@ public class PickUp : MonoBehaviour {
             this.toPlaceBack = false;
             Debug.Log("Il fiore ritorna al suo posto");
         }
-
     }
 
     private void OnTriggerEnter(Collider other){
-        
         if (this.toPlaceBack == false && (other.gameObject.name.StartsWith("FlowerSmellCollider") || other.gameObject.name.StartsWith("MushSmellCollider"))){
 
-            if (other.gameObject.name.StartsWith("FlowerSmellCollider")){
-                this.mushy = false;
-            } else if (other.gameObject.name.StartsWith("MushSmellCollider")){
-                this.mushy = true;
-            }
-
             flowerObj = other.gameObject;
-            initialFlowerPosition = flowerObj.transform.position;
+            initialFlowerPosition = flowerObj.transform.parent.position;
             Debug.Log("Fiore toccato: " + flowerObj.name);
 
             flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
