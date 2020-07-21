@@ -14,6 +14,9 @@ public class PickUp : MonoBehaviour {
     public ArduinoEvent send;
     public ArduinoEvent InOnExit;
 
+    [Header("Smell Debug")]
+    public SmellDebug smellDebug;
+
     [HideInInspector] public bool pickedUp = false;
     [HideInInspector] public bool inPickArea;
     [HideInInspector] public bool toPlaceBack = false;
@@ -30,14 +33,14 @@ public class PickUp : MonoBehaviour {
     [HideInInspector] private bool creativeMode;
 
     void Start(){
-       
+
         // Assegna DestinationPickUp alla variabile
        destinationObj = GameObject.Find("DestinationPickUp");
     }
 
     void Update(){
 
-        
+
         this.creativeMode = modality.creativeMode;
 
         //Aggiorna la posizione di destinazione del pick
@@ -47,16 +50,21 @@ public class PickUp : MonoBehaviour {
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
             this.pickedUp = true;
             send.Invoke(flowerScent);
+
             Debug.Log("FIORE/MUSH: in mano e profumo attivato");
+            smellDebug.TurnOnLed(flowerScent);
+
         } else if (this.pickedUp == true && Input.GetKey("q")){
             this.pickedUp = false;
             InOnExit.Invoke(noFlowerScent);
+
             Debug.Log("FIORE/MUSH: a terra e profumo disattivato");
+            smellDebug.TurnOffLeds();
         }
 
         //Cambia la posizione di flowerObj a seconda di pickedUp
         if(this.pickedUp == true){
-            flowerObj.transform.parent.position = pickDestination;         
+            flowerObj.transform.parent.position = pickDestination;
             this.toPlaceBack = true;
         } else if (this.pickedUp == false && this.toPlaceBack == true){
             flowerObj.transform.parent.position = initialFlowerPosition;
@@ -66,7 +74,7 @@ public class PickUp : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other){
-       
+
         if (this.creativeMode == false && this.toPlaceBack == false && other.gameObject.transform.parent.tag == "Spawn_Grass"){
 
             flowerObj = other.gameObject;
@@ -84,7 +92,7 @@ public class PickUp : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other){
-        
+
         if (other.gameObject == flowerObj){
             this.inPickArea = false;
         }

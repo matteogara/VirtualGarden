@@ -17,6 +17,9 @@ public class TreeScentTrigger : MonoBehaviour {
     [HideInInspector] public string treeScent;
     [HideInInspector] public string noTreeScent;
 
+    [Header("Smell Debug")]
+    public SmellDebug smellDebug;
+
     private bool toPlaceBack;
     private bool pickedUp;
     private bool enteredWhilePickedUp = false;
@@ -59,6 +62,9 @@ public class TreeScentTrigger : MonoBehaviour {
             noTreeScent = treeScent.ToUpper();
             InOnExit.Invoke(noTreeScent);
             Debug.Log("ALBERO/BUSH: fuori area e profumo disttivato");
+
+            // Turn off all smell debug leds
+            smellDebug.TurnOffLeds();
         }
     }
 
@@ -69,7 +75,8 @@ public class TreeScentTrigger : MonoBehaviour {
         send.Invoke(treeScent);
         Debug.Log("ALBERO/BUSH: in area e profumo attivato");
 
-
+        // Turn on smell debug led
+        smellDebug.TurnOnLed(treeScent);
     }
 }
 

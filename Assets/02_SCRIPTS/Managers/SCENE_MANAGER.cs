@@ -69,5 +69,7 @@ public class SCENE_MANAGER : MonoBehaviour
 
         pointer.SetActive(creativeMode);
         canvas.ShowAreas(creativeMode);
+
+        spawner.GetComponent<Spawner>().ResetLists();
     }
 }

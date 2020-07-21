@@ -112,7 +112,10 @@ public class Generator : MonoBehaviour
             Vector3 s = new Vector3(Random.Range(_data.minScale, _data.maxScale), Random.Range(_data.minScale, _data.maxScale), Random.Range(_data.minScale, _data.maxScale));
             if (_data.largerShrubsAtCenter)
             {
-                s /= (offset.magnitude + 1);
+                float maxMagnitude = new Vector3(_data.shrMaxDist, 0, _data.shrMaxDist).magnitude;
+                Debug.Log(maxMagnitude);
+                Debug.Log(offset.magnitude);
+                s = s * (1 - offset.magnitude / maxMagnitude);
             }
 
             _shrubs.transform.localScale = s;
