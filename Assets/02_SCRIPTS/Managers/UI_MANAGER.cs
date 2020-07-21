@@ -45,6 +45,7 @@ public class UI_MANAGER : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         RefreshUI();
+        RefreshDebug();
     }
 
 
@@ -140,6 +141,8 @@ public class UI_MANAGER : MonoBehaviour
 
             PlaySound(tabSound);
             started = !started;
+
+            RefreshDebug();
         }
 
         // Switch mode
@@ -147,7 +150,7 @@ public class UI_MANAGER : MonoBehaviour
             sceneManager.toggleMode();
             panel.SetActive(false);
 
-            windDebug.SetActive(!sceneManager.creativeMode);
+            RefreshDebug();
         }
     }
 
@@ -165,14 +168,22 @@ public class UI_MANAGER : MonoBehaviour
     }
 
 
-    void DisableAllButtons() {
+    void RefreshDebug()
+    {
+        windDebug.SetActive(!sceneManager.creativeMode && started);
+    }
+
+
+    void DisableAllButtons()
+    {
         foreach (Button _r in rows) _r.interactable = false;
         foreach (Button _s in smells) _s.interactable = false;
         foreach (Button _v in vegs) _v.interactable = false;
     }
 
 
-    void UpdateText() {
+    void UpdateText()
+    {
         string _newText = "A " + smellAdjectives[_selection[0]] + " " + objectNames[_selection[1]] + ".";
         description.text = _newText;
     }
