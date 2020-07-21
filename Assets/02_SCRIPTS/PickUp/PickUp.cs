@@ -35,7 +35,7 @@ public class PickUp : MonoBehaviour {
 
         //Aggiorna la posizione di destinazione del pick
         pickDestination = destinationObj.transform.position;
-        
+
         //Cambia lo status di pickedUp a seconda dei tasti
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
             this.pickedUp = true;
@@ -59,16 +59,16 @@ public class PickUp : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other){
-        
+       
         if (this.toPlaceBack == false && other.gameObject.transform.parent.tag == "Spawn_Grass"){
 
             flowerObj = other.gameObject;
             initialFlowerPosition = flowerObj.transform.parent.position;
 
-            flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+            //flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
 
             //la versione maiuscola della lettera del colore su Arduino triggera l'OFF del led corrispondente
-            noFlowerScent = flowerScent.ToUpper();
+            //noFlowerScent = flowerScent.ToUpper();
             Debug.Log("FIORE/MUSH: colore rilevato = " + flowerScent);
 
             this.inPickArea = true;
@@ -77,7 +77,7 @@ public class PickUp : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other){
-
+        
         if (other.gameObject == flowerObj){
             this.inPickArea = false;
         }

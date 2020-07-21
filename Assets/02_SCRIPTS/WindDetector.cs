@@ -110,8 +110,7 @@ public class WindDetector : MonoBehaviour{
         sendWind_L.Invoke(windString_L);
         sendWind_R.Invoke(windString_R);
 
-       // Debug.Log("Wind string L: " + windString_L);
-        Debug.Log("Wind string R: " + windString_R);
+       
 
         // Wind sound
         windSound.volume = 0.15f + wind.magnitude * 0.5f;
