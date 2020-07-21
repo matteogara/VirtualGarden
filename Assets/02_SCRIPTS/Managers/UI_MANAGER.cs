@@ -9,6 +9,7 @@ public class UI_MANAGER : MonoBehaviour
 
     public GameObject panel;
     public GameObject intro;
+    public GameObject windDebug;
 
     [Header("Row selection")]
     public Button[] rows;
@@ -145,6 +146,8 @@ public class UI_MANAGER : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && started) {
             sceneManager.toggleMode();
             panel.SetActive(false);
+
+            windDebug.SetActive(!sceneManager.creativeMode);
         }
     }
 

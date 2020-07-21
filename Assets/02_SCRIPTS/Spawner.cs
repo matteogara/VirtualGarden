@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        Debug.Log(nearTrees.Count);
+        Debug.Log(nearBushes.Count);
     }
 
 
@@ -93,6 +93,7 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Exit");
         GameObject collided = other.transform.parent.gameObject;
 
         switch (collided.tag)
@@ -100,7 +101,7 @@ public class Spawner : MonoBehaviour
             case "Spawn_Tree":
                 nearTrees.Remove(collided);
                 break;
-            case "Spawn_Bushes":
+            case "Spawn_Bush":
                 nearBushes.Remove(collided);
                 break;
             case "Spawn_Grass":
