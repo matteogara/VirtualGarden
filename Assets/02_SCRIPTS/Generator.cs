@@ -220,8 +220,8 @@ public class Generator : MonoBehaviour
         GameObject _herb = new GameObject("Herb_" + herbCount);
         _herb.tag = "Spawn_Grass";
         bushCount++;
-        
-        var _tussock = Instantiate(_data.tussock, Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 0));
+
+        var _tussock = Instantiate(_data.tussock, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
         _tussock.GetComponent<MeshRenderer>().material = _data.tussockMat;
 
         float r = Random.Range(_data.minScale, _data.maxScale);

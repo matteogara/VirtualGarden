@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3040ba4dc117f4e53b4071ce4e72dd41, type: 3}
   m_Name: Herb_3
   m_EditorClassIdentifier: 
-  masterScale: 1
-  tussock: {fileID: 0}
-  tussockMat: {fileID: 0}
-  minScale: 0.4
+  masterScale: 0.007
+  tussock: {fileID: 919132149155446097, guid: 557ad77de31044c3d88292c58d204692, type: 3}
+  tussockMat: {fileID: 2100000, guid: b0ba30bab48b24afe8f1faebc665e791, type: 2}
+  minScale: 0.2
   maxScale: 0.6
   minCollScale: 1
   maxCollScale: 2.5
