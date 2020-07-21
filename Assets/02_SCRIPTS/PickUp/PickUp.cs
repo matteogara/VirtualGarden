@@ -23,7 +23,10 @@ public class PickUp : MonoBehaviour {
 
     private Vector3 pickDestination;
     public Vector3 initialFlowerPosition;
-    
+
+    [Header("Smell Debug")]
+    public SmellDebug smellDebug;
+
 
     void Start(){
        
@@ -40,11 +43,16 @@ public class PickUp : MonoBehaviour {
         if (this.inPickArea == true && this.pickedUp == false && Input.GetKey("e")){
             this.pickedUp = true;
             send.Invoke(flowerScent);
+
             Debug.Log("FIORE/MUSH: in mano e profumo attivato");
+            smellDebug.TurnOnLed(flowerScent);
+
         } else if (this.pickedUp == true && Input.GetKey("q")){
             this.pickedUp = false;
             InOnExit.Invoke(noFlowerScent);
+
             Debug.Log("FIORE/MUSH: a terra e profumo disattivato");
+            smellDebug.TurnOffLeds();
         }
 
         //Cambia la posizione di flowerObj a seconda di pickedUp
