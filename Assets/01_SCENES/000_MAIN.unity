@@ -2994,16 +2994,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba48f41e647e74716aee853abda4962f, type: 2}
   - {fileID: 11400000, guid: 50b6036adb5074e8684452e30f1d8f88, type: 2}
   - {fileID: 11400000, guid: 810e3f957ec9444ce8cefa7b9f96a07b, type: 2}
-  - {fileID: 11400000, guid: 889177d5bcb25450796d3e8087ef94fc, type: 2}
-  - {fileID: 11400000, guid: 9417b640fcc0442e4adc33d0b1380852, type: 2}
   flowerData:
   - {fileID: 11400000, guid: 6bd08e51956814df9892e622175e41bd, type: 2}
   - {fileID: 11400000, guid: f36c47992d89a498f930ea4f4b829a87, type: 2}
   - {fileID: 11400000, guid: ab9c23c7386634f338aac202e0d1efb0, type: 2}
   - {fileID: 11400000, guid: 76a249c5bfe2f40b38dd3fe4145ac1c8, type: 2}
+  - {fileID: 11400000, guid: cab4b785e9bb84df89fa8c111d04b874, type: 2}
   mushroomData:
-  - {fileID: 0}
-  herbData: []
+  - {fileID: 11400000, guid: 0e39214a31ac6442e8ee5c278fb2e636, type: 2}
+  - {fileID: 11400000, guid: 6e12cb77566af4be6a0955059c153c02, type: 2}
+  - {fileID: 11400000, guid: 069e6ef0f47174ec6ab144dfba9da032, type: 2}
+  - {fileID: 11400000, guid: cbec31c8a52194572ac742a1578cb639, type: 2}
+  - {fileID: 11400000, guid: 691fed44244a24b0aa8c267515781e34, type: 2}
+  herbData:
+  - {fileID: 11400000, guid: 149d80d55f82c4947b307d1ab53fdc80, type: 2}
+  - {fileID: 11400000, guid: 96681acf02dc747afb8d80bf93760843, type: 2}
+  - {fileID: 11400000, guid: 328b828b8d0fe40b89dbaa71854851d7, type: 2}
+  - {fileID: 11400000, guid: 986fa442b34454572a1d7ba7ce8d4aec, type: 2}
+  - {fileID: 11400000, guid: be133aa94b7b04b24be0f44b63b9191d, type: 2}
 --- !u!54 &1216118193
 Rigidbody:
   m_ObjectHideFlags: 0
