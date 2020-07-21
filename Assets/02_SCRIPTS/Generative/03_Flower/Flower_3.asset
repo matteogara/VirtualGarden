@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671ac9e6a0792497e842b4712b5c33a9, type: 3}
   m_Name: Flower_3
   m_EditorClassIdentifier: 
-  masterScale: 0.08
+  masterScale: 0.8
   stems:
-  - {fileID: 919132149155446097, guid: 88e111b14523f429a8a8d38c3ef460e5, type: 3}
+  - {fileID: 919132149155446097, guid: 85801dbd827e84420a09276866296c55, type: 3}
   stemsHeights:
-  - 80
+  - 75
   stemsWidth:
   - 0.8
   corollas:
