@@ -14,6 +14,9 @@ public class PickUp : MonoBehaviour {
     public ArduinoEvent send;
     public ArduinoEvent InOnExit;
 
+    [Header("Smell Debug")]
+    public SmellDebug smellDebug;
+
     [HideInInspector] public bool pickedUp = false;
     [HideInInspector] public bool inPickArea;
     [HideInInspector] public bool toPlaceBack = false;
