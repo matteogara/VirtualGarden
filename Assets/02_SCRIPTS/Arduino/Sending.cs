@@ -33,6 +33,8 @@ public void OpenConnection(){
     }
 
     void OnApplicationQuit(){
+
+        // Null reference exception handling
         if (sp != null)
         {
             sp.Close();
