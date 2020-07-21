@@ -66,14 +66,11 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log(nearBushes.Count);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision");
         GameObject collided = other.transform.parent.gameObject;
 
         switch (collided.tag)
@@ -93,7 +90,6 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         GameObject collided = other.transform.parent.gameObject;
 
         switch (collided.tag)
