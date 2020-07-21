@@ -14,7 +14,11 @@ public class WindDetector : MonoBehaviour{
     public Text fanSpeed_L;
     public Text fanSpeed_R;
 
-    public ArduinoEvent sendWind;
+    public ArduinoEvent sendWind_L;
+    public ArduinoEvent sendWind_R;
+
+    string windString_L;
+    string windString_R;
 
     Vector3 wind = Vector3.zero;
 
@@ -60,9 +64,55 @@ public class WindDetector : MonoBehaviour{
         windIntensity_L = - Mathf.Min(Vector3.Dot(wind, fanDir_L), 0);
         windIntensity_R = - Mathf.Min(Vector3.Dot(wind, fanDir_R), 0);
 
-        string windString = Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8)).ToString();
-        sendWind.Invoke(windString);
-      
+        float remappedWind_L = Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8));
+        float remappedWind_R = Mathf.Round(Remap(windIntensity_R, 0, 1, 0, 8));
+
+         if (remappedWind_L == 0){
+             windString_L = "i";
+         } else if (remappedWind_L == 1){
+             windString_L = "j";
+         } else if (remappedWind_L == 2){
+             windString_L = "k";
+         } else if (remappedWind_L == 3){
+             windString_L = "l";
+         } else if (remappedWind_L == 4){
+             windString_L = "m";
+         } else if (remappedWind_L == 5){
+             windString_L = "n";
+         } else if (remappedWind_L == 6){
+             windString_L = "o";
+         } else if (remappedWind_L == 7){
+             windString_L = "p";
+         } else if (remappedWind_L == 8){
+             windString_L = "q";
+         }
+
+         if (remappedWind_R == 0){
+             windString_R = "I";
+         } else if (remappedWind_R == 1) {
+             windString_R = "J";
+         } else if (remappedWind_R == 2) {
+             windString_R = "K";
+         } else if (remappedWind_R == 3) {
+             windString_R = "L";
+         } else if (remappedWind_R == 4) {
+             windString_R = "M";
+         } else if (remappedWind_R == 5) {
+             windString_R = "N";
+         } else if (remappedWind_R == 6) {
+             windString_R = "O";
+         } else if (remappedWind_R == 7) {
+             windString_R = "P";
+         } else if (remappedWind_R == 8) {
+             windString_R = "Q";
+         }
+
+        sendWind_L.Invoke(windString_L);
+        sendWind_R.Invoke(windString_R);
+
+       // Debug.Log("Wind string L: " + windString_L);
+        Debug.Log("Wind string R: " + windString_R);
+
         // Wind sound
         windSound.volume = 0.15f + wind.magnitude * 0.5f;
         float windAngle = Vector3.SignedAngle(windDir, transform.forward, Vector3.up) + 180;
