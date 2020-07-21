@@ -224,14 +224,20 @@ public class Generator : MonoBehaviour
         _herb.tag = "Spawn_Grass";
         bushCount++;
 
-        var _tussock = Instantiate(_data.tussock, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
-        _tussock.GetComponent<MeshRenderer>().material = _data.tussockMat;
+        int num = Random.Range(_data.tussMinNum, _data.tussMaxNum);
+        for (int i = 0; i < num; i++)
+        {
+            Vector3 offset = new Vector3(Random.Range(-_data.tussMaxDist, _data.tussMaxDist), 0, Random.Range(-_data.tussMaxDist, _data.tussMaxDist));
 
-        float r = Random.Range(_data.minScale, _data.maxScale);
-        float h = Random.Range(_data.minScale, _data.maxScale);
-        Vector3 s = new Vector3(r, h, r);
-        _tussock.transform.localScale = s;
-        _tussock.transform.parent = _herb.transform;
+            var _tussock = Instantiate(_data.tussock, offset, Quaternion.Euler(-90, Random.Range(0, 360), 0));
+            _tussock.GetComponent<MeshRenderer>().material = _data.tussockMat;
+
+            float r = Random.Range(_data.minScale, _data.maxScale);
+            float h = Random.Range(_data.minScale, _data.maxScale);
+            Vector3 s = new Vector3(r, h, r);
+            _tussock.transform.localScale = s;
+            _tussock.transform.parent = _herb.transform;
+        }
 
         // Set position
         _herb.transform.position = _pos;

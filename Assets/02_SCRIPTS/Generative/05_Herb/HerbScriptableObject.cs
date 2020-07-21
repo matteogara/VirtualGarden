@@ -14,7 +14,10 @@ public class HerbScriptableObject : ScriptableObject
     [Header("Materials")]
     public Material tussockMat;
 
-    [Header("Tussock settings")]
+    [Header("Tussocks settings")]
+    public int tussMinNum = 3;
+    public int tussMaxNum = 10;
+    public int tussMaxDist = 10;
     public float minScale = 0.4f;
     public float maxScale = 0.6f;
 

@@ -15,7 +15,10 @@ MonoBehaviour:
   masterScale: 0.007
   tussock: {fileID: 919132149155446097, guid: 557ad77de31044c3d88292c58d204692, type: 3}
   tussockMat: {fileID: 2100000, guid: b0ba30bab48b24afe8f1faebc665e791, type: 2}
+  tussMinNum: 1
+  tussMaxNum: 1
+  tussMaxDist: 10
   minScale: 0.2
   maxScale: 0.6
-  minCollScale: 0.8
-  maxCollScale: 1.2
+  minCollScale: 0.05
+  maxCollScale: 0.15

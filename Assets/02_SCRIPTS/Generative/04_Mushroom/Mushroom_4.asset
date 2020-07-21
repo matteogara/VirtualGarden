@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1fe637081e243939762b8663764c18, type: 3}
   m_Name: Mushroom_4
   m_EditorClassIdentifier: 
-  masterScale: 0.2
+  masterScale: 0.12
   body:
   - {fileID: 919132149155446097, guid: c0c77415109b44d059874ce40f59f709, type: 3}
   bodyHeights:
@@ -29,5 +29,5 @@ MonoBehaviour:
   bodyMaxScale: 1
   headMinScale: 1
   headMaxScale: 1.5
-  minCollScale: 1
-  maxCollScale: 2.5
+  minCollScale: 0.5
+  maxCollScale: 1.2

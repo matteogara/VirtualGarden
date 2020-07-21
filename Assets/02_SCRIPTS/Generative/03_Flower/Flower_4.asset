@@ -30,5 +30,5 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 7e030d7775e7f4f0fb5bb109182043f9, type: 3}
   stemMat: {fileID: 2100000, guid: 9e025a814bef84e2ea1effa0966e21c8, type: 2}
   corollaMat: {fileID: 2100000, guid: 4de805b4df3e84608a18c6043048eccd, type: 2}
-  minCollScale: 1
-  maxCollScale: 2.5
+  minCollScale: 0.5
+  maxCollScale: 1.2

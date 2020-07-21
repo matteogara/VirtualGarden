@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
             // If selected, spawn a flower, mushroom or herb
             if (sceneManager.selection[1] == 2 && nearGrass.Count < 1)
             {
-                int index = Random.Range(0, 3);
+                int index = Random.Range(0, 5);
 
                 switch(index)
                 {
@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
                     case 1:
                         generator.CreateMushroom(transform.position, mushroomData[sceneManager.selection[0]]);
                         break;
-                    case 2:
+                    default:
                         generator.CreateHerb(transform.position, herbData[sceneManager.selection[0]]);
                         break;
                 }
