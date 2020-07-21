@@ -82,46 +82,46 @@ public class UI_MANAGER : MonoBehaviour
                         PlaySound(rowSound);
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    _selection[activeRow]--;
-                    if (_selection[activeRow] < 0)
-                    {
-                        _selection[activeRow] = 0;
-                    }
-                    else
-                    {
-                        _refresh = true;
-                        PlaySound(columnSound);
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    activeRow++;
-                    if (activeRow > 1)
-                    {
-                        activeRow = 1;
-                    }
-                    else
-                    {
-                        _refresh = true;
-                        PlaySound(rowSound);
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    _selection[activeRow]++;
-                    if (_selection[activeRow] > rowLength[activeRow])
-                    {
-                        _selection[activeRow] = rowLength[activeRow];
-                    }
-                    else
-                    {
-                        _refresh = true;
-                        PlaySound(columnSound);
-                    }
-                }
-            }
+                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                 {
+                     _selection[activeRow]--;
+                     if (_selection[activeRow] < 0)
+                     {
+                         _selection[activeRow] = 0;
+                     }
+                     else
+                     {
+                         _refresh = true;
+                         PlaySound(columnSound);
+                     }
+                 }
+                 if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                 {
+                     activeRow++;
+                     if (activeRow > 1)
+                     {
+                         activeRow = 1;
+                     }
+                     else
+                     {
+                         _refresh = true;
+                         PlaySound(rowSound);
+                     }
+                 }
+                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                 {
+                     _selection[activeRow]++;
+                     if (_selection[activeRow] > rowLength[activeRow])
+                     {
+                         _selection[activeRow] = rowLength[activeRow];
+                     }
+                     else
+                     {
+                         _refresh = true;
+                         PlaySound(columnSound);
+                     }
+                 }
+             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
