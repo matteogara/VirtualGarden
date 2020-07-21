@@ -65,10 +65,10 @@ public class PickUp : MonoBehaviour {
             flowerObj = other.gameObject;
             initialFlowerPosition = flowerObj.transform.parent.position;
 
-            //flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
+            flowerScent = flowerObj.GetComponentInParent<ColorGrabber>().arduinoColor;
 
             //la versione maiuscola della lettera del colore su Arduino triggera l'OFF del led corrispondente
-            //noFlowerScent = flowerScent.ToUpper();
+            noFlowerScent = flowerScent.ToUpper();
             Debug.Log("FIORE/MUSH: colore rilevato = " + flowerScent);
 
             this.inPickArea = true;
