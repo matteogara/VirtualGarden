@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Generator : MonoBehaviour
 {
+    public SCENE_MANAGER sceneManager;
+
     [Header("Smell collider size")]
     public float smellCollSize;
 
@@ -82,7 +84,7 @@ public class Generator : MonoBehaviour
         _tree.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_tree, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        AddColliders(_tree, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _tree;
     }
@@ -121,7 +123,7 @@ public class Generator : MonoBehaviour
         _bush.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_bush, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        AddColliders(_bush, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _bush;
     }
@@ -155,7 +157,7 @@ public class Generator : MonoBehaviour
         _flower.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_flower, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        AddColliders(_flower, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _flower;
     }
@@ -194,7 +196,7 @@ public class Generator : MonoBehaviour
         _mushroom.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_mushroom, _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        AddColliders(_mushroom, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _mushroom;
     }
@@ -204,7 +206,7 @@ public class Generator : MonoBehaviour
 
 
 
-    private void AddColliders(GameObject _obj, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
+    private void AddColliders(GameObject _obj, int _tagNum, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
     {
         // Add spawn collider
         GameObject _spawn = new GameObject("Spawn collider");
@@ -223,6 +225,8 @@ public class Generator : MonoBehaviour
         SphereCollider _deleteColl = _delete.AddComponent<SphereCollider>();
         _deleteColl.radius = _deleteCollSize;
         _deleteColl.isTrigger = true;
+        _delete.tag = "Smell_" + _tagNum.ToString();
+
 
         // Add smell collider
         GameObject _smell = new GameObject("Smell collider");

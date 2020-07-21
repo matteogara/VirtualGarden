@@ -126,7 +126,7 @@ Shader "Custom/WindToon" {
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 // Defined in Autolight.cginc. Assigns the above shadow coordinate
                 // by transforming the vertex from world space to shadow-map space.
-                TRANSFER_SHADOW(o)
+                //TRANSFER_SHADOW(o);
                 
                 return o;
             }
@@ -191,35 +191,66 @@ Shader "Custom/WindToon" {
             ENDCG
         }
         
-        //Pass
-        //{
-        //    Tags {"LightMode"="ShadowCaster"}
+        Pass {
+            Name "ShadowCaster"
+            Tags { "LightMode" = "ShadowCaster" }
+           
+            Fog {Mode Off}
+            ZWrite On ZTest Less Cull Off
+            Offset [_ShadowBias], [_ShadowBiasSlope]
+   
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile SHADOWS_NATIVE SHADOWS_CUBE
+            #pragma fragmentoption ARB_precision_hint_fastest
+            #include "UnityCG.cginc"
+            #include "TerrainEngine.cginc"
+           
+            struct v2f {
+                V2F_SHADOW_CASTER;
+            };
+           
+            struct appdata {
+                float4 vertex : POSITION;
+                float4 color : COLOR;
+            };
+            
+            float4 _wind_dir;
+            float _wind_size;
+            float _tree_sway_speed;
+            float _tree_sway_disp;
+            float _leaves_wiggle_disp;
+            float _leaves_wiggle_speed;
+            float _branches_disp;
+            float _tree_sway_stutter;
+            float _tree_sway_stutter_influence;
+            float _r_influence;
+            float _b_influence;
+            
+            v2f vert( appdata v )
+            {
+                v2f o;
+                
+                TRANSFER_SHADOW_CASTER(o)
+                
+                float3 worldPos = mul (unity_ObjectToWorld, v.vertex).xyz;
+                float newX = v.vertex.x + (cos(_Time.z * _tree_sway_speed + (worldPos.x/_wind_size) + (sin(_Time.z * _tree_sway_stutter * _tree_sway_speed + (worldPos.x/_wind_size)) * _tree_sway_stutter_influence) ) + 1)/2 * _tree_sway_disp * _wind_dir.x * (v.vertex.y / 10) + 
+                cos(_Time.w * v.vertex.x * _leaves_wiggle_speed + (worldPos.x/_wind_size)) * _leaves_wiggle_disp * _wind_dir.x * _b_influence;
+                float newZ = v.vertex.z + (cos(_Time.z * _tree_sway_speed + (worldPos.z/_wind_size) + (sin(_Time.z * _tree_sway_stutter * _tree_sway_speed + (worldPos.z/_wind_size)) * _tree_sway_stutter_influence) ) + 1)/2 * _tree_sway_disp * _wind_dir.z * (v.vertex.y / 10) + 
+                cos(_Time.w * v.vertex.z * _leaves_wiggle_speed + (worldPos.x/_wind_size)) * _leaves_wiggle_disp * _wind_dir.z * _b_influence;
+                float newY = v.vertex.y + cos(_Time.z * _tree_sway_speed + (worldPos.z/_wind_size)) * _tree_sway_disp * _wind_dir.y * (v.vertex.y / 10);
+                newY += sin(_Time.w * _tree_sway_speed + _wind_dir.x + (worldPos.z/_wind_size)) * _branches_disp * _r_influence;
+                o.pos = UnityObjectToClipPos(float4(newX, newY, newZ, 0));
 
-        //    CGPROGRAM
-        //    #pragma vertex vert
-        //    #pragma fragment frag
-        //    #pragma multi_compile_shadowcaster
-        //    #include "UnityCG.cginc"
-
-        //    struct v2f { 
-        //        V2F_SHADOW_CASTER;
-        //    };
-
-        //    v2f vert(appdata_base v)
-        //    {
-        //        v2f o;
-        //        TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
-        //        return o;
-        //    }
-
-        //    float4 frag(v2f i) : SV_Target
-        //    {
-        //        SHADOW_CASTER_FRAGMENT(i)
-        //    }
-        //    ENDCG
-        //}
-        
-        // Shadow casting support.
-        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
+                return o;
+            }
+           
+            float4 frag( v2f i ) : COLOR
+            {
+                SHADOW_CASTER_FRAGMENT(i)
+            }
+            ENDCG  
+        }
     }
 } 

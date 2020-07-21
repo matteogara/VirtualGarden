@@ -65,7 +65,6 @@ public class SCENE_MANAGER : MonoBehaviour
         marker.ChangeMarker(_sel[0]);
 
         spawner.SetActive(!(_sel[0] == 5));
-        eraser.SetActive(_sel[0] == 5);
     }
 
     public void toggleMode() {

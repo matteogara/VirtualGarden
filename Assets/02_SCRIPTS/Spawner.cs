@@ -108,4 +108,12 @@ public class Spawner : MonoBehaviour
                 break;
         }
     }
+
+
+    public void ResetLists()
+    {
+        nearTrees = new List<GameObject>();
+        nearBushes = new List<GameObject>();
+        nearGrass = new List<GameObject>();
+    }
 }

@@ -581,6 +581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePointer: {fileID: 874683213}
+  sceneManager: {fileID: 1499411186}
+  spawner: {fileID: 1216118192}
 --- !u!54 &570733933
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1056,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2bdcf334fe5445ba23104006e76862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneManager: {fileID: 1499411186}
   smellCollSize: 1
   eraseCollSize: 1
 --- !u!114 &1216118192
