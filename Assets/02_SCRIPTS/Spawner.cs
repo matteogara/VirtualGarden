@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public BushScriptableObject[] bushData;
     public FlowerScriptableObject[] flowerData;
     public MushroomScriptableObject[] mushroomData;
-    //public GrassScriptableObject[] grassData;
+    public HerbScriptableObject[] herbData;
 
     List<GameObject> nearTrees = new List<GameObject>();
     List<GameObject> nearBushes = new List<GameObject>();
@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
                         generator.CreateMushroom(transform.position, mushroomData[sceneManager.selection[0]]);
                         break;
                     case 2:
-                        //generator.CreateGrass(mousePos, grassData[sceneManager.selection[0]]);
+                        generator.CreateHerb(transform.position, herbData[sceneManager.selection[0]]);
                         break;
                 }
             }

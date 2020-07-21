@@ -202,8 +202,33 @@ public class Generator : MonoBehaviour
     }
 
 
-    // CreateGrass da aggiungere
+    public GameObject CreateHerb(Vector3 _pos, HerbScriptableObject _data)
+    {
+        // Create object
+        GameObject _herb = new GameObject("Herb_" + herbCount);
+        _herb.tag = "Spawn_Grass";
+        bushCount++;
+        
+        var _tussock = Instantiate(_data.tussock, Vector3.zero, Quaternion.Euler(0, Random.Range(0, 360), 0));
+        _tussock.GetComponent<MeshRenderer>().material = _data.tussockMat;
 
+        float r = Random.Range(_data.minScale, _data.maxScale);
+        float h = Random.Range(_data.minScale, _data.maxScale);
+        Vector3 s = new Vector3(r, h, r);
+        _tussock.transform.localScale = s;
+        _tussock.transform.parent = _herb.transform;
+
+        // Set position
+        _herb.transform.position = _pos;
+
+        // Set master scale
+        _herb.transform.localScale *= _data.masterScale;
+
+        // Create collider
+        AddColliders(_herb, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
+        return _herb;
+    }
 
 
     private void AddColliders(GameObject _obj, int _tagNum, float _spawnCollMinSize, float _spawnCollMaxSize, float _deleteCollSize, float _smellCollSize)
