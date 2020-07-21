@@ -11,9 +11,12 @@ public class ColorGrabber : MonoBehaviour {
 
         float blueGreenComponent = 0.5647059f;
         float greenGreenComponent = 0.7764706f;
-        float yellowGreenComponent = 0.6821074f; 
-        float orangeGreenComponent = 0.439802f;
-        float redGreenComponent = 0.39102f;
+        float yellowGreenComponent = 0.6821074f;
+        float yellowGreenComponentBush = 0.682353f;
+        float orangeGreenComponent = 0.439802f; 
+        float orangeGreenComponentBush = 0.4392157f;
+        float redGreenComponent = 0.39102f; 
+        float redGreenComponentBush = 0.3921569f;
 
         List<MeshRenderer> rendererList = new List<MeshRenderer>();
         GetComponentsInChildren<MeshRenderer>(false, rendererList);
@@ -23,7 +26,7 @@ public class ColorGrabber : MonoBehaviour {
             foreach (MeshRenderer rendererPart in rendererList){
                 
                 greenComponent = rendererPart.material.GetColor("_Color").g;
-                //Debug.Log("elenco lista: " + rendererPart.ToString() + " colore: " + greenComponent);
+                Debug.Log("elenco lista: " + rendererPart.ToString() + " colore: " + greenComponent);
 
                 if (Mathf.Approximately(greenComponent, blueGreenComponent)){
                     arduinoColor = "b";
@@ -31,13 +34,15 @@ public class ColorGrabber : MonoBehaviour {
                  } else if (Mathf.Approximately(greenComponent, greenGreenComponent)){
                     arduinoColor = "g";
                     break;
-                } else if (Mathf.Approximately(greenComponent, yellowGreenComponent)){
+                } else if (Mathf.Approximately(greenComponent, yellowGreenComponent) || Mathf.Approximately(greenComponent, yellowGreenComponentBush)){
                     arduinoColor = "y";
                     break;
-                } else if (Mathf.Approximately(greenComponent, orangeGreenComponent)){
+                } else if (Mathf.Approximately(greenComponent, orangeGreenComponent) || Mathf.Approximately(greenComponent, orangeGreenComponentBush))
+                {
                     arduinoColor = "w";
                     break;
-                } else if (Mathf.Approximately(greenComponent, redGreenComponent)){
+                } else if (Mathf.Approximately(greenComponent, redGreenComponent) || Mathf.Approximately(greenComponent, redGreenComponentBush))
+                {
                     arduinoColor = "r";
                     break;
                 }
