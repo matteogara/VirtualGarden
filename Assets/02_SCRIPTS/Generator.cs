@@ -84,7 +84,7 @@ public class Generator : MonoBehaviour
         _tree.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_tree, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        if (sceneManager != null) AddColliders(_tree, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _tree;
     }
@@ -123,7 +123,7 @@ public class Generator : MonoBehaviour
         _bush.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_bush, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        if (sceneManager != null) AddColliders(_bush, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _bush;
     }
@@ -157,7 +157,7 @@ public class Generator : MonoBehaviour
         _flower.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_flower, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        if (sceneManager != null) AddColliders(_flower, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _flower;
     }
@@ -196,7 +196,7 @@ public class Generator : MonoBehaviour
         _mushroom.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_mushroom, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        if (sceneManager != null) AddColliders(_mushroom, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _mushroom;
     }
@@ -225,7 +225,7 @@ public class Generator : MonoBehaviour
         _herb.transform.localScale *= _data.masterScale;
 
         // Create collider
-        AddColliders(_herb, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+        if (sceneManager != null) AddColliders(_herb, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
         return _herb;
     }
@@ -251,7 +251,6 @@ public class Generator : MonoBehaviour
         _deleteColl.radius = _deleteCollSize;
         _deleteColl.isTrigger = true;
         _delete.tag = "Smell_" + _tagNum.ToString();
-
 
         // Add smell collider
         GameObject _smell = new GameObject("Smell collider");

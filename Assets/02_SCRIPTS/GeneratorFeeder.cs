@@ -6,7 +6,7 @@ public class GeneratorFeeder : MonoBehaviour
 {
     public Generator generator;
 
-    public enum TypeOfVegetation {Tree, Bush, Flower, Mushroom, Grass}
+    public enum TypeOfVegetation {Tree, Bush, Flower, Mushroom, Herb}
     [Header("Choose type of vegetation to spawn")]
     public TypeOfVegetation typeOfVegetation;
 
@@ -15,7 +15,7 @@ public class GeneratorFeeder : MonoBehaviour
     public BushScriptableObject bushData;
     public FlowerScriptableObject flowerData;
     public MushroomScriptableObject mushroomData;
-    //public GrassScriptableObject grassData;
+    public HerbScriptableObject herbData;
 
     private GameObject generated;
 
@@ -37,7 +37,7 @@ public class GeneratorFeeder : MonoBehaviour
             if (typeOfVegetation == TypeOfVegetation.Bush) generated = generator.CreateBush(transform.position, bushData);
             if (typeOfVegetation == TypeOfVegetation.Flower) generated = generator.CreateFlower(transform.position, flowerData);
             if (typeOfVegetation == TypeOfVegetation.Mushroom) generated = generator.CreateMushroom(transform.position, mushroomData);
-            //if (typeOfVegetation == TypeOfVegetation.Grass) generated = generator.CreateGrass(transform.position, grassData);
+            if (typeOfVegetation == TypeOfVegetation.Herb) generated = generator.CreateHerb(transform.position, herbData);
         }
     }
 }
