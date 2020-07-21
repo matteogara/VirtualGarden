@@ -100,7 +100,7 @@ public class Generator : MonoBehaviour
         _bush.tag = "Spawn_Bush";
         bushCount++;
 
-        float _shrubsNum = Random.Range(1, 3);
+        float _shrubsNum = Random.Range(1, 5);
         for (int i = 0; i < _shrubsNum; i++)
         {
             Vector3 offset = new Vector3(Random.Range(-_data.shrMaxDist, _data.shrMaxDist), 0, Random.Range(-_data.shrMaxDist, _data.shrMaxDist));

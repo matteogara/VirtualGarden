@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: TREE 1
   m_Shader: {fileID: 4800000, guid: 72d1ed19ce50c46ac8260b218cfa6a44, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,8 +74,8 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _b_influence: 0.065
-    - _branches_disp: 0.016
+    - _b_influence: 0.102
+    - _branches_disp: 0.067
     - _leaves_wiggle_disp: 0.2
     - _leaves_wiggle_speed: 0.5
     - _r_influence: 0.995

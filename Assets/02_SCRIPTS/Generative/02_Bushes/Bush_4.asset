@@ -17,7 +17,7 @@ MonoBehaviour:
   shrubsMat: {fileID: 2100000, guid: 2a6707400f7774928ab705e8a6d3db9f, type: 2}
   shrubsMinNum: 1
   shribsMaxNum: 5
-  shrMaxDist: 15
+  shrMaxDist: 25
   minScale: 0.3
   maxScale: 0.4
   largerShrubsAtCenter: 1

@@ -74,15 +74,15 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _b_influence: 0.102
-    - _branches_disp: 0.147
+    - _b_influence: 0.01
+    - _branches_disp: 0.067
     - _leaves_wiggle_disp: 0.2
     - _leaves_wiggle_speed: 0.5
     - _r_influence: 0.433
     - _tree_sway_disp: 1.2
     - _tree_sway_speed: 0.77
     - _tree_sway_stutter: 0
-    - _tree_sway_stutter_influence: 0.693
+    - _tree_sway_stutter_influence: 0.84
     - _wind_size: 4
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}

@@ -63,6 +63,8 @@ public class TreeScentTrigger : MonoBehaviour {
 
         send.Invoke(treeScent);
         Debug.Log("ALBERO/BUSH: in area e profumo attivato");
+
+
     }
 }
 

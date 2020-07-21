@@ -19,6 +19,6 @@ public class HerbScriptableObject : ScriptableObject
     public float maxScale = 0.6f;
 
     [Header("Collider settings")]
-    public float minCollScale = 1f;
-    public float maxCollScale = 2.5f;
+    public float minCollScale = 0.8f;
+    public float maxCollScale = 1.2f;
 }
