@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class SCENE_MANAGER : MonoBehaviour
 {
-    [HideInInspector]
-    public int[] selection = { 0, 0 };
-    [HideInInspector]
-    public bool creativeMode = false;
-    [HideInInspector]
-    public bool UI_on = false;
+    [HideInInspector] public int[] selection = { 0, 0 };
+    [HideInInspector] public bool creativeMode = false;
+    [HideInInspector] public bool UI_on = false;
 
     public GameObject pointer;
     public GameObject spawner;
