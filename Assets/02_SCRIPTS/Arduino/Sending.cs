@@ -46,7 +46,11 @@ public void OpenConnection(){
         sp.Write(exit);
     }
 
-   public void SendWind(string windIntensity){
+   public void SendWind_R(string windIntensity){
+        sp.Write(windIntensity);
+    }
+
+    public void SendWind_L(string windIntensity){
         sp.Write(windIntensity);
     }
 }
