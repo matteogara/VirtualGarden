@@ -86,6 +86,9 @@ public class Generator : MonoBehaviour
         // Create collider
         if (sceneManager != null) AddColliders(_tree, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
+        // Add color grabber
+        AddColorGrabber(_tree);
+
         return _tree;
     }
 
@@ -125,6 +128,9 @@ public class Generator : MonoBehaviour
         // Create collider
         if (sceneManager != null) AddColliders(_bush, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
+        // Add color grabber
+        AddColorGrabber(_bush);
+
         return _bush;
     }
 
@@ -158,6 +164,9 @@ public class Generator : MonoBehaviour
 
         // Create collider
         if (sceneManager != null) AddColliders(_flower, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
+        // Add color grabber
+        AddColorGrabber(_flower);
 
         return _flower;
     }
@@ -198,6 +207,9 @@ public class Generator : MonoBehaviour
         // Create collider
         if (sceneManager != null) AddColliders(_mushroom, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
 
+        // Add color grabber
+        AddColorGrabber(_mushroom);
+
         return _mushroom;
     }
 
@@ -226,6 +238,9 @@ public class Generator : MonoBehaviour
 
         // Create collider
         if (sceneManager != null) AddColliders(_herb, sceneManager.selection[0], _data.minCollScale, _data.maxCollScale, eraseCollSize, smellCollSize);
+
+        // Add color grabber
+        AddColorGrabber(_herb);
 
         return _herb;
     }
@@ -261,5 +276,10 @@ public class Generator : MonoBehaviour
         _smellColl.radius = _smellCollSize;
         _smellColl.height = 10;
         _smellColl.isTrigger = true;
+    }
+
+
+    private void AddColorGrabber(GameObject _obj) {
+        _obj.AddComponent<ColorGrabber>();
     }
 }
