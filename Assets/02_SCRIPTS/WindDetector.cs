@@ -64,8 +64,8 @@ public class WindDetector : MonoBehaviour{
         windIntensity_L = - Mathf.Min(Vector3.Dot(wind, fanDir_L), 0);
         windIntensity_R = - Mathf.Min(Vector3.Dot(wind, fanDir_R), 0);
 
-        float remappedWind_L = Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8));
-        float remappedWind_R = Mathf.Round(Remap(windIntensity_R, 0, 1, 0, 8));
+        int remappedWind_L = (int) Mathf.Round(Remap(windIntensity_L, 0, 1, 0, 8));
+        int remappedWind_R = (int) Mathf.Round(Remap(windIntensity_R, 0, 1, 0, 8));
 
          if (remappedWind_L == 0){
              windString_L = "i";
