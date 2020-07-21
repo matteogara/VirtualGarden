@@ -33,8 +33,12 @@ public void OpenConnection(){
     }
 
     void OnApplicationQuit(){
-        sp.Close();
-        Debug.Log("Close");
+        if (sp != null)
+        {
+            sp.Close();
+            Debug.Log("Close");
+        }
+
     }
 
     //Invia messaggio ad Arduino
