@@ -88,7 +88,7 @@
                 o = saturate(o * 0.5 + 0.5 + _HideAreas);
                 half4 s = saturate(SHADOW_ATTENUATION(i) + 0.92);
             
-                return o * s;
+                return o * s - 0.02;
             }
             ENDCG
         }

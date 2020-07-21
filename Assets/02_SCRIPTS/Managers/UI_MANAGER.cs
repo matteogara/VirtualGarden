@@ -10,6 +10,7 @@ public class UI_MANAGER : MonoBehaviour
     public GameObject panel;
     public GameObject intro;
     public GameObject windDebug;
+    public GameObject background;
 
     [Header("Row selection")]
     public Button[] rows;
@@ -45,7 +46,7 @@ public class UI_MANAGER : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         RefreshUI();
-        RefreshDebug();
+        RefreshVisibilities();
     }
 
 
@@ -62,6 +63,8 @@ public class UI_MANAGER : MonoBehaviour
             {
                 panel.SetActive(true);
                 sceneManager.UI_on = true;
+
+                RefreshVisibilities();
             }
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -125,6 +128,8 @@ public class UI_MANAGER : MonoBehaviour
                 panel.SetActive(false);
                 PlaySound(tabSound);
                 sceneManager.UI_on = false;
+
+                RefreshVisibilities();
             }
 
             if (_refresh)
@@ -142,7 +147,7 @@ public class UI_MANAGER : MonoBehaviour
             PlaySound(tabSound);
             started = !started;
 
-            RefreshDebug();
+            RefreshVisibilities();
         }
 
         // Switch mode
@@ -150,7 +155,7 @@ public class UI_MANAGER : MonoBehaviour
             sceneManager.toggleMode();
             panel.SetActive(false);
 
-            RefreshDebug();
+            RefreshVisibilities();
         }
     }
 
@@ -168,9 +173,10 @@ public class UI_MANAGER : MonoBehaviour
     }
 
 
-    void RefreshDebug()
+    void RefreshVisibilities()
     {
         windDebug.SetActive(!sceneManager.creativeMode && started);
+        background.SetActive(!started || panel.activeInHierarchy);
     }
 
 
