@@ -29,12 +29,8 @@ public class PickUpInstr : MonoBehaviour{
         this.inPickArea = pickUpValues.inPickArea;
         this.pickedUp = pickUpValues.pickedUp;
 
-        Debug.Log("INSTR in pick area: " + this.inPickArea);
-
         pickUpText.transform.position = textPosition;
         placeBackText.transform.position = textPosition;
-
-        Debug.Log("Posiione pick text: " + textPosition);
 
         pickUpText.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
         placeBackText.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
