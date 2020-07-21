@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2bdcf334fe5445ba23104006e76862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneManager: {fileID: 0}
   smellCollSize: 0
   eraseCollSize: 0
 --- !u!114 &807243661
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 807243660}
-  typeOfVegetation: 0
+  typeOfVegetation: 1
   treeData: {fileID: 11400000, guid: 05f2dc1c9b94946e695f02bef51615f2, type: 2}
   bushData: {fileID: 11400000, guid: 9417b640fcc0442e4adc33d0b1380852, type: 2}
   flowerData: {fileID: 11400000, guid: ab9c23c7386634f338aac202e0d1efb0, type: 2}

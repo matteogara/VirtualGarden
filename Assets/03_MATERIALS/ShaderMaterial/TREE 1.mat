@@ -81,7 +81,7 @@ Material:
     - _r_influence: 0.433
     - _tree_sway_disp: 1.2
     - _tree_sway_speed: 0.77
-    - _tree_sway_stutter: 0.88
+    - _tree_sway_stutter: 0
     - _tree_sway_stutter_influence: 0.693
     - _wind_size: 4
     m_Colors:
