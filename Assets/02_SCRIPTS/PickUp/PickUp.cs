@@ -8,22 +8,26 @@ using UnityEngine.Events;
 
 public class PickUp : MonoBehaviour {
 
+    [SerializeField]
+    private SCENE_MANAGER modality;
+
     public ArduinoEvent send;
     public ArduinoEvent InOnExit;
 
-    public bool pickedUp = false;
-    public bool inPickArea;
-    public bool toPlaceBack = false;
+    [HideInInspector] public bool pickedUp = false;
+    [HideInInspector] public bool inPickArea;
+    [HideInInspector] public bool toPlaceBack = false;
 
-    public string flowerScent;
-    public string noFlowerScent;
+    [HideInInspector] public string flowerScent;
+    [HideInInspector] public string noFlowerScent;
 
     private GameObject destinationObj;
     private GameObject flowerObj;
 
     private Vector3 pickDestination;
-    public Vector3 initialFlowerPosition;
-    
+    [HideInInspector] public Vector3 initialFlowerPosition;
+
+    [HideInInspector] private bool creativeMode;
 
     void Start(){
        
@@ -32,6 +36,9 @@ public class PickUp : MonoBehaviour {
     }
 
     void Update(){
+
+        
+        this.creativeMode = modality.creativeMode;
 
         //Aggiorna la posizione di destinazione del pick
         pickDestination = destinationObj.transform.position;
@@ -60,7 +67,7 @@ public class PickUp : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
        
-        if (this.toPlaceBack == false && other.gameObject.transform.parent.tag == "Spawn_Grass"){
+        if (this.creativeMode == false && this.toPlaceBack == false && other.gameObject.transform.parent.tag == "Spawn_Grass"){
 
             flowerObj = other.gameObject;
             initialFlowerPosition = flowerObj.transform.parent.position;

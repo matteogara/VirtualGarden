@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpValues: {fileID: 816792142}
+  modality: {fileID: 1499411186}
   send:
     m_PersistentCalls:
       m_Calls:
@@ -2354,6 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b20bbf16b0481347b2b50700d39c7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modality: {fileID: 1499411186}
   send:
     m_PersistentCalls:
       m_Calls:

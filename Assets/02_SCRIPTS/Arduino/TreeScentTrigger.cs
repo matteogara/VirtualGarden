@@ -8,19 +8,24 @@ public class TreeScentTrigger : MonoBehaviour {
     [SerializeField]
     private PickUp pickUpValues;
 
+    [SerializeField]
+    private SCENE_MANAGER modality;
+
     public ArduinoEvent send;
     public ArduinoEvent InOnExit;
 
-    public string treeScent;
-    public string noTreeScent;
+    [HideInInspector] public string treeScent;
+    [HideInInspector] public string noTreeScent;
 
     private bool toPlaceBack;
     private bool pickedUp;
     private bool enteredWhilePickedUp = false;
+    private bool creativeMode;
 
     private GameObject treeObj;
 
     void Update(){
+        this.creativeMode = modality.creativeMode;
         this.pickedUp = pickUpValues.pickedUp;
         
         this.toPlaceBack = pickUpValues.toPlaceBack;
@@ -33,7 +38,7 @@ public class TreeScentTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
 
-        if (other.gameObject.transform.parent.tag == "Spawn_Tree" || other.gameObject.transform.parent.tag == "Spawn_Bush"){
+        if (this.creativeMode == false && (other.gameObject.transform.parent.tag == "Spawn_Tree" || other.gameObject.transform.parent.tag == "Spawn_Bush")){
 
             treeObj = other.gameObject;
 
