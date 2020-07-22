@@ -9,7 +9,7 @@
         _Col3 ("Smell 1", Color) = (1,1,1,1)
         _Col4 ("Smell 1", Color) = (1,1,1,1)
         _Col5 ("Smell 1", Color) = (1,1,1,1)
-        _HideAreas ("Show areas", Float) = 0.0
+        //_HideAreas ("Show areas", Float) = 0.0
     }
     SubShader
     {
@@ -55,7 +55,7 @@
             half4 _Col3;
             half4 _Col4;
             half4 _Col5;
-            float _HideAreas;
+            //float _HideAreas;
             
             
             v2f vert (appdata v)
@@ -85,7 +85,9 @@
                 o = (delta4.r + delta4.g + delta4.b) < 0.04 ? col : o;
                 o = (delta5.r + delta5.g + delta5.b) < 0.04 ? col : o;
                 
-                o = saturate(o * 0.5 + 0.5 + _HideAreas);
+                //o = saturate(o * 0.5 + 0.5 + _HideAreas);
+                o *= 0.5;
+                o += 0.5;
                 half4 s = saturate(SHADOW_ATTENUATION(i) + 0.92);
             
                 return o * s - 0.02;

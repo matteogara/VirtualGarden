@@ -183,7 +183,7 @@ public class UI_MANAGER : MonoBehaviour
 
     void RefreshVisibilities()
     {
-        windDebug.SetActive(!sceneManager.creativeMode && started);
+        if (windDebug != null) windDebug.SetActive(!sceneManager.creativeMode && started);
         background.SetActive(!started || panel.activeInHierarchy);
     }
 

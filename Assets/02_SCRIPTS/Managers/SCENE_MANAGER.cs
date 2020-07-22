@@ -68,7 +68,7 @@ public class SCENE_MANAGER : MonoBehaviour
         creativeMode = !creativeMode;
 
         pointer.SetActive(creativeMode);
-        canvas.ShowAreas(creativeMode);
+        //canvas.ShowAreas(creativeMode);
 
         spawner.GetComponent<Spawner>().ResetLists();
     }
