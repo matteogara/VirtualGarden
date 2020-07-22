@@ -21,8 +21,8 @@ MonoBehaviour:
   foliage: {fileID: 919132149155446097, guid: 47fd09445a0f243e9b9fdb63f3c0484b, type: 3}
   trMat: {fileID: 2100000, guid: dbc75b4651bf44fb29661fa0db3dd71b, type: 2}
   folMat: {fileID: 2100000, guid: f99b73d05051d451abff98fe8ed73114, type: 2}
-  trMinR: 0.3
-  trMaxR: 0.7
+  trMinR: 0.2
+  trMaxR: 0.4
   trMinH: 0.5
   trMaxH: 0.8
   brMinNum: 0

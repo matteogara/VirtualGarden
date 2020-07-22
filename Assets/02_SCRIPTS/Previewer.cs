@@ -4,97 +4,87 @@ using UnityEngine;
 
 public class Previewer : MonoBehaviour
 {
-   public SCENE_MANAGER sceneManager;
-   public Generator generator;
+    public SCENE_MANAGER sceneManager;
+    public Generator generator;
 
-   [Header("Array di scriptable objects, uno per ogni tipo di pianta")]
-   public TreeScriptableObject[] treeData;
-   public BushScriptableObject[] bushData;
-   public FlowerScriptableObject[] flowerData;
-   public MushroomScriptableObject[] mushroomData;
-   public HerbScriptableObject[] herbData;
+    [Header("Preview settings")]
+    public Vector3 offset;
+    public float[] previewScales;
 
-   List<GameObject> nearTrees = new List<GameObject>();
-   List<GameObject> nearBushes = new List<GameObject>();
-   List<GameObject> nearGrass = new List<GameObject>();
+    [Header("Array di scriptable objects, uno per ogni tipo di pianta")]
+    public TreeScriptableObject[] treeData;
+    public BushScriptableObject[] bushData;
+    public FlowerScriptableObject[] flowerData;
+    public MushroomScriptableObject[] mushroomData;
+    public HerbScriptableObject[] herbData;
 
-
-   private float count;
-   private GameObject generatedTree;
-   private GameObject generatedBush;
-   private GameObject generatedFlower;
-   private GameObject generatedMushroom;
-   private GameObject generatedHerb;
-
-   GameObject preview; //
+    private GameObject generated;
 
 
-   public void UpdatePreview() { //
-        Debug.Log("Creo la preview"); //
+    public void UpdatePreview()
+    { //
+
+        if (generated != null)
+        {
+            Destroy(generated);
+        }
+
 
         // If selected, spawn a tree
-        if (sceneManager.selection[1] == 0 && nearTrees.Count < 1)
+        if (sceneManager.selection[1] == 0)
         {
-          if (generatedTree != null) {
-             Destroy(generatedTree);
-           }
-           if (generatedBush != null) {
-              Destroy(generatedBush);
-            }
-          if (generatedHerb != null) {
-             Destroy(generatedHerb);
-           }
-          if (generatedFlower != null) {
-             Destroy(generatedFlower);
-           }
-          if (generatedMushroom != null) {
-             Destroy(generatedMushroom);
-           }
-          generatedTree = generator.CreateTree(transform.position, treeData[sceneManager.selection[0]]);
+            generated = generator.CreateTree(transform.position, treeData[sceneManager.selection[0]]);
+            generated.name = "Mini tree";
+            generated.transform.parent = transform;
+            generated.transform.localScale = Vector3.one * previewScales[0];
         }
 
         // If selected, spawn a bush
-        if (sceneManager.selection[1] == 1 && nearBushes.Count < 1)
+        if (sceneManager.selection[1] == 1)
         {
-          if (generatedBush != null) {
-             Destroy(generatedBush);
-           }
-         if (generatedTree != null) {
-            Destroy(generatedTree);
-          }
-          if (generatedHerb != null) {
-             Destroy(generatedHerb);
-           }
-         if (generatedFlower != null) {
-            Destroy(generatedFlower);
-         }
-         if (generatedMushroom != null) {
-            Destroy(generatedMushroom);
-           }
-          generatedBush = generator.CreateBush(transform.position, bushData[sceneManager.selection[0]]);
+            generated = generator.CreateBush(transform.position, bushData[sceneManager.selection[0]]);
+            generated.name = "Mini bush";
+            generated.transform.parent = transform;
+            generated.transform.localScale = Vector3.one * previewScales[1];
         }
 
         // If selected, spawn a flower, mushroom or herb
-        if (sceneManager.selection[1] == 2 && nearGrass.Count < 1)
+        if (sceneManager.selection[1] == 2)
         {
-          if (generatedHerb != null) {
-             Destroy(generatedHerb);
-           }
-          if (generatedFlower != null) {
-             Destroy(generatedFlower);
-          }
-          if (generatedMushroom != null) {
-             Destroy(generatedMushroom);
+            GameObject generatedHerb = generator.CreateHerb(offset, herbData[sceneManager.selection[0]]);
+            GameObject generatedFlower = generator.CreateFlower(Quaternion.AngleAxis(120, Vector3.up) * offset, flowerData[sceneManager.selection[0]]);
+            GameObject generatedMushroom = generator.CreateMushroom(Quaternion.AngleAxis(240, Vector3.up) * offset, mushroomData[sceneManager.selection[0]]);
+
+            generated = new GameObject("Mini grass");
+            generatedFlower.transform.parent = generated.transform;
+            generatedMushroom.transform.parent = generated.transform;
+            generatedHerb.transform.parent = generated.transform;
+
+            generated.transform.parent = transform;
+            generated.transform.localPosition = new Vector3(0, -0.07f, 0);
+            //generated.transform.localRotation = Quaternion.identity;
+            generated.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            generated.transform.localScale = Vector3.one * previewScales[2];
+        }
+
+        ChangeMaterials(generated, sceneManager.selection[0]);
+    }
+
+
+    void ChangeMaterials(GameObject _obj, int _index) {
+
+        MeshRenderer[] renderers = _obj.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer rend in renderers) {
+            string matName = rend.sharedMaterial.name.Split(' ')[1];
+
+            switch (matName) {
+                case "DOWN": 
+                    rend.sharedMaterial = mushroomData[_index].bodyMat;
+                    break;
+                default:
+                    rend.sharedMaterial = mushroomData[_index].headMat;
+                    break;
             }
-          if (generatedBush != null) {
-            Destroy(generatedBush);
-          }
-          if (generatedTree != null) {
-             Destroy(generatedTree);
-           }
-          generatedFlower = generator.CreateFlower(transform.position = new Vector3(-1f,0,0), flowerData[sceneManager.selection[0]]);
-          generatedMushroom = generator.CreateMushroom(transform.position = new Vector3(0,0,0), mushroomData[sceneManager.selection[0]]);
-          generatedHerb = generator.CreateHerb(transform.position = new Vector3(1f,0,0), herbData[sceneManager.selection[0]]);
-          }
         }
     }
+}
