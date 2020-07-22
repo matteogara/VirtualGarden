@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
             }
 
             // If selected, spawn a bush
-            if (sceneManager.selection[1] == 1 && nearBushes.Count < 1) 
+            if (sceneManager.selection[1] == 1 && nearBushes.Count < 1)
             {
                 generator.CreateBush(transform.position, bushData[sceneManager.selection[0]]);
             }
