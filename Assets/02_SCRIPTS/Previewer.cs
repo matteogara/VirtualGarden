@@ -7,10 +7,6 @@ public class Previewer : MonoBehaviour
    public SCENE_MANAGER sceneManager;
    public Generator generator;
 
-   public enum TypeOfVegetation {Tree, Bush, Flower, Mushroom, Herb}
-   [Header("Choose type of vegetation to spawn")]
-   public TypeOfVegetation typeOfVegetation;
-
    [Header("Array di scriptable objects, uno per ogni tipo di pianta")]
    public TreeScriptableObject[] treeData;
    public BushScriptableObject[] bushData;
@@ -42,6 +38,18 @@ public class Previewer : MonoBehaviour
           if (generatedTree != null) {
              Destroy(generatedTree);
            }
+           if (generatedBush != null) {
+              Destroy(generatedBush);
+            }
+          if (generatedHerb != null) {
+             Destroy(generatedHerb);
+           }
+          if (generatedFlower != null) {
+             Destroy(generatedFlower);
+           }
+          if (generatedMushroom != null) {
+             Destroy(generatedMushroom);
+           }
           generatedTree = generator.CreateTree(transform.position, treeData[sceneManager.selection[0]]);
         }
 
@@ -50,6 +58,18 @@ public class Previewer : MonoBehaviour
         {
           if (generatedBush != null) {
              Destroy(generatedBush);
+           }
+         if (generatedTree != null) {
+            Destroy(generatedTree);
+          }
+          if (generatedHerb != null) {
+             Destroy(generatedHerb);
+           }
+         if (generatedFlower != null) {
+            Destroy(generatedFlower);
+         }
+         if (generatedMushroom != null) {
+            Destroy(generatedMushroom);
            }
           generatedBush = generator.CreateBush(transform.position, bushData[sceneManager.selection[0]]);
         }
@@ -60,9 +80,21 @@ public class Previewer : MonoBehaviour
           if (generatedHerb != null) {
              Destroy(generatedHerb);
            }
-          generatedHerb = generator.CreateFlower(transform.position, flowerData[sceneManager.selection[0]]);
-          generatedHerb = generator.CreateMushroom(transform.position, mushroomData[sceneManager.selection[0]]);
-          generatedHerb = generator.CreateHerb(transform.position, herbData[sceneManager.selection[0]]);
+          if (generatedFlower != null) {
+             Destroy(generatedFlower);
+          }
+          if (generatedMushroom != null) {
+             Destroy(generatedMushroom);
+            }
+          if (generatedBush != null) {
+            Destroy(generatedBush);
+          }
+          if (generatedTree != null) {
+             Destroy(generatedTree);
+           }
+          generatedFlower = generator.CreateFlower(transform.position = new Vector3(-1f,0,0), flowerData[sceneManager.selection[0]]);
+          generatedMushroom = generator.CreateMushroom(transform.position = new Vector3(0,0,0), mushroomData[sceneManager.selection[0]]);
+          generatedHerb = generator.CreateHerb(transform.position = new Vector3(1f,0,0), herbData[sceneManager.selection[0]]);
           }
         }
     }
