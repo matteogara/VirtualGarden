@@ -41,12 +41,12 @@ public class Tree3Generator : MonoBehaviour
 
         // Create trunk
         var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
-        _trunk.GetComponent<MeshRenderer>().material = trMat;
+        _trunk.GetComponent<MeshRenderer>().sharedMaterial = trMat;
         _trunk.transform.parent = _tree.transform;
 
         // Create trunk foliage
         var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
-        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
+        _trFolDown.GetComponent<MeshRenderer>().sharedMaterial = folMat;
         _trFolDown.transform.parent = _trunk.transform;
         _trFolDown.transform.localPosition = new Vector3(0, 0, 8f);
 

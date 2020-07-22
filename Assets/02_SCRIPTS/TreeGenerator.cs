@@ -63,7 +63,7 @@ public class TreeGenerator : MonoBehaviour
 
         // Create trunk
         var _trunk = Instantiate(trunk, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
-        _trunk.GetComponent<MeshRenderer>().material = trMat;
+        _trunk.GetComponent<MeshRenderer>().sharedMaterial = trMat;
         _trunk.transform.parent = _tree.transform;
         float _trR = Random.Range(trMinScale, trMaxScale);
         float _trH = Random.Range(trMinScale, trMaxScale);
@@ -73,8 +73,8 @@ public class TreeGenerator : MonoBehaviour
         var _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
         var _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-        _trFolDown.GetComponent<MeshRenderer>().material = folMat;
-        _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+        _trFolDown.GetComponent<MeshRenderer>().sharedMaterial = folMat;
+        _trFolUp.GetComponent<MeshRenderer>().sharedMaterial = folMat;
 
         float _folR = Random.Range(folMinScale, folMaxScale);
         float _folH = Random.Range(folMinScale, folMaxScale) / _trH;
@@ -88,7 +88,7 @@ public class TreeGenerator : MonoBehaviour
         float _brenchNum = Random.Range(1, 5);
         for (int i = 0; i < _brenchNum; i++) {
             var _brench = Instantiate(brench, Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 90));
-            _brench.GetComponent<MeshRenderer>().material = trMat;
+            _brench.GetComponent<MeshRenderer>().sharedMaterial = trMat;
             float _z = Random.Range(brMinH, brMaxH);
             float s;
             if (largerBrenchesBelow)
@@ -107,8 +107,8 @@ public class TreeGenerator : MonoBehaviour
             _trFolDown = Instantiate(foliage_down, Vector3.zero, Quaternion.Euler(-90, 0, 0));
             _trFolUp = Instantiate(foliage_up, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-            _trFolDown.GetComponent<MeshRenderer>().material = folMat;
-            _trFolUp.GetComponent<MeshRenderer>().material = folMat;
+            _trFolDown.GetComponent<MeshRenderer>().sharedMaterial = folMat;
+            _trFolUp.GetComponent<MeshRenderer>().sharedMaterial = folMat;
 
             _folR = Random.Range(folMinScale, folMaxScale);
             _folH = Random.Range(folMinScale, folMaxScale) / _trH;

@@ -25,7 +25,7 @@ public class ColorGrabber : MonoBehaviour {
                         
             foreach (MeshRenderer rendererPart in rendererList){
                 
-                greenComponent = rendererPart.material.GetColor("_Color").g;
+                greenComponent = rendererPart.sharedMaterial.GetColor("_Color").g;
                 //Debug.Log("elenco lista: " + rendererPart.ToString() + " colore: " + greenComponent);
 
                 if (Mathf.Approximately(greenComponent, blueGreenComponent)){

@@ -25,6 +25,6 @@ public class SpawnMarker : MonoBehaviour
 
     public void ChangeMarker(int _index)
     {
-        rend.material.mainTexture = markers[_index];
+        rend.sharedMaterial.mainTexture = markers[_index];
     }
 }

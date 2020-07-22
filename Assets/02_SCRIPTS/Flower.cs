@@ -28,7 +28,7 @@ public class Flower : MonoBehaviour
         line.positionCount = 2;
         line.SetPosition(0, transform.position);
         line.SetPosition(1, transform.position);
-        line.material = gameObject.GetComponent<Renderer>().material;
+        line.sharedMaterial = gameObject.GetComponent<Renderer>().sharedMaterial;
     }
 
 
@@ -39,7 +39,7 @@ public class Flower : MonoBehaviour
         fieldTr.localScale = new Vector3(newScale, 0.1f, newScale);
 
         intensity = Mathf.Clamp(1 - (newScale / 20.0f), 0, 1.0f);
-        fieldTr.gameObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, intensity);
+        fieldTr.gameObject.GetComponent<Renderer>().sharedMaterial.color = new Color(1.0f, 1.0f, 1.0f, intensity);
 
         line.SetPosition(1, playerTr.position);
     }

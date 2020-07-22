@@ -51,7 +51,7 @@ public class MushroomsGenerator : MonoBehaviour
         // Create body
         int bodyIndex = Random.Range(0, body.Count);
         var _body = Instantiate(body[bodyIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
-        _body.GetComponent<MeshRenderer>().material = bodyMat;
+        _body.GetComponent<MeshRenderer>().sharedMaterial = bodyMat;
         float _bodyR = Random.Range(bodyMinScale, bodyMaxScale);
         float _bodyH = Random.Range(bodyMinScale, bodyMaxScale);
         _body.transform.localScale = new Vector3(_bodyR, _bodyR, _bodyH);
@@ -60,7 +60,7 @@ public class MushroomsGenerator : MonoBehaviour
         // Create head
         int headIndex = Random.Range(0, head.Count);
         var _head = Instantiate(head[headIndex], Vector3.zero, Quaternion.Euler(Random.Range(-85, -95), Random.Range(0, 360), 0));
-        _head.GetComponent<MeshRenderer>().material = headMat;
+        _head.GetComponent<MeshRenderer>().sharedMaterial = headMat;
         float _headR = Random.Range(headMinScale, headMaxScale);
         float _headH = Random.Range(headMinScale, headMaxScale);
         _head.transform.localScale = new Vector3(_headR, _headR, _headH);
