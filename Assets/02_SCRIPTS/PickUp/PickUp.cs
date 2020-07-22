@@ -52,14 +52,14 @@ public class PickUp : MonoBehaviour {
             send.Invoke(flowerScent);
 
             Debug.Log("FIORE/MUSH: in mano e profumo attivato");
-            smellDebug.TurnOnLed(flowerScent);
+            if (smellDebug != null) smellDebug.TurnOnLed(flowerScent);
 
         } else if (this.pickedUp == true && Input.GetKey("q")){
             this.pickedUp = false;
             InOnExit.Invoke(noFlowerScent);
 
             Debug.Log("FIORE/MUSH: a terra e profumo disattivato");
-            smellDebug.TurnOffLeds();
+            if (smellDebug != null) smellDebug.TurnOffLeds();
         }
 
         //Cambia la posizione di flowerObj a seconda di pickedUp

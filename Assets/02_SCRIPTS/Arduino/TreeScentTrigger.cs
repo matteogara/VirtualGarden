@@ -64,7 +64,7 @@ public class TreeScentTrigger : MonoBehaviour {
             Debug.Log("ALBERO/BUSH: fuori area e profumo disttivato");
 
             // Turn off all smell debug leds
-            smellDebug.TurnOffLeds();
+            if (smellDebug != null) smellDebug.TurnOffLeds();
         }
     }
 
@@ -76,7 +76,7 @@ public class TreeScentTrigger : MonoBehaviour {
         Debug.Log("ALBERO/BUSH: in area e profumo attivato");
 
         // Turn on smell debug led
-        smellDebug.TurnOnLed(treeScent);
+        if (smellDebug != null) smellDebug.TurnOnLed(treeScent);
     }
 }
 
