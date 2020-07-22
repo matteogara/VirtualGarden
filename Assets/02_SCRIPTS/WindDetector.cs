@@ -118,11 +118,14 @@ public class WindDetector : MonoBehaviour{
         windSound.panStereo = - Mathf.Sin(windAngle * Mathf.Deg2Rad);
 
         // Debug
-        fanSpeed_L.text = (windIntensity_L * 100).ToString("F0") + "%";
-        fanSpeed_R.text = (windIntensity_R * 100).ToString("F0") + "%";
-        windDebug.transform.eulerAngles = new Vector3(45, 0, windAngle + 180);
-        windDebug.transform.localScale = new Vector3(wind.magnitude + 0.5f, wind.magnitude + 0.5f, wind.magnitude + 0.5f) * 0.7f;
-        bar_L.transform.localScale = new Vector3(1, windIntensity_L, 1) * 0.7f;
-        bar_R.transform.localScale = new Vector3(1, windIntensity_R, 1) * 0.7f;
+        if (windDebug != null)
+        {
+            fanSpeed_L.text = (windIntensity_L * 100).ToString("F0") + "%";
+            fanSpeed_R.text = (windIntensity_R * 100).ToString("F0") + "%";
+            windDebug.transform.eulerAngles = new Vector3(45, 0, windAngle + 180);
+            windDebug.transform.localScale = new Vector3(wind.magnitude + 0.5f, wind.magnitude + 0.5f, wind.magnitude + 0.5f) * 0.7f;
+            bar_L.transform.localScale = new Vector3(1, windIntensity_L, 1) * 0.7f;
+            bar_R.transform.localScale = new Vector3(1, windIntensity_R, 1) * 0.7f;
+        }
     }
 }
