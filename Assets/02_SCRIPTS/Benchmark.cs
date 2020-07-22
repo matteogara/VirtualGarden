@@ -48,13 +48,13 @@ public class Benchmark : MonoBehaviour
                     //MeshRenderer[] meshes = newPlant.GetComponentsInChildren<MeshRenderer>();
                     //foreach (MeshRenderer mesh in meshes)
                     //{
-                    //    if (mesh.material.name == "Bianco (Instance)")
+                    //    if (mesh.sharedMaterial.name == "Bianco (Instance)")
                     //    {
                     //        mesh.gameObject.isStatic = true;
                     //        batchBianco.Add(mesh.gameObject);
                     //    }
 
-                    //    if (mesh.material.name == "Azzurro (Instance)") {
+                    //    if (mesh.sharedMaterial.name == "Azzurro (Instance)") {
                     //        mesh.gameObject.isStatic = true;
                     //        batchAzzurro.Add(mesh.gameObject);
                     //    }

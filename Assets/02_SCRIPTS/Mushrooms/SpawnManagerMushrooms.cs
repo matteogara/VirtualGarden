@@ -21,7 +21,7 @@ public class SpawnManagerMushrooms : MonoBehaviour
     void Start()
     {
         if (terrain != null) {
-            //terrainTex = terrain.GetComponent<MeshRenderer>().material.mainTexture as Texture2D;
+            //terrainTex = terrain.GetComponent<MeshRenderer>().sharedMaterial.mainTexture as Texture2D;
             terrainSize = terrain.GetComponent<MeshRenderer>().bounds.size;
         }
 
@@ -61,7 +61,7 @@ public class SpawnManagerMushrooms : MonoBehaviour
                 float newZ = (0.5f - z) * terrainSize.z + terrain.transform.position.z;
 
                 GameObject newItem = Instantiate(item, new Vector3(newX, 0, newZ), Quaternion.identity);
-                newItem.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = colors[newCol];
+                newItem.transform.GetChild(0).GetComponent<MeshRenderer>().sharedMaterial.color = colors[newCol];
                 //newItem.transform.localScale = new Vector3(pixelLuma, pixelLuma, pixelLuma);
                 newItem.transform.localScale = new Vector3(pixelLuma, pixelLuma * pixelLuma, pixelLuma);
                 //newItem.transform.localScale = new Vector3(pixelLuma * pixelLuma, pixelLuma * pixelLuma, pixelLuma * pixelLuma);
@@ -128,7 +128,7 @@ public class SpawnManagerMushrooms : MonoBehaviour
         }
 
         hm_material.SetTexture("_DispTex", hm);
-        terrain.GetComponent<MeshRenderer>().material = hm_material;
+        terrain.GetComponent<MeshRenderer>().sharedMaterial = hm_material;
     }
 
 

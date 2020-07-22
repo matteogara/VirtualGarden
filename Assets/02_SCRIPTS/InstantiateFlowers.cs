@@ -24,7 +24,7 @@ public class InstantiateFlowers : MonoBehaviour
 
             GameObject newFlower = Instantiate(flowerPrefab, newPos, Quaternion.identity);
             newFlower.name = flowerPrefab.name + "_Mat" + newMat;
-            newFlower.GetComponent<Renderer>().material = materials[newMat];
+            newFlower.GetComponent<Renderer>().sharedMaterial = materials[newMat];
             newFlower.GetComponent<Flower>().mat = newMat;
             newFlower.GetComponent<Flower>().enabled = false;
         }

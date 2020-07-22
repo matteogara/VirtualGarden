@@ -24,7 +24,7 @@ public class DrawWithMouse : MonoBehaviour
         //_drawMaterial.SetVector("_Color", Color.red);
         _drawMaterial.SetVector("_Color", colors[currentCol]);
 
-        _objMaterial = GetComponent<MeshRenderer>().material;
+        _objMaterial = GetComponent<MeshRenderer>().sharedMaterial;
 
         _canvas = new RenderTexture(resolution, resolution, 0, RenderTextureFormat.ARGBFloat);
         _objMaterial.SetTexture("_Paint", _canvas);

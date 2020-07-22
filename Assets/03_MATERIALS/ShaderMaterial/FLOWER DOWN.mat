@@ -74,12 +74,12 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _b_influence: 0.03
-    - _branches_disp: 0.147
+    - _b_influence: 0
+    - _branches_disp: 0
     - _leaves_wiggle_disp: 0.2
     - _leaves_wiggle_speed: 0.5
-    - _r_influence: 0.03
-    - _tree_sway_disp: 1.2
+    - _r_influence: 0
+    - _tree_sway_disp: 0.396
     - _tree_sway_speed: 0.77
     - _tree_sway_stutter: 0
     - _tree_sway_stutter_influence: 0.693

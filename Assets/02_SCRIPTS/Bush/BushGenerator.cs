@@ -60,7 +60,7 @@ public class BushGenerator : MonoBehaviour
 
             var _shrubs = Instantiate(shrubs, offset, Quaternion.Euler(-90, Random.Range(0, 360), 90));
 
-            _shrubs.GetComponent<MeshRenderer>().material = shrubsMat;
+            _shrubs.GetComponent<MeshRenderer>().sharedMaterial = shrubsMat;
 
             Vector3 s = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale));
             if (largerShrubsAtCenter)
