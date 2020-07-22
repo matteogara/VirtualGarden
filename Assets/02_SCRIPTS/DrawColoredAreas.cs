@@ -70,10 +70,10 @@ public class DrawColoredAreas : MonoBehaviour
     }
 
 
-    public void ShowAreas(bool _on) {
-        float _hide = (_on) ? 0 : 1;
-        _objMaterial.SetFloat("_HideAreas", _hide);
-    }
+    //public void ShowAreas(bool _on) {
+    //    float _hide = (_on) ? 0 : 1;
+    //    _objMaterial.SetFloat("_HideAreas", _hide);
+    //}
 
 
     //private void OnGUI()
