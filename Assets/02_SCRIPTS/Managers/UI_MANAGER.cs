@@ -31,6 +31,9 @@ public class UI_MANAGER : MonoBehaviour
     public AudioClip columnSound;
     public AudioClip tabSound;
 
+    [Header("Preview")]
+    public Previewer previewer;
+
     int activeRow = 0;
     int[] _selection = { 0, 0 };
     int[] rowLength = { 4, 2 };
@@ -170,6 +173,11 @@ public class UI_MANAGER : MonoBehaviour
         Vibrate();
 
         sceneManager.updateSelection(_selection);
+
+        if (previewer != null)
+        {
+            previewer.UpdatePreview();
+        }
     }
 
 

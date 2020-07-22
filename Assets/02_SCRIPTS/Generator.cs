@@ -26,7 +26,7 @@ public class Generator : MonoBehaviour
         // Create trunk
         int trunkIndex = Random.Range(0, _data.trunk.Count);
         var _trunk = Instantiate(_data.trunk[trunkIndex], Vector3.zero, Quaternion.Euler(-90, Random.Range(0, 360), 0));
-        _trunk.GetComponent<MeshRenderer>().material = _data.trMat;
+        _trunk.GetComponent<MeshRenderer>().sharedMaterial = _data.trMat;
         _trunk.transform.parent = _tree.transform;
         float _trR = Random.Range(_data.trMinR, _data.trMaxR);
         float _trH = Random.Range(_data.trMinH, _data.trMaxH);
@@ -35,7 +35,7 @@ public class Generator : MonoBehaviour
         // Create trunk foliage
         var _trFoliage = Instantiate(_data.foliage, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-        _trFoliage.GetComponent<MeshRenderer>().material = _data.folMat;
+        _trFoliage.GetComponent<MeshRenderer>().sharedMaterial = _data.folMat;
 
         float _folR = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
         float _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH;
@@ -49,7 +49,7 @@ public class Generator : MonoBehaviour
         for (int i = 0; i < _brenchNum; i++)
         {
             var _brench = Instantiate(_data.brench, Vector3.zero, Quaternion.Euler(-45, Random.Range(0, 360), -90));
-            _brench.GetComponent<MeshRenderer>().material = _data.trMat;
+            _brench.GetComponent<MeshRenderer>().sharedMaterial = _data.trMat;
             float _z = Random.Range(_data.brMinH, _data.brMaxH);
             float s;
             if (_data.largerBrenchesBelow)
@@ -68,7 +68,7 @@ public class Generator : MonoBehaviour
             // Create brench foliage
             _trFoliage = Instantiate(_data.foliage, Vector3.zero, Quaternion.Euler(-90, 0, 0));
 
-            _trFoliage.GetComponent<MeshRenderer>().material = _data.folMat;
+            _trFoliage.GetComponent<MeshRenderer>().sharedMaterial = _data.folMat;
 
             _folR = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH * _data.brFolPropScale;
             _folH = Random.Range(_data.folMinScale, _data.folMaxScale) / _trH * _data.brFolPropScale;

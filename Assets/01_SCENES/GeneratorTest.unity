@@ -273,12 +273,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 807243660}
-  typeOfVegetation: 1
-  treeData: {fileID: 11400000, guid: 05f2dc1c9b94946e695f02bef51615f2, type: 2}
-  bushData: {fileID: 11400000, guid: 810e3f957ec9444ce8cefa7b9f96a07b, type: 2}
-  flowerData: {fileID: 11400000, guid: ab9c23c7386634f338aac202e0d1efb0, type: 2}
-  mushroomData: {fileID: 11400000, guid: 691fed44244a24b0aa8c267515781e34, type: 2}
-  herbData: {fileID: 11400000, guid: be133aa94b7b04b24be0f44b63b9191d, type: 2}
+  typeOfVegetation: 0
+  treeData: {fileID: 11400000, guid: f25193d517d7b420eb8597b279088b88, type: 2}
+  bushData: {fileID: 11400000, guid: d344eec6cb6214ff58354c64461ce73e, type: 2}
+  flowerData: {fileID: 11400000, guid: 6bd08e51956814df9892e622175e41bd, type: 2}
+  mushroomData: {fileID: 11400000, guid: 0e39214a31ac6442e8ee5c278fb2e636, type: 2}
+  herbData: {fileID: 11400000, guid: 149d80d55f82c4947b307d1ab53fdc80, type: 2}
 --- !u!1 &1032260734
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 164ec0836774d4cfaa187118f5ef1b18, type: 2}
+  - {fileID: 2100000, guid: f78a65fcc261847539082566d07b4cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
