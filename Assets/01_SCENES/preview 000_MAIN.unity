@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 290423844}
   - component: {fileID: 290423843}
   - component: {fileID: 290423842}
+  - component: {fileID: 290423845}
   m_Layer: 9
   m_Name: SmellManager
   m_TagString: Untagged
@@ -974,6 +975,50 @@ MonoBehaviour:
         m_CallState: 2
   treeScent: 
   noTreeScent: 
+  smellDebug: {fileID: 540808764}
+--- !u!114 &290423845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290423840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c54b6c80525254d819015d239fd737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modality: {fileID: 1499411186}
+  send:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499411188}
+        m_MethodName: SendColor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  InOnExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1499411188}
+        m_MethodName: SendExit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  previewScent: 
+  noPreviewScent: 
   smellDebug: {fileID: 540808764}
 --- !u!1 &316219731
 GameObject:
