@@ -74,7 +74,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _b_influence: 0.069
+    - _b_influence: 0.001
     - _branches_disp: 0.037
     - _leaves_wiggle_disp: 0.3
     - _leaves_wiggle_speed: 1
