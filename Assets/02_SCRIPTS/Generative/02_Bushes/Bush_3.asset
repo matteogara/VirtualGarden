@@ -22,4 +22,4 @@ MonoBehaviour:
   maxScale: 0.07
   largerShrubsAtCenter: 1
   minCollScale: 0.5
-  maxCollScale: 0.8
+  maxCollScale: 1

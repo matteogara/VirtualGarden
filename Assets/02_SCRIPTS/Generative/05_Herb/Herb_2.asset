@@ -20,5 +20,5 @@ MonoBehaviour:
   tussMaxDist: 10
   minScale: 0.2
   maxScale: 0.6
-  minCollScale: 0.25
-  maxCollScale: 0.75
+  minCollScale: 0.5
+  maxCollScale: 1
